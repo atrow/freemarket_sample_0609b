@@ -26,7 +26,7 @@ Things you may want to cover:
 
 #Design Database
 
-## productsテーブル
+## productsテーブル(商品)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
@@ -37,9 +37,8 @@ Things you may want to cover:
 |shipping_fee_pay|integer|null: false,foreign_key: true|
 |shipping_off_area|integer|null: false,foreign_key: true|
 |shipping_off_day|integer|null: false,foreign_key: true|
-|buyer_user|integer|
-|seller_user|integer|null: false|
 |sold_out_status|integer|foreign_key: true|
+参考サイトhttp://www.coma-tech.com/archives/223/
 
 ### Association
 - belongs_to :user
@@ -50,14 +49,16 @@ Things you may want to cover:
 - belongs_to :size_type
 - belongs_to :brand
 - belongs_to :sold_out_status
-- has_many :purchases
 - has_many :comments, dependent: :destroy
 - has_many :product_pictures, dependent: :destroy
+- has_many :categorys
 - has_many :likes, dependent: :destroy
 - has_many :users, through: :likes
+- has_many :purchases
+- has_many :sellers, :through => :purchases
+- has_many :buyers, :through => :purchases
 
-
-## product_picturesテーブル
+## product_picturesテーブル(商品写真)
 |Column|Type|Options|
 |------|----|-------|
 |product_picture|integer|
@@ -65,98 +66,74 @@ Things you may want to cover:
 ### Association
 - belongs_to :product 
 
-## brandsテーブル
+## brandsテーブル（ブランド）
 |Column|Type|Options|
 |------|----|-------|
 |brand_name|varchar|null: false,unique: true|
 ### Association
 - has_many :products
 
-## conditionsテーブル
+## conditionsテーブル（商品状態）
 |Column|Type|Options|
 |------|----|-------|
-|condition|null: false,unique: true|
+|condition||varchar|null: false,unique: true|
 ### Association
 - has_many :products
 
-## size_typesテーブル
+## sizeテーブル(サイズ)
 |Column|Type|Options|
 |------|----|-------|
 |size|varchar|null: false|
+### Association
+- has_many :products
+
+## size_typesテーブル(サイズ種別)
+|Column|Type|Options|
+|------|----|-------|
 |size_type|varchar|null: false|
 ### Association
-- has_many :products
+- has_many :sizes
 
-## large_categorysテーブル
+## categorysテーブル(カテゴリ)
 |Column|Type|Options|
 |------|----|-------|
 |category_name|varchar|null: false|
+|parent_id||
+参考サイトhttps://qiita.com/chopin3/items/ca5525406ef005086e59,https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
 ### Association
 - has_many :products
-- has_many :middle_category, through: :
-- has_many :small_categorys,
+- belongs_to :parent, class_name: :Category
+- has_many :children, class_name: :Category, foreign_key: :parent_id
 
-## middle_categorysテーブル
+## delivery_fee_paysテーブル（配送料負担）
 |Column|Type|Options|
 |------|----|-------|
-|category_name|varchar|null: false|
+|delivery_fee_pay|varchar|null: false|
 ### Association
 - has_many :products
 
-## small_categorysテーブル
+## delivery_waysテーブル（配送方法）
 |Column|Type|Options|
 |------|----|-------|
-|category_name|varchar|null: false|
+|delivery_way|varchar|null: false|
 ### Association
 - has_many :products
 
-## large_middle_categorysテーブル
+## shipping_off_daysテーブル（配送日数）
 |Column|Type|Options|
 |------|----|-------|
-|category_name|varchar|index: true|
+|shipping_off_day|varchar|null: false|
 ### Association
 - has_many :products
-- belongs_to :large_category
-- belongs_to :middle_category
 
-## middle_small_categorysテーブル
+## shipping_off_areasテーブル（発送地域）
 |Column|Type|Options|
 |------|----|-------|
-|category_name|varchar|index: true|
-### Association
-- has_many :products
-- belongs_to :small_category
-- belongs_to :middle_category
-
-## delivery_fee_paysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|delivery_fee_pay|varchar|
+|shipping_off_area|varchar|null: false|
 ### Association
 - has_many :products
 
-## delivery_waysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|delivery_way|varchar|
-### Association
-- has_many :products
-
-## sipping_off_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|sipping_off_day|varchar|
-### Association
-- has_many :products
-
-## sipping_off_areasテーブル
-|Column|Type|Options|
-|------|----|-------|
-|sipping_off_area|varchar|
-### Association
-- has_many :products
-
-## likesテーブル
+## likesテーブル（いいね！）
 |Column|Type|Options|
 |------|----|-------|
 ### Association
@@ -187,18 +164,19 @@ Things you may want to cover:
 - has_many :cards, dependent: :destroy
 - has_many :comments
 - has_many :user_deliverys, dependent: :destroy
-- has_many :purchases
-- has_many :purchases_of_seller, :class_name => 'product', :foreign_key => 'seller_id'
-- has_many :purchases_of_buyer, :class_name => 'product', :foreign_key => 'buyer_id'
+- has_many :purchases_of_seller, :class_name => 'Purchases', :foreign_key => 'seller_id'
+- has_many :purchases_of_buyer, :class_name => 'Purchases', :foreign_key => 'buyer_id'
+- has_many :products_of_seller, :through => :deals_of_seller, :source => 'product'
+- has_many :products_of_buyer, :through => :deals_of_buyer, :source => 'product'
 
-## user_productsテーブル
+## users_productsテーブル（中間テーブル）
 |Column|Type|Options|
 |------|----|-------|
 ### Association
 - belongs_to :product
 - belongs_to :user
 
-## user_detailsテーブル
+## user_detailsテーブル（ユーザ詳細情報）
 |Column|Type|Options|
 |------|----|-------|
 |zip_code|integer|null: false|
@@ -211,11 +189,14 @@ Things you may want to cover:
 |avatar_text|varchar|
 |provider|integer|
 |uid|integer|
+|facebook_email|varchar|
+|facebook_name|integer|
+|google_email|varchar|
 
 ### Association
 - belongs_to :user
 
-## user_deliverysテーブル
+## user_deliverysテーブル（ユーザ配送情報）
 |Column|Type|Options|
 |------|----|-------|
 |ship_family_name|varchar|null: false|
@@ -233,7 +214,7 @@ Things you may want to cover:
 - has_many :purchases
 - belongs_to :user
 
-## cardsテーブル
+## cardsテーブル（クレジットカード）
 |Column|Type|Options|
 |------|----|-------|
 |card_number|integer|null: false|
@@ -249,6 +230,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |buyer_comment|varchar|
+|seller_comment|varchar|
 |user_id|references|null: false,foreign_key: true|
 
 ### Association
@@ -263,7 +245,7 @@ Things you may want to cover:
 ### Association
 - has_many :reports 
 
-## commentsテーブル
+## commentsテーブル（コメント）
 |Column|Type|Options|
 |------|----|-------|
 |comment|varchar|null: false|
@@ -277,22 +259,22 @@ Things you may want to cover:
 |------|----|-------|
 |payment|integer|
 |profit|integer|
+|buyer_user|integer|
+|seller_user|integer|null: false|
 参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association
 - has_many :reports
 - belongs_to :user
+- belongs_to :card
+- belongs_to :user_delivery
 - belongs_to :seller, :class_name => 'User'
 - belongs_to :buyer, :class_name => 'User'
 - belongs_to :product
-- belongs_to :card
-- belongs_to :user_delivery
 
-
-## pointsテーブル
+## pointsテーブル（保有ポイント）
 |Column|Type|Options|
 |------|----|-------|
 |point|integer|
-
 1ポイント=1円として、商品を購入するときに利用できます。
 
 ### Association
@@ -322,6 +304,7 @@ Things you may want to cover:
 |sold_out_status|varchar|null: false|
 ### Association
 - belongs_to :product
+
 
 
 
