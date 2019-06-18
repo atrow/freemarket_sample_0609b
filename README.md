@@ -38,7 +38,7 @@ Things you may want to cover:
 |shipping_off_area|integer|null: false,foreign_key: true|
 |shipping_off_day|integer|null: false,foreign_key: true|
 |sold_out_status|integer|foreign_key: true|
-参考サイトhttp://www.coma-tech.com/archives/223/
+######参考サイトhttp://www.coma-tech.com/archives/223/
 
 ### Association
 - belongs_to :user
@@ -99,7 +99,7 @@ Things you may want to cover:
 |------|----|-------|
 |category_name|varchar|null: false|
 |parent_id||
-参考サイトhttps://qiita.com/chopin3/items/ca5525406ef005086e59,https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
+######参考サイトhttps://qiita.com/chopin3/items/ca5525406ef005086e59,https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
 ### Association
 - has_many :products
 - belongs_to :parent, class_name: :Category
@@ -136,8 +136,9 @@ Things you may want to cover:
 ## likesテーブル（いいね！）
 |Column|Type|Options|
 |------|----|-------|
+######https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 ### Association
-- belongs_to :product
+- belongs_to :product, counter_cache: :likes_count
 - belongs_to :user
 
 ## usersテーブル
@@ -155,7 +156,7 @@ Things you may want to cover:
 |birth_dd|integer|null: false|
 |birth_yyyy|integer|null: false|
 |gender|integer|null: false|
-参考サイトhttp://www.coma-tech.com/archives/223/
+######参考サイトhttp://www.coma-tech.com/archives/223/
 
 ### Association
 - has_one :user_detail, dependent: :destroy
@@ -261,7 +262,7 @@ Things you may want to cover:
 |profit|integer|
 |buyer_user|integer|
 |seller_user|integer|null: false|
-参考サイトhttp://www.coma-tech.com/archives/223/
+######参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association
 - has_many :reports
 - belongs_to :user
