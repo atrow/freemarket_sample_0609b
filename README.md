@@ -55,7 +55,6 @@ Things you may want to cover:
 - has_many :product_pictures, dependent: :destroy
 - has_many :categorys
 - has_many :likes, dependent: :destroy
-
 - has_many :users, through: :likes
 - has_many :purchases
 - has_many :sellers, :through => :purchases
@@ -186,7 +185,7 @@ https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
 - has_many :products, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :cards, dependent: :destroy
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - has_many :user_deliverys, dependent: :destroy
 - has_many :purchases_of_seller, :class_name => 'Purchases', :foreign_key => 'seller_id'
 - has_many :purchases_of_buyer, :class_name => 'Purchases', :foreign_key => 'buyer_id'
@@ -281,7 +280,6 @@ https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
 |profit|integer|
 |buyer_user|integer|
 |seller_user|integer|null: false|
-
 ###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association
 - has_many :reports
