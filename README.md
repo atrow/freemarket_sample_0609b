@@ -24,7 +24,7 @@ Things you may want to cover:
 
 * ...
 
-#Design Database
+# Design Database
 
 ## productsテーブル(商品)
 |Column|Type|Options|
@@ -32,13 +32,15 @@ Things you may want to cover:
 |id|integer|primary key|
 |name|varchar|null: false,index: true|
 |description|varchar|null: false|
-|price|integer|null: false|
+|price|bigdecimal|null: false|
 |condition|integer|null: false,foreign_key: true|
 |shipping_fee_pay|integer|null: false,foreign_key: true|
 |shipping_off_area|integer|null: false,foreign_key: true|
 |shipping_off_day|integer|null: false,foreign_key: true|
 |sold_out_status|integer|foreign_key: true|
-######参考サイトhttp://www.coma-tech.com/archives/223/
+|created_at|datetime|null: false|
+|updated_at|datetime|
+###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 
 ### Association
 - belongs_to :user
@@ -46,13 +48,14 @@ Things you may want to cover:
 - belongs_to :shipping_fee_pay
 - belongs_to :shipping_off_area
 - belongs_to :shipping_off_day
-- belongs_to :size_type
+- belongs_to :size
 - belongs_to :brand
 - belongs_to :sold_out_status
 - has_many :comments, dependent: :destroy
 - has_many :product_pictures, dependent: :destroy
 - has_many :categorys
 - has_many :likes, dependent: :destroy
+
 - has_many :users, through: :likes
 - has_many :purchases
 - has_many :sellers, :through => :purchases
@@ -61,14 +64,15 @@ Things you may want to cover:
 ## product_picturesテーブル(商品写真)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |product_picture|integer|
-
 ### Association
 - belongs_to :product 
 
 ## brandsテーブル（ブランド）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |brand_name|varchar|null: false,unique: true|
 ### Association
 - has_many :products
@@ -76,30 +80,39 @@ Things you may want to cover:
 ## conditionsテーブル（商品状態）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |condition||varchar|null: false,unique: true|
 ### Association
 - has_many :products
 
-## sizeテーブル(サイズ)
+## sizesテーブル(サイズ）
 |Column|Type|Options|
 |------|----|-------|
-|size|varchar|null: false|
+|id|integer|primary key|
+|name|varchar|
+|size_type|varchar|null: false,foreign_key: true|
 ### Association
 - has_many :products
+- belongs_to :size_type
 
-## size_typesテーブル(サイズ種別)
+## size_typesテーブル(服・靴・キッズ)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |size_type|varchar|null: false|
 ### Association
 - has_many :sizes
 
-## categorysテーブル(カテゴリ)
+## categorysテーブル(LMSカテゴリ階層テーブル)
 |Column|Type|Options|
 |------|----|-------|
-|category_name|varchar|null: false|
-|parent_id||
-######参考サイトhttps://qiita.com/chopin3/items/ca5525406ef005086e59,https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
+|id|integer|primary key|
+|name|varchar|null: false|
+|parent_id|integer|
+|brand_flg|boolean|
+###### 多階層カテゴリの参考サイト
+https://qiita.com/chopin3/items/ca5525406ef005086e59
+https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
 ### Association
 - has_many :products
 - belongs_to :parent, class_name: :Category
@@ -108,6 +121,7 @@ Things you may want to cover:
 ## delivery_fee_paysテーブル（配送料負担）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |delivery_fee_pay|varchar|null: false|
 ### Association
 - has_many :products
@@ -115,6 +129,7 @@ Things you may want to cover:
 ## delivery_waysテーブル（配送方法）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |delivery_way|varchar|null: false|
 ### Association
 - has_many :products
@@ -122,6 +137,7 @@ Things you may want to cover:
 ## shipping_off_daysテーブル（配送日数）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |shipping_off_day|varchar|null: false|
 ### Association
 - has_many :products
@@ -129,6 +145,7 @@ Things you may want to cover:
 ## shipping_off_areasテーブル（発送地域）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |shipping_off_area|varchar|null: false|
 ### Association
 - has_many :products
@@ -136,7 +153,8 @@ Things you may want to cover:
 ## likesテーブル（いいね！）
 |Column|Type|Options|
 |------|----|-------|
-######https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
+|id|integer|primary key|
+###### いいねの実装参考サイトhttps://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 ### Association
 - belongs_to :product, counter_cache: :likes_count
 - belongs_to :user
@@ -156,7 +174,12 @@ Things you may want to cover:
 |birth_dd|integer|null: false|
 |birth_yyyy|integer|null: false|
 |gender|integer|null: false|
-######参考サイトhttp://www.coma-tech.com/archives/223/
+|provider|integer|
+|uid|integer|
+|facebook_email|varchar|
+|facebook_name|integer|
+|google_email|varchar|
+###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 
 ### Association
 - has_one :user_detail, dependent: :destroy
@@ -170,16 +193,10 @@ Things you may want to cover:
 - has_many :products_of_seller, :through => :deals_of_seller, :source => 'product'
 - has_many :products_of_buyer, :through => :deals_of_buyer, :source => 'product'
 
-## users_productsテーブル（中間テーブル）
-|Column|Type|Options|
-|------|----|-------|
-### Association
-- belongs_to :product
-- belongs_to :user
-
 ## user_detailsテーブル（ユーザ詳細情報）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |zip_code|integer|null: false|
 |region|varchar|null: false|
 |city|varchar|null: false|
@@ -188,11 +205,6 @@ Things you may want to cover:
 |sms_authentication|integer|null: false, unique: true|
 |avatar_image|integer|
 |avatar_text|varchar|
-|provider|integer|
-|uid|integer|
-|facebook_email|varchar|
-|facebook_name|integer|
-|google_email|varchar|
 
 ### Association
 - belongs_to :user
@@ -200,6 +212,7 @@ Things you may want to cover:
 ## user_deliverysテーブル（ユーザ配送情報）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |ship_family_name|varchar|null: false|
 |ship_first_name|varchar|null: false|
 |ship_family_name_kana|varchar|null: false|
@@ -218,6 +231,7 @@ Things you may want to cover:
 ## cardsテーブル（クレジットカード）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |card_number|integer|null: false|
 |card_mm|integer|null: false|
 |card_yyyy|integer|null: false|
@@ -230,9 +244,11 @@ Things you may want to cover:
 ## reportsテーブル(受取評価/被評価ユーザーID)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |buyer_comment|varchar|
 |seller_comment|varchar|
 |user_id|references|null: false,foreign_key: true|
+|reputation_type|varchar|null: false,foreign_key: true|
 
 ### Association
 - belongs_to :reputation_type
@@ -242,6 +258,7 @@ Things you may want to cover:
 ## reputation_typesテーブル(良い/普通/悪い)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |reputation_type|varchar|
 ### Association
 - has_many :reports 
@@ -249,6 +266,7 @@ Things you may want to cover:
 ## commentsテーブル（コメント）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |comment|varchar|null: false|
 |day_ago|daytime|
 ### Association
@@ -258,11 +276,13 @@ Things you may want to cover:
 ## perchasesテーブル(取引)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |payment|integer|
 |profit|integer|
 |buyer_user|integer|
 |seller_user|integer|null: false|
-######参考サイトhttp://www.coma-tech.com/archives/223/
+
+###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association
 - has_many :reports
 - belongs_to :user
@@ -275,15 +295,16 @@ Things you may want to cover:
 ## pointsテーブル（保有ポイント）
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |point|integer|
-1ポイント=1円として、商品を購入するときに利用できます。
-
+###### 1ポイント=1円として商品を購入するときに利用できます。
 ### Association
 - belongs_to :user
 
 ## todosテーブル(やることリスト)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |todo|varchar|
 |todo_done|varchar|
 ### Association
@@ -293,6 +314,7 @@ Things you may want to cover:
 ## profitsテーブル(売上金)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |profit|integer|
 
 ### Association
@@ -302,10 +324,9 @@ Things you may want to cover:
 ## product_statusテーブル(出品中/売り切れ/出品削除)
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|primary key|
 |sold_out_status|varchar|null: false|
 ### Association
 - belongs_to :product
-
-
 
 
