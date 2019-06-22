@@ -38,10 +38,9 @@ Things you may want to cover:
 |shipping_fee_pay|integer|null: false, foreign_key: true|
 |shipping_off_area|integer|null: false, foreign_key: true|
 |shipping_off_day|integer|null: false, foreign_key: true|
-|product_status|integer|foreign_key: true|
-|user|integer|null: false, foreign_key: true|
+|category|integer|null: false, foreign_key: true|
+|product_status|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user
 - belongs_to :condition
 - belongs_to :shipping_fee_pay
 - belongs_to :shipping_off_area
@@ -53,7 +52,6 @@ Things you may want to cover:
 - has_many :comments, dependent: :destroy
 - has_many :product_pictures, dependent: :destroy
 - has_many :likes, dependent: :destroy
-- has_many :users, through: :likes
 - has_many :purchases
 - has_one :sellers, through: :purchases
 - has_one :buyers, through: :purchases
@@ -84,6 +82,8 @@ Things you may want to cover:
 |condition||varchar|null: false, unique: true|
 ### Association
 - has_many :products
+### Option
+- enumで管理（新品・未使用/未使用に近い/目立った傷汚れなし/やや傷や汚れ/傷や汚れあり/全体的に状態が悪い）
 
 ## sizesテーブル(サイズ４タイプ・サイズ）
 |Column|Type|Options|
@@ -103,7 +103,7 @@ Things you may want to cover:
 ### Association
 - has_many :sizes
 
-## categorysテーブル(LMSサイズカテゴリの隣接リスト)
+## categoriesテーブル(LMSサイズカテゴリの隣接リスト)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
@@ -129,6 +129,8 @@ https://techracho.bpsinc.jp/hira/2018_03_15/53872r
 |delivery_fee_pay|varchar|null: false|
 ### Association
 - has_many :products
+### Option
+- enumで管理（送料込/着払）
 
 ## delivery_waysテーブル（配送方法）
 |Column|Type|Options|
@@ -153,6 +155,8 @@ https://techracho.bpsinc.jp/hira/2018_03_15/53872r
 |shipping_off_area|varchar|null: false|
 ### Association
 - has_many :products
+### Option
+- enumで管理（47都道府県）
 
 ## likesテーブル（いいね！）
 |Column|Type|Options|
@@ -179,7 +183,7 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 |first_name|varchar|null: false|
 |family_name_kana|varchar|null: false|
 |first_name_kana|varchar|null: false|
-|birth|date|null: false|
+|birthday|date|null: false|
 |gender|integer|null: false|
 |sms_authentication|integer|null: false, unique: true|
 ###### 商品取引関連付けの参考サイト
@@ -243,6 +247,8 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 ### Association
 - has_many :users
 - has_many :user_deliverys
+### Option
+- enumで管理（47都道府県）
 
 ## user_deliverysテーブル（ユーザ配送情報）
 |Column|Type|Options|
@@ -297,6 +303,8 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |reputation_type|varchar|
 ### Association
 - has_many :reports 
+### Option
+- enumで管理（良い/普通/悪い）
 
 ## commentsテーブル（コメント）
 |Column|Type|Options|
@@ -316,7 +324,6 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |id|integer|primary key|
 |payment|bigdecimal|
 |profit|bigdecimal|foreign_key: true|
-|user|integer|null: false,foreign_key: true|
 |credit_card|integer|null: false,foreign_key: true|
 |user_delivery|integer|null: false,foreign_key: true|
 |buyer_user|integer|foreign_key: true|
@@ -325,7 +332,6 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 ###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association
 - has_one :report
-- belongs_to :user
 - belongs_to :credit_card
 - belongs_to :user_delivery
 - belongs_to :seller, class_name: 'User'
@@ -358,19 +364,17 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |------|----|-------|
 |id|integer|primary key|
 |profit|bigdecimal|null: false,foreign_key: true|
-|user|integer|null: false,foreign_key: true|
-|product|integer|null: false,foreign_key: true|
 ### Association
 - has_one :purchase
-- belongs_to :user
-- belongs_to :product
 
-## product_statusテーブル(出品中/売り切れ/出品削除)
+## product_statusテーブル(販売中/売り切れ/出品削除)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
 |product_status|varchar|null: false|
 ### Association
 - has_many :product
+### Option
+- enumで管理（販売中/売り切れ/出品削除/取引中）
 
 
