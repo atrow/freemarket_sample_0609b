@@ -257,6 +257,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 ### Association
 - has_many :users
 - has_many :user_deliverys
+- has_many :products
 ### Option
 - enumで管理（47都道府県）
 
