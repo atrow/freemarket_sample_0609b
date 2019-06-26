@@ -40,7 +40,7 @@ Things you may want to cover:
 |delivery_off_day|integer|null: false, foreign_key: true|
 |category|integer|null: false, foreign_key: true|
 |product_status|integer|null: false, foreign_key: true|
-|perchases|integer|foreign_key: true|
+|purchases|integer|foreign_key: true|
 ### Association
 - belongs_to :condition
 - belongs_to :delivery_fee_pay
@@ -53,9 +53,9 @@ Things you may want to cover:
 - has_many :comments, dependent: :destroy
 - has_many :product_pictures, dependent: :destroy
 - has_many :likes, dependent: :destroy
-- has_one :perchases
-- has_many :sellers, through: :perchases
-- has_many :buyers, through: :perchases
+- has_one :purchases
+- has_many :sellers, through: :purchases
+- has_many :buyers, through: :purchases
 
 ## product_picturesテーブル(商品写真)
 |Column|Type|Options|
@@ -186,8 +186,8 @@ http://www.coma-tech.com/archives/223/
 - has_many :credit_cards, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :user_deliverys, dependent: :destroy
-- has_many :perchases_of_seller, class_name: 'Perchase', foreign_key: 'seller_id'
-- has_many :perchases_of_buyer, class_name: 'Perchase', foreign_key: 'buyer_id'
+- has_many :purchases_of_seller, class_name: 'Purchase', foreign_key: 'seller_id'
+- has_many :purchases_of_buyer, class_name: 'Purchase', foreign_key: 'buyer_id'
 - has_many :products_of_seller, through: :products_of_seller, source: 'product'
 - has_many :products_of_buyer, through: :productss_of_buyer, source: 'product'
 - has_many :reports, dependent: :destroy
@@ -226,7 +226,7 @@ http://www.coma-tech.com/archives/223/
 |phone|integer|
 |user|integer|null: false,foreign_key: true|
 ### Association
-- has_many :perchases
+- has_many :purchases
 - belongs_to :user
 - belongs_to :region
 
@@ -271,7 +271,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |security_code|integer|null: false|
 |user|integer|null: false,foreign_key: true|
 ### Association
-- has_many :perchases
+- has_many :purchases
 - belongs_to :user
 
 ## reportsテーブル(受取評価/被評価ユーザーID)
@@ -283,7 +283,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |product|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :reputation_type
-- belongs_to :perchase
+- belongs_to :purchase
 - belongs_to :user
 - belongs_to :product
 
@@ -309,7 +309,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 - belongs_to :product
 - belongs_to :user
 
-## perchasesテーブル(取引)
+## purchasesテーブル(取引)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
