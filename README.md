@@ -44,7 +44,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :condition
 - belongs_to :delivery_fee_pay
-- belongs_to :region
+- belongs_to :delivery_off_area, class_name: 'Region'
 - belongs_to :delivery_off_day
 - belongs_to :category
 - belongs_to :brand
@@ -108,7 +108,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|size|integer|null: false, foreign_key: true|
+|size_type|integer|foreign_key: true|
 |category|varchar|null: false|
 |parent_id|integer|
 |brand_exist|boolean|default: true|
