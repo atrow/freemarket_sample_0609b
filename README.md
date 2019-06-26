@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version 
+* Ruby version
 2.5.1
 
 * System dependencies
@@ -35,16 +35,17 @@ Things you may want to cover:
 |price|bigdecimal|null: false|
 |condition|integer|null: false, foreign_key: true|
 |brand|integer|null: false, foreign_key: true|
-|shipping_fee_pay|integer|null: false, foreign_key: true|
-|shipping_off_area|integer|null: false, foreign_key: true|
-|shipping_off_day|integer|null: false, foreign_key: true|
+|delivery_fee_pay|integer|null: false, foreign_key: true|
+|delivery_off_area|integer|null: false, foreign_key: true|
+|delivery_off_day|integer|null: false, foreign_key: true|
 |category|integer|null: false, foreign_key: true|
 |product_status|integer|null: false, foreign_key: true|
+|perchases|integer|foreign_key: true|
 ### Association
 - belongs_to :condition
-- belongs_to :shipping_fee_pay
-- belongs_to :shipping_off_area
-- belongs_to :shipping_off_day
+- belongs_to :delivery_fee_pay
+- belongs_to :region
+- belongs_to :delivery_off_day
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :product_status
@@ -52,28 +53,28 @@ Things you may want to cover:
 - has_many :comments, dependent: :destroy
 - has_many :product_pictures, dependent: :destroy
 - has_many :likes, dependent: :destroy
-- has_many :purchases
-- has_one :sellers, through: :purchases
-- has_one :buyers, through: :purchases
+- has_one :perchases
+- has_many :sellers, through: :perchases
+- has_many :buyers, through: :perchases
 
 ## product_picturesテーブル(商品写真)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|product_picture|integer|
+|product_picture|varchar|
 |product|integer|null: false,foreign_key: true|
 ### Association
-- belongs_to :product 
+- belongs_to :product
 
 ## brandsテーブル（ブランド）
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|brand_name|varchar|null: false, unique: true|
-|l_category|integer|null: false, foreign_key: true|
+|brand_name|varchar|null: false|
+|category|integer|null: false, foreign_key: true|
 ### Association
 - has_many :products
-- belongs_to :l_category
+- belongs_to :category
 
 ## conditionsテーブル（商品状態）
 |Column|Type|Options|
@@ -90,7 +91,7 @@ Things you may want to cover:
 |------|----|-------|
 |id|integer|primary key|
 |size|varchar|null: false|
-|size_type|varchar|null: false,foreign_key: true|
+|size_type|integer|null: false,foreign_key: true|
 ### Association
 - has_many :products
 - belongs_to :size_type
@@ -108,11 +109,9 @@ Things you may want to cover:
 |------|----|-------|
 |id|integer|primary key|
 |size|integer|null: false, foreign_key: true|
-|l_category|integer|null: false, foreign_key: true|
-|m_category|integer|foreign_key: true|
-|s_category|integer|foreign_key: true|
-|parent|integer|
-|brand_exist|boolean|default: false|
+|category|varchar|null: false|
+|parent_id|integer|
+|brand_exist|boolean|default: true|
 ###### 木構造の参考サイト
 https://qiita.com/chopin3/items/ca5525406ef005086e59
 https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
@@ -140,23 +139,13 @@ https://techracho.bpsinc.jp/hira/2018_03_15/53872r
 ### Association
 - has_many :products
 
-## shipping_off_daysテーブル（配送日数）
+## delivery_off_daysテーブル（配送日数）
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|shipping_off_day|varchar|null: false|
+|delivery_off_day|varchar|null: false|
 ### Association
 - has_many :products
-
-## shipping_off_areasテーブル（発送地域）
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|primary key|
-|shipping_off_area|varchar|null: false|
-### Association
-- has_many :products
-### Option
-- enumで管理（47都道府県）
 
 ## likesテーブル（いいね！）
 |Column|Type|Options|
@@ -186,6 +175,7 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 |birthday|date|null: false|
 |gender|integer|null: false|
 |sms_authentication|integer|null: false, unique: true|
+|profit|integer|foreign_key: true|
 ###### 商品取引関連付けの参考サイト
 http://www.coma-tech.com/archives/223/
 ### Association
@@ -196,12 +186,49 @@ http://www.coma-tech.com/archives/223/
 - has_many :credit_cards, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :user_deliverys, dependent: :destroy
-- has_many :purchases_of_seller, class_name: 'Purchase', foreign_key: 'seller_id'
-- has_many :purchases_of_buyer, class_name: 'Purchase', foreign_key: 'buyer_id'
+- has_many :perchases_of_seller, class_name: 'Perchase', foreign_key: 'seller_id'
+- has_many :perchases_of_buyer, class_name: 'Perchase', foreign_key: 'buyer_id'
 - has_many :products_of_seller, through: :products_of_seller, source: 'product'
 - has_many :products_of_buyer, through: :productss_of_buyer, source: 'product'
 - has_many :reports, dependent: :destroy
 - has_many :sns_credentials, dependent: :destroy
+- has_one :profit, dependent: :destroy
+
+## user_detailsテーブル（ユーザ詳細情報）
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|primary key|
+|zip_code|integer|null: false|
+|city|varchar|null: false|
+|street|varchar|null: false|
+|building_name|varchar|
+|avatar_image|varchar|
+|avatar_text|varchar|
+|region|varchar|null: false,foreign_key: true|
+|user|integer|null: false,foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :region
+
+## user_deliverysテーブル（ユーザ配送情報）
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|primary key|
+|family_name|varchar|null: false|
+|first_name|varchar|null: false|
+|family_name_kana|varchar|null: false|
+|first_name_kana|varchar|null: false|
+|zip_code|integer|null: false|
+|region|varchar|null: false,foreign_key: true|
+|city|varchar|null: false|
+|street|varchar|null: false|
+|building_name|varchar|
+|phone|integer|
+|user|integer|null: false,foreign_key: true|
+### Association
+- has_many :perchases
+- belongs_to :user
+- belongs_to :region
 
 ## sns_credentialテーブル（facebook/google認証）
 |Column|Type|Options|
@@ -222,53 +249,17 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 ### Association
 - belongs_to :user, optional: true
 
-
-## user_detailsテーブル（ユーザ詳細情報）
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|primary key|
-|zip_code|integer|null: false|
-|city|varchar|null: false|
-|street|varchar|null: false|
-|building_name|varchar|
-|avatar_image|varchar|
-|avatar_text|varchar|
-|region|varchar|null: false,foreign_key: true|
-|user|integer|null: false,foreign_key: true|
-### Association
-- belongs_to :user
-- belongs_to :region
-
 ## regionテーブル(都道府県)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|region_name|varchar|null: false|
+|region|varchar|null: false|
 ### Association
 - has_many :users
 - has_many :user_deliverys
+- has_many :products
 ### Option
 - enumで管理（47都道府県）
-
-## user_deliverysテーブル（ユーザ配送情報）
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|primary key|
-|ship_family_name|varchar|null: false|
-|ship_first_name|varchar|null: false|
-|ship_family_name_kana|varchar|null: false|
-|ship_first_name_kana|varchar|null: false|
-|zip_code|integer|null: false|
-|region|varchar|null: false,foreign_key: true|
-|city|varchar|null: false|
-|street|varchar|null: false|
-|building_name|varchar|
-|phone|integer|
-|user|integer|null: false,foreign_key: true|
-### Association
-- has_many :purchases
-- belongs_to :user
-- belongs_to :region
 
 ## Credit_cardsテーブル（クレジットカード）
 |Column|Type|Options|
@@ -280,7 +271,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |security_code|integer|null: false|
 |user|integer|null: false,foreign_key: true|
 ### Association
-- has_many :purchases
+- has_many :perchases
 - belongs_to :user
 
 ## reportsテーブル(受取評価/被評価ユーザーID)
@@ -302,7 +293,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |id|integer|primary key|
 |reputation_type|varchar|
 ### Association
-- has_many :reports 
+- has_many :reports
 ### Option
 - enumで管理（良い/普通/悪い）
 
@@ -315,7 +306,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |user|integer|null: false,foreign_key: true|
 |product|integer|null: false,foreign_key: true|
 ### Association
-- belongs_to :product 
+- belongs_to :product
 - belongs_to :user
 
 ## perchasesテーブル(取引)
@@ -323,9 +314,7 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |------|----|-------|
 |id|integer|primary key|
 |payment|bigdecimal|
-|profit|bigdecimal|foreign_key: true|
 |credit_card|integer|null: false,foreign_key: true|
-|user_delivery|integer|null: false,foreign_key: true|
 |buyer_user|integer|foreign_key: true|
 |seller_user|integer|null: false,foreign_key: true|
 |product|integer|null: false,foreign_key: true|
@@ -333,7 +322,6 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 ### Association
 - has_one :report
 - belongs_to :credit_card
-- belongs_to :user_delivery
 - belongs_to :seller, class_name: 'User'
 - belongs_to :buyer, class_name: 'User'
 - belongs_to :product
@@ -357,15 +345,16 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 |product|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :product 
+- belongs_to :product
 
 ## profitsテーブル(売上金)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|profit|bigdecimal|null: false,foreign_key: true|
+|profit|bigdecimal||
+|user|integer|null: false,foreign_key: true|
 ### Association
-- has_one :purchase
+- belongs_to :user
 
 ## product_statusテーブル(販売中/売り切れ/出品削除)
 |Column|Type|Options|
@@ -376,5 +365,3 @@ https://qiita.com/bino98/items/596b5cffeca7c104bd90
 - has_many :product
 ### Option
 - enumで管理（販売中/売り切れ/出品削除/取引中）
-
-
