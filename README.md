@@ -186,10 +186,10 @@ http://www.coma-tech.com/archives/223/
 - has_many :credit_cards, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :user_deliverys, dependent: :destroy
-- has_many :perchases_of_seller, class_name: 'Perchase', foreign_key: 'seller_id'
-- has_many :perchases_of_buyer, class_name: 'Perchase', foreign_key: 'buyer_id'
+- has_many :purchases_of_seller, class_name: 'Purchase', foreign_key: 'seller_id'
+- has_many :purchases_of_buyer, class_name: 'Purchase', foreign_key: 'buyer_id'
 - has_many :products_of_seller, through: :products_of_seller, source: 'product'
-- has_many :products_of_buyer, through: :productss_of_buyer, source: 'product'
+- has_many :products_of_buyer, through: :products_of_buyer, source: 'product'
 - has_many :reports, dependent: :destroy
 - has_many :sns_credentials, dependent: :destroy
 - has_one :profit, dependent: :destroy
