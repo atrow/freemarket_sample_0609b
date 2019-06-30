@@ -1,7 +1,9 @@
 class Category < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :products
   belongs_to :parent, class_name: :Category, optional: true
   has_many :children, class_name: :Category, foreign_key: :parent_id
+  belongs_to :size_type
 
   def self.get_all_children
     # 全子カテゴリー（2階層目）を取得

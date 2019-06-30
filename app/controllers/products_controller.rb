@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     @condition = Condition.all
     @delivery_fee_pay = DeliveryFeePay.all
     @delivery_off_day = DeliveryOffDay.all
-    @region = Region.all
+    @prefecture = Prefecture.all
     @condition = Condition.all
     @brand = Brand.all
     @category = Category.get_all_grandchildren

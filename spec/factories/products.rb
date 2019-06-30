@@ -1,15 +1,14 @@
 FactoryBot.define do
   factory :product do
-    brand = FactoryBot.create(:brand)
     name {"TestProduct"}
     description {"this is a test"}
     price {10000}
-    condition_id {FactoryBot.create(:condition).id}
-    brand_id {brand.id}
-    delivery_fee_pay_id {FactoryBot.create(:delivery_fee_pay).id}
-    delivery_off_area_id {FactoryBot.create(:region).id}
-    delivery_off_day_id {FactoryBot.create(:delivery_off_day).id}
-    product_status_id {FactoryBot.create(:product_status).id}
-    category_id {brand.category_id}
+    condition_id {Condition.all.sample.id}
+    brand_id {FactoryBot.create(:brand).id}
+    delivery_fee_pay_id {DeliveryFeePay.all.sample.id}
+    delivery_off_area_id {Prefecture.all.sample.id}
+    delivery_off_day_id {DeliveryOffDay.all.sample.id}
+    product_status_id {ProductStatus.all.sample.id}
+    category_id {FactoryBot.create(:brand).category_id}
   end
 end
