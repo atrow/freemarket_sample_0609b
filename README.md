@@ -180,8 +180,8 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 http://www.coma-tech.com/archives/223/
 ### Association
 - has_one :user_detail, dependent: :destroy
-- has_one :region, dependent: :destroy
-- has_many :products, dependent: :destroy
+- has_one :region
+- has_many :products
 - has_many :likes, dependent: :destroy
 - has_many :credit_cards, dependent: :destroy
 - has_many :comments, dependent: :destroy
