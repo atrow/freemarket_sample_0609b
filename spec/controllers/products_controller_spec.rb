@@ -26,16 +26,16 @@ describe ProductsController do
       expect(response).to render_template :edit
     end
   end
-  describe '#create' do
+  describe 'POST #create' do
     let(:params) { { product: FactoryBot.attributes_for(:product) } }
     context 'can save' do
-      subject {
-        post :create,
-        params: params
-      }
-
       it 'count up product' do
-        expect{ subject }.to change(Product, :count).by(1)
+        image = [ FactoryBot.attributes_for(:image, product: params) ]
+        params[:product][:images_attributes] = image
+        expect{
+          post :create,
+          params: params
+        }.to change(Product, :count).by(1).and change(Image, :count).by(1)
       end
 
       # TODO: トップページとマージ後に実装

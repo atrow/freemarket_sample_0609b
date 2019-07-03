@@ -54,18 +54,18 @@ Things you may want to cover:
 - belongs_to :brand
 - belongs_to_active_hash :product_status
 - has_many :comments, dependent: :destroy
-- has_many :product_pictures, dependent: :destroy
+- has_many :images, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_one :report, dependent: :destroy
 - has_one :purchase
 - has_many :sellers, through: :purchases
 - has_many :buyers, through: :purchases
 
-## product_picturesテーブル(商品写真)
+## imagesテーブル(商品写真)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|product_picture|varchar|
+|image|varchar|
 |product|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :product
@@ -325,8 +325,8 @@ ActiveHashのためなし
 |id|integer|primary key|
 |payment|bigdecimal|
 |credit_card|integer|null: false,foreign_key: true|
-|buyer_user|integer|foreign_key: true|
-|seller_user|integer|null: false,foreign_key: true|
+|buyer|integer|foreign_key: true|
+|seller|integer|null: false,foreign_key: true|
 |product|integer|null: false,foreign_key: true|
 ###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association
