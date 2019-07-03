@@ -18,9 +18,9 @@ end
 # Root crumb 第三階層 ’メルカリ＞カテゴリー一覧＞カテゴリー名’
 crumb :category do |category|
   link "カテゴリー名"
-#  category.name,category
-#  if category.parent
-#    parent category.parent
+# category.name, category_path
+#  if category.children.present?
+#    parent :category.children
 #  else
   parent:categories
 #  end
@@ -37,13 +37,13 @@ end
 crumb :brand do |brand|
   link "ブランド名"
   #brand.name, brands_path
-  parent:root
+  parent:brand
 end
 
 # Root crumb 第二階層 ’メルカリ＞検索キーワード’
-crumb :product_show do |product|
+crumb :product do |product|
   link "入力した検索キーワード"
-  #product.name, categories_path
+  # keyword, products_path
   parent:root
 end
 
