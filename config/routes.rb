@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-root 'products#index'
-
-get 'index', to: 'products#index'
-
+  devise_for :users
+  resources :products, only: [:index, :new, :create, :edit, :update] do
+    resources :product_pictures, only: [:new, :create, :edit, :update]
+  end
 end
