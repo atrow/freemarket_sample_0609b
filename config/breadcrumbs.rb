@@ -9,22 +9,38 @@ crumb :guide do
 end
 
 # Root crumb 第二階層 ’メルカリ＞カテゴリー一覧’
-crumb :categories do
-  link "カテゴリー一覧"
-  #, categories_path
+crumb :parent_category do  |parent_category|
+# category = Category.find(params[:id])
+  link "大カテゴリー"
+
+#link  category.name, category_path
+#  if category.children.present?
+#    parent :category.children
+#  else
   parent:root
 end
 
 # Root crumb 第三階層 ’メルカリ＞カテゴリー一覧＞カテゴリー名’
-crumb :category do |category|
-  link "カテゴリー名"
-# category.name, category_path
-#  if category.children.present?
-#    parent :category.children
+crumb :child_category do |child_category|
+# category = Category.find(params[:id])
+  link "中カテゴリー"
+
+#link category.name, category_path(id: category.id)
+#  if category.grandchildren.present?
+#    parent :category.grandchildren
 #  else
-  parent:categories
+  parent:parent_category
 #  end
 end
+
+# Root crumb 第四階層 ’メルカリ＞カテゴリー一覧＞カテゴリー名’
+crumb :grandchild_category do
+  link "小カテゴリー"
+#link category.name, category_path(id: category.id)
+  parent:child_category
+#  end
+end
+
 
 # Root crumb 第二階層 ’メルカリ＞ブランド一覧’
 crumb :brands do
