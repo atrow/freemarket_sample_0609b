@@ -55,5 +55,6 @@ class ProductsController < ApplicationController
     # データ取得
     @product = Product.find(params[:id])
     @product_pictures = @product.product_pictures
+
   end
 end
