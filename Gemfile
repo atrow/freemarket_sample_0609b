@@ -76,6 +76,8 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
+  gem "gretel"
   gem 'erb2haml'
   gem "font-awesome-rails"
   gem 'jquery-rails'
+
