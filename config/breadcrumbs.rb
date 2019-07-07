@@ -25,7 +25,7 @@ crumb :child_category do |child_category|
 # category = Category.find(params[:id])
   link "中カテゴリー"
 
-#link category.name, category_path(id: category.id)
+#link category.name, child_category_path(id: category.id)
 #  if category.grandchildren.present?
 #    parent :category.grandchildren
 #  else
@@ -36,10 +36,11 @@ end
 # Root crumb 第四階層 ’メルカリ＞カテゴリー一覧＞カテゴリー名’
 crumb :grandchild_category do
   link "小カテゴリー"
-#link category.name, category_path(id: category.id)
+#link category.name, grandchild_category_path(id: category.id)
   parent:child_category
 #  end
 end
+
 
 
 # Root crumb 第二階層 ’メルカリ＞ブランド一覧’
