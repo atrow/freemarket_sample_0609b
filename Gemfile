@@ -5,8 +5,8 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use mysql as the database for Active Record
+gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -31,9 +31,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+# ActiveHash
+gem 'active_hash'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,6 +47,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -69,5 +76,8 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
-gem "gretel"
-gem 'font-awesome-rails'
+  gem "gretel"
+  gem 'erb2haml'
+  gem "font-awesome-rails"
+  gem 'jquery-rails'
+

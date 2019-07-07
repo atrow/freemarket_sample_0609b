@@ -1,0 +1,46 @@
+<div class="top-header">
+    <div class="header-innner">
+      <div class="clearfix">
+        <div class="mercari-logo">
+          <%= image_tag('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?1621863497', :alt=>'mercari', :width=>'134', :height=>'36') %>
+
+        </div>
+          <form action="" class="header-form">
+            <input type="search" name="keyword" value="" placeholder="キーワードから探す" class="input-default">
+            <%= fa_icon 'search', class: "icon-search" %>
+        </form>
+      </div>
+      <div class="header-nav-bar clearfix">
+        <nav class="content-left">
+          <ul class="header-nav-list">
+            <li>
+              <h2>
+                <%= fa_icon 'list', class: "fa fa-list-ul" %>
+                <%= link_to 'カテゴリーから探す', '', :class=>'header-nav-categoly' %>
+              </h2>
+            </li>
+            <li>
+              <h2>
+                <%= fa_icon 'tag', class: "fas fa-tag" %>
+                <%= link_to 'ブランドから探す', '', :class=>'header-nav-brand' %>
+                </ul>
+              </h2>
+            </li>
+          </ul>
+        </nav>
+        <div class="content-right">
+          <ul class="header-user-list">
+            <li>
+              <div class="register-btn">
+                <%= link_to "新規会員登録", class: "register-btn sign-up-btn" %>
+              </div>
+            </li>
+            <li>
+              <div class="header-user-root">
+                <%= link_to "ログイン" , class: "header-user-root sign-in-btn" %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
