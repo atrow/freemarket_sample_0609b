@@ -4,17 +4,13 @@
       <h2 class="free-ma-app">スマホでかんたんフリマアプリ</h2>
       <p class="download-soon">今すぐ無料ダウンロード！</p>
       <div class="app-banner-icon clearfix">
-          <img src="http://www.mercariapp.com/jp/wp-content/uploads/2013/02/logo.png" width="68" alt="" class="mercari-icon">
+        <%= image_tag('http://www.mercariapp.com/jp/wp-content/uploads/2013/02/logo.png', :width => '68', :alt => '',:class => 'mercari-icon') %>
         <ul class="app-download">
           <li class="app-apple">
-            <a href="https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8" target="_blank" >
-              <img src="//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138" >
-            </a>
+            <%= link_to image_tag('http://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138'), 'http://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8', :target=>'_blank' %>
           </li>
           <li class="app-android">
-            <a  href="https://play.google.com/store/apps/details?id=com.kouzoh.mercari&amp;hl=ja" target="_blank">
-              <img src="//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?4194600336" >
-            </a>
+            <%= link_to image_tag('http://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?4194600336'), 'http//play.google.com/store/apps/details?id=com.kouzoh.mercari&amp;hl=ja&amp;mt=8', :target=>'_blank' %>
           </li>
         </ul>
       </div>
@@ -30,37 +26,37 @@
   <h2 class="footer-head">メルカリについて</h2>
   <ul>
     <li>
-      <a class="footer-first-child" href="https://about.mercari.com/">会社概要（運営会社）</a>
+      <%= link_to '会社概要（運営会社）', 'https://about.mercari.com/', :class=> 'footer-first-child' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/privacy/">プライバシーポリシー</a>
+      <%= link_to 'プライバシーポリシー', 'https://www.mercari.com/jp/privacy/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/tos/">メルカリ利用規約</a>
+      <%= link_to 'メルカリ利用規約', 'https://www.mercari.com/jp/tos/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/tos_paid_point/">メルカリ利用規約・有償ポイントに関する特約</a>
+      <%= link_to 'メルカリ利用規約・有償ポイントに関する特約', 'https://www.mercari.com/jp/tos_paid_point/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/tos_smartphone_support/">あんしんスマホサポート制度に関する利用特約</a>
+      <%= link_to 'あんしんスマホサポート制度に関する利用特約', 'https://www.mercari.com/jp/tos_smartphone_support/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/compliance/">コンプライアンスポリシー</a>
+      <%= link_to 'コンプライアンスポリシー', 'https://www.mercari.com/jp/compliance/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/data_security/">個人データの安全管理に係る基本方針</a>
+      <%= link_to '個人データの安全管理に係る基本方針', 'https://www.mercari.com/jp/data_security/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/tokutei/">特定商取引に関する表記</a>
+      <%= link_to '特定商取引に関する表記', 'https://www.mercari.com/jp/tokutei/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/shikin_kessai/">資金決済法に基づく表示</a>
+      <%= link_to '資金決済法に基づく表示', 'https://www.mercari.com/jp/shikin_kessai/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://about.mercari.com/csr/safety/">法令順守と犯罪抑止のために</a>
+      <%= link_to '法令順守と犯罪抑止のために', 'https://about.mercari.com/csr/safety/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/jobs/">採用情報</a>
+      <%= link_to '採用情報', 'https://www.mercari.com/jp/jobs/', :class=> 'footer-cell-children' %>
     </li>
   </ul>
 </li>
@@ -68,22 +64,22 @@
   <h2 class="footer-head">メルカリを見る</h2>
   <ul>
     <li>
-      <a class="footer-first-child" href="https://www.mercari.com/jp/category/">カテゴリー一覧</a>
+      <%= link_to 'カテゴリー一覧', 'https://www.mercari.com/jp/category/', :class=> 'footer-first-child' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/brand/">ブランド一覧</a>
+      <%= link_to 'ブランド一覧', 'https://www.mercari.com/jp/brand/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/area/">出品地域一覧</a>
+      <%= link_to '出品地域一覧', 'https://www.mercari.com/jp/area/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://jp-news.mercari.com/" target="_blank">公式ブログ</a>
+      <%= link_to '公式ブログ', 'https://jp-news.mercari.com/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://twitter.com/mercari_jp" target="_blank">公式Twitter</a>
+      <%= link_to '公式Twitter', 'https://twitter.com/mercari_jp', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.facebook.com/mercarijp" target="_blank">公式Facebook</a>
+      <%= link_to '公式Facebook', 'https://www.facebook.com/mercarijp', :class=> 'footer-cell-children' %>
     </li>
   </ul>
 </li>
@@ -91,37 +87,38 @@
   <h2 class="footer-head">ヘルプ＆ガイド</h2>
   <ul>
     <li>
-      <a class="footer-first-child" href="https://www.mercari.com/jp/help_center/">メルカリガイド</a>
+      <%= link_to 'メルカリガイド', 'https://www.mercari.com/jp/help_center/', :class=> 'footer-first-child' %>
+      <a class="footer-first-child" href=""></a>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/logo-guidelines/">メルカリロゴ利用ガイドライン</a>
+      <%= link_to 'メルカリロゴ利用ガイドライン', 'https://www.mercari.com/jp/logo-guidelines/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://about.mercari.com/press/news/">お知らせ</a>
+      <%= link_to 'お知らせ', 'https://about.mercari.com/press/news/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/rakuraku-mercari/">らくらくメルカリ便とは</a>
+      <%= link_to 'らくらくメルカリ便とは', 'https://www.mercari.com/jp/rakuraku-mercari/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/yuyu-mercari/">ゆうゆうメルカリ便とは</a>
+      <%= link_to 'ゆうゆうメルカリ便とは', 'https://www.mercari.com/jp/yuyu-mercari/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/rakuraku-ogata/">大型らくらくメルカリ便とは</a>
+      <%= link_to '大型らくらくメルカリ便とは', 'https://www.mercari.com/jp/rakuraku-ogata/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/guide/car/">車体取引ガイド</a>
+      <%= link_to '車体取引ガイド', 'https://www.mercari.com/jp/guide/car/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/refund-returns/">返品・返金ポリシー</a>
+      <%= link_to '返品・返金ポリシー', 'https://www.mercari.com/jp/refund-returns/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/safe/description/" target="_blank">メルカリあんしん・あんぜん宣言！</a>
+      <%= link_to 'メルカリあんしん・あんぜん宣言！', 'https://www.mercari.com/jp/safe/description/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/authenticity/">偽ブランド品撲滅への取り組み</a>
+      <%= link_to '偽ブランド品撲滅への取り組み', 'https://www.mercari.com/jp/authenticity/', :class=> 'footer-cell-children' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/box/">メルカリボックス</a>
+      <%= link_to 'メルカリボックス', 'https://www.mercari.com/jp/box/', :class=> 'footer-cell-children' %>
     </li>
   </ul>
 </li>
@@ -129,20 +126,19 @@
   <h2 class="footer-head">国</h2>
   <ul class="footer-nav-lang">
     <li>
-      <a class="footer-cell-child" href="https://www.mercari.com/"><img src="//www-mercari-jp.akamaized.net/assets/img/common/common/flag_us.png?1279800527" alt="" width="22">United States</a>
+      <%= link_to 'United States', 'https://www.mercari.com/', :class=> 'footer-cell-child' %><%= image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/flag_us.png?1279800527', :width=>'22' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/uk/"><img src="//www-mercari-jp.akamaized.net/assets/img/common/common/flag_uk.png?1279800527" alt="" width="22">United Kingdom</a>
+      <%= link_to 'United Kingdom', 'https://www.mercari.com/uk/', :class=> 'footer-cell-children' %><%= image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/flag_uk.png?1279800527', :alt=>'', :width=>'22' %>
     </li>
     <li>
-      <a class="footer-cell-children" href="https://www.mercari.com/jp/" class="active"><img src="//www-mercari-jp.akamaized.net/assets/img/common/common/flag_jp.png?1279800527" alt="" width="22">日本</a>
+      <%= link_to '日本', 'https://www.mercari.com/jp/', :class=> 'active' %><%= image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/flag_jp.png?1279800527', :alt=>'', :width=>'22' %>
     </li>
   </ul>
 </li>
 </ul>
 </nav>
-<a href="http://localhost:3000/" class="footer-logo">
-  <img src="https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?4194600336" alt="mercari" class="footer-logo">
+<%= link_to image_tag('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?4194600336', :alt=>'mercari' ), 'http://localhost:3000/', :class=>'footer-logo' %>
 </a>
 <p class="footer-copyright">
   <small>© 2019 Mercari</small>
