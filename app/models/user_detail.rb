@@ -1,4 +1,4 @@
 class UserDetail < ApplicationRecord
   belongs_to :user
-  belongs_to :region
+  belongs_to :prefecture
 end
