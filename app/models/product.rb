@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  has_many :product_pictures, dependent: :destroy
+  has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images
   belongs_to :condition
   belongs_to :delivery_fee_pay
   belongs_to :delivery_way
@@ -11,5 +12,8 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :product_status
   has_one :purchase
-  accepts_nested_attributes_for :product_pictures
+  delegate :seller_user, to: :purchase
+  delegate :buyer_user, to: :purchase
+  accepts_nested_attributes_for :purchase
+
 end

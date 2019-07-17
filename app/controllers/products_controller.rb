@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def new
     # モデルオブジェクト生成
     @product = Product.new
-    @product.product_pictures.build
+    10.times {@product.images.build}
     @condition = Condition.all
     @delivery_fee_pay = DeliveryFeePay.all
     @delivery_off_day = DeliveryOffDay.all
@@ -16,12 +16,12 @@ class ProductsController < ApplicationController
     @condition = Condition.all
     @brand = Brand.all
     @category = Category.get_all_grandchildren
+    @product.build_purchase
   end
 
   def create
     # formのデータを受け取る
-    @product = Product.create(product_params)
-
+    @product = Product.new(product_params)
     # save確認
     if @product.save
       # TODO: トップページとマージ後に実装
@@ -47,14 +47,17 @@ class ProductsController < ApplicationController
     params.require(:product).
       permit(:name, :description, :price, :condition_id, :brand_id,
       :delivery_fee_pay_id, :delivery_off_area_id, :delivery_off_day_id,
-      :category_id, :product_status_id, :purchases_id,
-      product_pictures_attributes: [:product_picture])
-  end
+      :category_id, :product_status_id,
+      images_attributes: [:image]
+      # TODO ユーザモデル実装後に実装
+      # purchase_attributes: [seller_id: current_user_id]
+      )
+    end
 
   def set_product
     # データ取得
     @product = Product.find(params[:id])
-    @product_pictures = @product.product_pictures
-
+    @images = @product.images
+    @purchase = @product.purchase
   end
 end

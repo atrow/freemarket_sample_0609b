@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_112634) do
+ActiveRecord::Schema.define(version: 2019_07_13_052916) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand", null: false
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 2019_07_02_112634) do
     t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
-  create_table "product_pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "product_picture"
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image"
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_pictures_on_product_id"
+    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,7 +60,11 @@ ActiveRecord::Schema.define(version: 2019_07_02_112634) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
     t.index ["product_id"], name: "index_purchases_on_product_id"
+    t.index ["seller_id"], name: "index_purchases_on_seller_id"
   end
 
   create_table "user_deriveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -116,10 +120,12 @@ ActiveRecord::Schema.define(version: 2019_07_02_112634) do
 
   add_foreign_key "brands", "categories"
   add_foreign_key "categories", "categories", column: "parent_id"
-  add_foreign_key "product_pictures", "products"
+  add_foreign_key "images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "purchases", "products"
+  add_foreign_key "purchases", "users", column: "buyer_id"
+  add_foreign_key "purchases", "users", column: "seller_id"
   add_foreign_key "user_deriveries", "users"
   add_foreign_key "user_details", "users"
 end
