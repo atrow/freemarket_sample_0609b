@@ -58,8 +58,8 @@ Things you may want to cover:
 - has_many :likes, dependent: :destroy
 - has_one :report, dependent: :destroy
 - has_one :purchase
-- has_many :sellers, through: :purchases
-- has_many :buyers, through: :purchases
+- has_one :sellers, through: :purchases
+- has_one :buyers, through: :purchases
 
 ## imagesテーブル(商品写真)
 |Column|Type|Options|
@@ -200,8 +200,8 @@ http://www.coma-tech.com/archives/223/
 - has_many :user_deliverys, dependent: :destroy
 - has_many :purchases_of_seller, class_name: 'Purchase', foreign_key: 'seller_id'
 - has_many :purchases_of_buyer, class_name: 'Purchase', foreign_key: 'buyer_id'
-- has_many :products_of_seller, through: :products_of_seller, source: 'product'
-- has_many :products_of_buyer, through: :products_of_buyer, source: 'product'
+- has_many :products_of_seller, through: :purchases_of_seller, source: 'product'
+- has_many :products_of_buyer, through: :purchases_of_buyer, source: 'product'
 - has_many :reports, dependent: :destroy
 - has_many :sns_credentials, dependent: :destroy
 - has_one :profit, dependent: :destroy
