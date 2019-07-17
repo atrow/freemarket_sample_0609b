@@ -24,8 +24,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     # save確認
     if @product.save
-      # TODO: トップページとマージ後に実装
-      # redirect_to root_path
+      redirect_to root_path
     end
   end
 
@@ -35,8 +34,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      # TODO: トップページとマージ後に実装
-      # redirect_to root_path
+      redirect_to root_path
     end
   end
 
