@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'mini_magick', '~> 4.9.4'
 gem 'fog-aws'
 gem 'devise'
 
@@ -83,4 +83,3 @@ end
   gem 'erb2haml'
   gem "font-awesome-rails"
   gem 'jquery-rails'
-
