@@ -36,13 +36,10 @@ gem 'devise'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# ActiveHash
 gem 'active_hash'
 
-# cocoon
 gem 'cocoon'
 
-# jquery
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 
