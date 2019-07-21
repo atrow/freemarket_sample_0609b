@@ -37,9 +37,7 @@ gem 'devise'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'active_hash'
-
 gem 'cocoon'
-
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 
