@@ -42,6 +42,10 @@ gem 'active_hash'
 # cocoon
 gem 'cocoon'
 
+# jquery
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -83,7 +87,6 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
-  gem "gretel"
-  gem 'erb2haml'
-  gem "font-awesome-rails"
-  gem 'jquery-rails'
+gem "gretel"
+gem 'erb2haml'
+gem "font-awesome-rails"
