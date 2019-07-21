@@ -19,5 +19,5 @@ class Prefecture < ActiveHash::Base
     {id: 46, prefecture: '鹿児島県'}, {id: 47, prefecture: '沖縄県'}
   ]
 
-  has_many :users
+  has_many :user_details
 end

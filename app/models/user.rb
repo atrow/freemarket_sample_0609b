@@ -1,11 +1,13 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  belongs_to :prefecture, optional: true
+  
+  validates :nickname, :family_name, :family_name_kana, :first_name, :first_name_kana, presence: true
+  
+  has_one :user_detail, dependent: :destroy
+  accepts_nested_attributes_for :user_detail
   has_many   :products
   has_many   :user_deriverys, dependent: :destroy
-  has_many   :user_details, dependent: :destroy
   has_many   :purchases_of_seller, class_name: 'Purchase', foreign_key: 'seller_id'
   has_many   :purchases_of_buyer, class_name: 'Purchase', foreign_key: 'buyer_id'
   has_many   :products_of_seller, through: :products_of_seller, source: 'product'
