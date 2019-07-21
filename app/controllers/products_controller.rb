@@ -9,13 +9,14 @@ class ProductsController < ApplicationController
     # モデルオブジェクト生成
     @product = Product.new
     10.times {@product.images.build}
-    @condition = Condition.all
-    @delivery_fee_pay = DeliveryFeePay.all
-    @delivery_off_day = DeliveryOffDay.all
-    @prefecture = Prefecture.all
-    @condition = Condition.all
-    @brand = Brand.all
-    @category = Category.get_all_grandchildren
+    @conditions = Condition.all
+    @delivery_fee_pays = DeliveryFeePay.all
+    @delivery_off_days = DeliveryOffDay.all
+    @delivery_ways = DeliveryWay.all
+    @prefectures = Prefecture.all
+    @conditions = Condition.all
+    @brands = Brand.all
+    @categories = Category.get_all_grandchildren
     @product.build_purchase
   end
 
@@ -44,7 +45,7 @@ class ProductsController < ApplicationController
     # ストロングパラメータ
     params.require(:product).
       permit(:name, :description, :price, :condition_id, :brand_id,
-      :delivery_fee_pay_id, :delivery_off_area_id, :delivery_off_day_id,
+      :delivery_fee_pay_id, :delivery_off_area_id, :delivery_off_day_id, :delivery_way_id,
       :category_id, :product_status_id,
       images_attributes: [:image]
       # TODO ユーザモデル実装後に実装

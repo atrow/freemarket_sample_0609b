@@ -144,7 +144,7 @@
   <small>© 2019 Mercari</small>
 </p>
 </footer>
-<a class="footer-sell-btn" >
-<div>出品</div>
+<%= link_to(new_product_path, class: 'footer-sell-btn') do %>
+  <div>出品</div>
   <%= fa_icon 'camera', class: "icon-camera" %>
-</a>
+<% end %>

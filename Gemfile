@@ -36,8 +36,10 @@ gem 'devise'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# ActiveHash
 gem 'active_hash'
+gem 'cocoon'
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,6 +54,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rails-controller-testing'
+  gem 'rails-i18n'
   gem 'rspec-rails'
 end
 
@@ -79,7 +82,6 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
-  gem "gretel"
-  gem 'erb2haml'
-  gem "font-awesome-rails"
-  gem 'jquery-rails'
+gem "gretel"
+gem 'erb2haml'
+gem "font-awesome-rails"
