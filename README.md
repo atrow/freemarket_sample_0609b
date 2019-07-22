@@ -179,7 +179,6 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 |nickname|varchar|null: false|
 |email|integer|null: false, unique: true|
 |password|varchar|null: false|
-|prefecture|integer|null: false,foreign_key: true|
 |family_name|varchar|null: false|
 |first_name|varchar|null: false|
 |family_name_kana|varchar|null: false|
@@ -192,7 +191,6 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 http://www.coma-tech.com/archives/223/
 ### Association
 - has_one :user_detail, dependent: :destroy
-- has_one_active_hash :prefecture, dependent: :destroy
 - has_many :products, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :credit_cards, dependent: :destroy
