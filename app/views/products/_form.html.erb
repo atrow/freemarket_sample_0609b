@@ -32,7 +32,7 @@
         <h3>配送料の負担</h3>
         <%= f.collection_select :delivery_fee_pay_id, @delivery_fee_pays, :id, :delivery_fee_pay ,include_blank: '---' %>
       </div>
-      <div class='product_form__delivery_way'>
+      <div class='product_form__delivery_way' hidden>
         <h3>配送の方法</h3>
         <%= f.collection_select :delivery_way_id, @delivery_ways, :id, :delivery_way ,include_blank: '---' %>
       </div>
@@ -51,6 +51,7 @@
         ¥<%= f.number_field :price %>
       </div>
       <div class='product_form__fee'>
+        <h3>販売手数料（10%）</h3>
         <p id='product_fee'>販売手数料（10%）</p>
       </div>
       <div class='product_form__profit'>
