@@ -10,5 +10,7 @@ FactoryBot.define do
     delivery_off_day_id {DeliveryOffDay.all.sample.id}
     product_status_id {ProductStatus.all.sample.id}
     category_id {FactoryBot.create(:brand).category_id}
+
+    # association :seller_user, factory: :user, nickname: '売人'
   end
 end

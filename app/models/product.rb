@@ -1,15 +1,22 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  has_many :product_pictures, dependent: :destroy
+  has_many :images, dependent: :destroy
+  accepts_nested_attributes_for :images
   belongs_to :condition
   belongs_to :delivery_fee_pay
   belongs_to :delivery_way
   belongs_to :delivery_off_day
   belongs_to :delivery_off_area, class_name: 'Prefecture'
   belongs_to :category
-  belongs_to :size
-  belongs_to :brand
+  belongs_to :size, optional: true
+  belongs_to :brand, optional: true
   belongs_to :product_status
   has_one :purchase
-  accepts_nested_attributes_for :product_pictures
+  delegate :seller_user, to: :purchase
+  delegate :buyer_user, to: :purchase
+  accepts_nested_attributes_for :purchase
+
+  validates :price, numericality: {
+    only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999
+  }
 end
