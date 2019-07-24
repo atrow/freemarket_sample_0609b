@@ -32,7 +32,7 @@ gem 'carrierwave'
 gem 'mini_magick', '~> 4.9.4'
 gem 'fog-aws'
 gem 'devise'
-
+gem 'rails-controller-testing'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

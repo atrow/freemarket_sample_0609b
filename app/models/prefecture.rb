@@ -17,5 +17,7 @@ class Prefecture < ActiveHash::Base
     {id: 40, prefecture: '福岡県'}, {id: 41, prefecture: '佐賀県'}, {id: 42, prefecture: '長崎県'},
     {id: 43, prefecture: '熊本県'}, {id: 44, prefecture: '大分県'}, {id: 45, prefecture: '宮崎県'},
     {id: 46, prefecture: '鹿児島県'}, {id: 47, prefecture: '沖縄県'}
-]
+  ]
+
+  has_many :user_details
 end
