@@ -34,7 +34,7 @@ $(function() {
   // 価格が変更されたとき
   $('#product_price').on('input', function() {
     var price = $(this).val();
-    $('#product_fee').text(Math.floor(price / 10));
-    $('#product_profit').text(price - $('#product_fee').text());
+    $('#product_fee').val(Math.floor(price / 10));
+    $('#product_profit').val(price - $('#product_fee').val());
   });
 });
