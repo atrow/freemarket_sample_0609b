@@ -10,7 +10,7 @@ $(function() {
     $("#product_delivery_way_id option[value='7']").remove();
     $("#product_delivery_way_id option[value='10']").remove();
     $("#product_delivery_way_id option[value='11']").remove();
-    console.log($(this).val());
+
     if ($(this).val() == 1) {
       // 値が送料込み（出品者負担）の場合
       // 選択肢設定
