@@ -8,9 +8,8 @@ FactoryBot.define do
     delivery_fee_pay_id {DeliveryFeePay.all.sample.id}
     delivery_off_area_id {Prefecture.all.sample.id}
     delivery_off_day_id {DeliveryOffDay.all.sample.id}
+    delivery_way_id {DeliveryWay.all.sample.id}
     product_status_id {ProductStatus.all.sample.id}
     category_id {FactoryBot.create(:brand).category_id}
-
-    # association :seller_user, factory: :user, nickname: '売人'
   end
 end

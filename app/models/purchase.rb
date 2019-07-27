@@ -1,5 +1,5 @@
 class Purchase < ApplicationRecord
-  belongs_to :seller_user, class_name: 'User'
-  belongs_to :buyer_user, class_name: 'User'
+  belongs_to :seller, class_name: 'User', optional: true
+  belongs_to :buyer, class_name: 'User', optional: true
   belongs_to :product
 end
