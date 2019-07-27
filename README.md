@@ -34,7 +34,7 @@ Things you may want to cover:
 |description|varchar|null: false|
 |price|bigdecimal|null: false|
 |condition|integer|null: false|
-|brand|integer|null: false, foreign_key: true|
+|brand|integer|foreign_key: true|
 |delivery_fee_pay|integer|null: false|
 |delivery_way|integer|null: false|
 |delivery_off_area|integer|null: false|
@@ -50,22 +50,22 @@ Things you may want to cover:
 - belongs_to_active_hash :delivery_off_area, class_name: 'Prefecture'
 - belongs_to_active_hash :delivery_off_day
 - belongs_to :category
-- belongs_to_active_hash :size
-- belongs_to :brand
+- belongs_to_active_hash :size, optional: true
+- belongs_to :brand, optional: true
 - belongs_to_active_hash :product_status
 - has_many :comments, dependent: :destroy
-- has_many :product_pictures, dependent: :destroy
+- has_many :images, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_one :report, dependent: :destroy
 - has_one :purchase
-- has_many :sellers, through: :purchases
-- has_many :buyers, through: :purchases
+- has_one :sellers, through: :purchases
+- has_one :buyers, through: :purchases
 
-## product_picturesテーブル(商品写真)
+## imagesテーブル(商品写真)
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary key|
-|product_picture|varchar|
+|image|varchar|
 |product|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :product
@@ -122,7 +122,6 @@ ActiveHashのためなし
 ###### 木構造の参考サイト
 https://qiita.com/chopin3/items/ca5525406ef005086e59
 https://jvvg0oynveolxikm.qrunch.io/entries/3JG4bNOVyRgNxVGt
-https://techracho.bpsinc.jp/hira/2018_03_15/53872r
 ### Association
 - has_many :products
 - belongs_to :parent, class_name: :Category
@@ -179,7 +178,6 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 |nickname|varchar|null: false|
 |email|integer|null: false, unique: true|
 |password|varchar|null: false|
-|prefecture|integer|null: false,foreign_key: true|
 |family_name|varchar|null: false|
 |first_name|varchar|null: false|
 |family_name_kana|varchar|null: false|
@@ -192,7 +190,6 @@ https://qiita.com/shiro-kuro/items/f017dce3d199f06d1dcd
 http://www.coma-tech.com/archives/223/
 ### Association
 - has_one :user_detail, dependent: :destroy
-- has_one_active_hash :prefecture, dependent: :destroy
 - has_many :products, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :credit_cards, dependent: :destroy
@@ -200,8 +197,8 @@ http://www.coma-tech.com/archives/223/
 - has_many :user_deliverys, dependent: :destroy
 - has_many :purchases_of_seller, class_name: 'Purchase', foreign_key: 'seller_id'
 - has_many :purchases_of_buyer, class_name: 'Purchase', foreign_key: 'buyer_id'
-- has_many :products_of_seller, through: :products_of_seller, source: 'product'
-- has_many :products_of_buyer, through: :products_of_buyer, source: 'product'
+- has_many :products_of_seller, through: :purchases_of_seller, source: 'product'
+- has_many :products_of_buyer, through: :purchases_of_buyer, source: 'product'
 - has_many :reports, dependent: :destroy
 - has_many :sns_credentials, dependent: :destroy
 - has_one :profit, dependent: :destroy
@@ -325,8 +322,8 @@ ActiveHashのためなし
 |id|integer|primary key|
 |payment|bigdecimal|
 |credit_card|integer|null: false,foreign_key: true|
-|buyer_user|integer|foreign_key: true|
-|seller_user|integer|null: false,foreign_key: true|
+|buyer|integer|foreign_key: true|
+|seller|integer|null: false,foreign_key: true|
 |product|integer|null: false,foreign_key: true|
 ###### 商品取引関連付けの参考サイトhttp://www.coma-tech.com/archives/223/
 ### Association

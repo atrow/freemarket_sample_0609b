@@ -7,7 +7,8 @@ class Category < ApplicationRecord
 
   def self.get_all_children
     # 全子カテゴリー（2階層目）を取得
-    Category.all.children
+    category1 = Category.where(parent_id: nil)
+    @categories = Category.where(parent_id: category1.ids)
   end
 
   def self.get_children(id)
@@ -17,9 +18,9 @@ class Category < ApplicationRecord
 
   def self.get_all_grandchildren
     # 全孫カテゴリー（3階層目）を取得
-    # @category = Category.all
-    # @category.children.map { |category| category.children }
-    Category.all.children.children
+    category1 = Category.where(parent_id: nil)
+    category2 = Category.where(parent_id: category1.ids)
+    @categories = Category.where(parent_id: category2.ids)
   end
 
   def self.get_progeny(id)
