@@ -1,0 +1,30 @@
+<%= render 'partial/single_header' %>
+
+<div class='registration'>
+<div class='registration__main'>
+    <h1>新規会員登録</h1>
+  <div class='registration-select'>
+      <div class='registration-select__single'>
+          <div class='btn-mail'>
+              <%= link_to "メールアドレスで登録", users_registrations_new_path %>
+              <i class="far fa-envelope  fa-2x  my-mail"></i>
+          </div>
+      </div>
+      <div class='registration-select__single'>
+          <div class='btn-facebook'>
+              <%= link_to "facebookで登録", "https://www.facebook.com/v2.5/dialog/"%>
+              <!--<i class="fab fa-facebook-square  fa-2x  my-facebook"></i>-->
+              <%= image_tag 'facebook_white.png', :size =>'20x20', alt: "facebook", id: 'logo';%>
+          </div>
+      </div>
+      <div class='registration-select__single'>
+        <div class='btn-google'>
+          <%= link_to image_tag('https://img.icons8.com/color/48/000000/google-logo.png' , alt: 'btn-google', size:"23x23" ) ,'root_path' %>
+          <%= link_to "googleで登録","https://myaccount.google.com/?pli=1",:style=>"color:gray;"  %>
+        </div>
+      </div>
+      </div><!--registration-select-->
+  </div><!--registration__main-->
+</div><!--registration-->
+
+<%= render 'partial/single_footer' %>
