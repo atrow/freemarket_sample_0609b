@@ -74,8 +74,15 @@
         </div>
       </div>
     </div>
-    <div class='product_form__product_status' hidden>
-      <%= f.text_field :product_status_id, value: 1 %>
+    <div class='product_form__hidden' hidden>
+      <div class='product_form__product_status' hidden>
+        <%= f.text_field :product_status_id, value: 1 %>
+      </div>
+      <div class='product_form__purchase' hidden>
+        <%= f.fields_for :purchase do |purchase| %>
+          <%= purchase.text_field :seller_id, value: current_user.id %>
+        <% end %>
+      </div>
     </div>
     <div class='product_form__submit'>
       <%= f.submit '出品する', class:'submit_button' %>
