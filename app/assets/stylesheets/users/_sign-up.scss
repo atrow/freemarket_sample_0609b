@@ -1,0 +1,403 @@
+
+body {
+    text-align: center;
+    background: $gray;
+    text-decoration: none;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+
+    input, button, textarea, select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      .sign-up {
+          background-color: $white;
+          width: 700px;
+          margin: 0 auto 41px;
+
+          h1 {
+              padding: 32px 16px 38px;
+              font-size: 22px;
+              text-align: center;
+              font-weight: bold;
+          }
+
+          #error_explanation{
+            color: $red;
+            margin: 8px;
+            h2{
+                display: none;
+            }
+          }
+
+          &__main {
+              border-top: 1px solid $gray;
+              padding: 32px 16px 38px;
+
+              &__single {
+                  background-color: $white;
+                  margin: 0 auto 41px;
+                  height: 100%;
+                  top: 25px;
+
+              }//__single
+
+          h6, user_detail {
+              @include clearfix;
+              padding: 2px 1px 3px;
+              font-size: 12px;
+              font-weight: bold;
+              display: inline-block;
+              bottom: 0px;
+              margin-left: -200px;
+
+              }
+              h7 {
+                @include clearfix;
+                padding: 2px 1px 3px;
+                font-size: 12px;
+                font-weight: bold;
+                display: inline-block;
+                bottom: 0px;
+                text-align: center;
+
+                }
+
+              .g-top-recaptcha {
+                  @include clearfix;
+                  margin-left:  80px;
+                  margin-bottom: 30px;
+              }
+
+              .recaptcha {
+                  @include clearfix;
+                  margin-left: 180px;
+                  margin-bottom: 30px;
+              }
+              #require {
+                  background: $red;
+                  font-size: 12px;
+                  margin: 0 0 0 8px;
+                  padding: 2px 4px;
+                  border-radius: 2px;
+                  color: $white;
+                  vertical-align: top;
+                  display: inline-block;
+                  }
+
+                  #any {
+                      background: $gray2;
+                      font-size: 12px;
+                      margin: 0 0 0 8px;
+                      padding: 2px 4px;
+                      border-radius: 2px;
+                      color: $white;
+                      vertical-align: top;
+                      display: inline-block;
+                      }
+
+                  .label-text {
+                          @include clearfix;
+                          padding: 32px 176px 38px;
+
+                          p {
+                              font-size: 12px;
+                              text-decoration: none;
+                              color: black;
+                          }
+
+                      span {
+                          text-decoration: none;
+                          color: royalblue;
+                      }
+                      #turms {
+                          text-decoration: none;
+                          color: royalblue;
+                      }
+
+                  }//label-text
+
+                  .form-group-detail {
+
+                      .field {
+                          @include field;
+                          padding: 8px;
+                          margin-bottom: 8px;
+                          height: 39px;
+                          width: 280px;
+                      }
+
+                      .form-group {
+                          margin-bottom: 8px;
+
+                      &__label {
+                          @include clearfix;
+                          margin-left: 4px;
+
+                          &--hidden {
+                              display: block;
+                              height: 35px;
+                              margin-top: 8px;
+                              margin-left: 4px;
+                          }
+                              a {
+                                  font-size: 12px;
+                                  height: 39px;
+                                  width: 280px;
+                                  text-decoration: none;
+                                  color: $gray3;
+                                  font-weight: bold;
+                                  text-align: left;
+                              }
+                          }//form-group
+                      }//form-group__label
+
+
+              .sign-up--hidden {
+                  .form-group-delivery {
+                      &__label {
+                          @include clearfix;
+                          margin-left: 4px;
+                      }
+                          &--hidden {
+                              display: block;
+                              height: 49px;
+                              width: 320px;
+                          }
+                              a {
+                                  font-size: 12px;
+                                  margin-bottom: 8px;
+                                  height: 39px;
+                                  width: 280px;
+                                  text-decoration: none;
+                                  color: $gray3;
+                                  font-weight: bold;
+                                  text-align: left;
+                              }
+
+                              &__require{
+                                  span {
+                                      text-align: left;
+                                      }
+                              }
+
+                      .hidden-field  {
+                          @include field;
+                          cursor: default;
+                          padding: 8px;
+                          margin-bottom: 8px;
+                          height: 39px;
+                          width: 280px;
+                          a {
+                            font-size: 12px;
+                            height: 39px;
+                            width: 280px;
+                            text-decoration: none;
+                            color: $gray;
+                            font-weight: bold;
+                            text-align: left;
+                        }
+
+                      }
+                  }//form-group-delivery
+              }//sign-up--hidden
+              select{
+                @include field;
+                cursor: default;
+                padding: 8px;
+                margin-bottom: 8px;
+                height: 55px;
+                width: 300px;
+              }
+
+
+                  .btn-next-text{
+                      a {
+                         font-size: 12px;
+                         text-decoration: none;
+                         color: gray;
+                         text-align: right;
+                     }
+                 }
+
+      .btn-sign-up {
+      a {
+          font-size: 14px;
+          text-decoration: none;
+          color: #fff;
+          text-align: right;
+      }
+  }
+
+  .sign-up-next-box,.sign-up-submit-box {
+
+      span {
+          font-size: 12px;
+          text-decoration: none;
+          color:$gray3;
+      }
+
+      a {
+          font-size: 12px;
+          text-decoration: none;
+          color:$light-blue;
+          }
+
+      .button-next,.actions {
+          @include button-next;
+
+              a {
+              text-decoration: none;
+              text-align: center;
+              font-weight: 0;
+              color:$white;
+              }
+          }//button-next
+
+
+      .btn-next-text {
+          @include clearfix;
+          width: 320px;
+          text-align: right;
+          text-decoration: none;
+          color:$white;
+          p {
+              font-size: 12px;
+              text-decoration: none;
+              color:$light-blue;
+              }
+          .fas fa-angle-right {
+              color:$light-blue;
+              font-size: 14px;
+              text-decoration: none;
+          }
+                  }//btn-next-text
+              }//sign-up-next-box,sign-up-submit-box
+          }//main
+      }//sign-up
+  }//body
+
+
+
+
+
+  // users/newここから
+  .registration {
+          position: relative; width: 100%; height: auto;
+
+          .registration__main {
+          background-color: white;
+          width: 700px;
+          margin: 0 auto;
+
+
+        h1 {
+          padding: 32px 16px;
+          font-size: 22px;
+          text-align: center;
+          font-weight: bold;
+          text-align: center;
+        }
+        a {
+          color: gray;
+          font-size: 0.5em;
+          text-decoration: none;
+        }
+
+        .registration-select {
+          border-top: 1px solid #f5f5f5;
+          padding: 64px;
+
+          .registration-select__single {
+              margin: 0 auto;
+              width: 320px;
+
+            .btn-mail {
+              @include field;
+              position: relative;
+              width:320px;
+
+              }
+
+            .btn-mail a {
+                color: $gray2;
+                font-size: 14px;
+                text-decoration: none;
+                line-height: 55px;
+
+            }
+
+            .btn-mail i {
+              position: relative;
+                color: $gray2;
+                font-size: 20px;
+                top: 20px;
+                right: 45%;
+                display: inline-block;
+                text-align: left;
+                top: 10px;
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+            }
+          }//registration-select__single
+
+          .registration-select__single {
+              margin: 0 auto;
+              width: 320px;
+
+            .btn-facebook {
+              @include button-facebook;
+              @include field;
+                position: relative;
+                background-color: $facebook;
+                border-radius: 3px;
+            }
+
+            .btn-facebook a {
+                color: white;
+                font-size: 14px;
+                text-decoration: none;
+            }
+            .btn-facebook img {
+            left: 0px;
+            text-align: left;
+            }
+
+            .btn-facebook p {
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn-facebook i {
+                position: absolute;
+            }
+
+
+      }//registration-select__single
+
+          .registration-select__single {
+              margin: 0 auto;
+
+           .btn-google {
+              @include btn-google;
+              @include field;
+                border: solid 0.9px $gray2;
+                border-radius: 3px;
+            }
+      }//registration-select__single
+
+          .registration-select__single {
+              margin: 0 auto;
+
+           .btn-google {
+              @include btn-google;
+              @include field;
+                border: solid 0.9px $gray2;
+                border-radius: 3px;
+            }
+          }
+              }//registration-select__single
+          }//registration-select
+      }//registration__main
+  }//registration
