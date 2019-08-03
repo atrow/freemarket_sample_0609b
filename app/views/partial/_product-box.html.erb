@@ -1,15 +1,15 @@
             <section class="items-box">
               <a href=" ">
                 <figure class="items-box-photo">
-                  <%= image_tag @product_picture.image.to_s %>
+                  <%= image_tag "#{product.images.first.image.url}" %>
                 </figure>
                 <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（１）レディース新着アイテム</h3>
+                  <h3 class="items-box-name font-2"><%= product.description %></h3>
                   <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
+                    <div class="items-box-price font-5">¥<%= product.price %></div>
                     <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
+                      <%= fa_icon 'heart' %> <span>16</span>
+                    </div>
                   </div>
                 </div>
               </a>

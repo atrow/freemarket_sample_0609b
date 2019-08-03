@@ -51,17 +51,9 @@ prevButton: '.swiper-button-prev',
           <div class="items-box-content clearfix">
             <!--  レディース新着アイテムここから  -->
             <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
+            <% @ladies_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -71,19 +63,9 @@ prevButton: '.swiper-button-prev',
         </a> </h3>
           <div class="items-box-content clearfix">
             <!--  メンズ新着アイテムここから  -->
-            <!-- １商品ここから -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
+            <% @mens_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -93,18 +75,9 @@ prevButton: '.swiper-button-prev',
         </a> </h3>
           <div class="items-box-content clearfix">
             <!--  ベビー・キッズ 新着アイテムここから  -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
+            <% @kids_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -113,18 +86,10 @@ prevButton: '.swiper-button-prev',
         コスメ・香水・美容 新着アイテム
         </a> </h3>
           <div class="items-box-content clearfix">
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
+            <!--  コスメ・香水・美容 新着アイテムここから -->
+            <% @cosme_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -133,18 +98,10 @@ prevButton: '.swiper-button-prev',
           <div class="items-box-container clearfix">
             <h3 class="text-center"> <a href=" ">シャネル新着アイテム</a> </h3>
             <div class="items-box-content clearfix">
-             <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
-            <!-- １商品ここから -->
-<%= render partial: "/partial/item-box" %>
-            <!-- １商品ここまで -->
+             <!-- シャネル新着アイテムここから -->
+             <% @chanel_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
             </div>
             <div class="view-all">  <%= link_to 'すべての商品を見る', '' %> </div>
           </div>
