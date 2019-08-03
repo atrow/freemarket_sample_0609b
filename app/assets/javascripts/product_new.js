@@ -23,7 +23,7 @@ $(function() {
       $('.product_form__delivery_way').show();
     } else if ($(this).val() == 2) {
       // 値が着払い（購入者負担）の場合
-      // 何もしない
+      $('.product_form__delivery_way').show();
     } else {
       // その他の場合（未選択）
       // 配送方法セレクトボックスを非表示
