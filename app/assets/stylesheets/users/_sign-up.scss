@@ -64,6 +64,8 @@ body {
 
                 }
 
+
+
               .g-top-recaptcha {
                   @include clearfix;
                   margin-left:  80px;
@@ -109,14 +111,111 @@ body {
 
                       span {
                           text-decoration: none;
-                          color: royalblue;
+                          color: $light-blue;
                       }
                       #turms {
                           text-decoration: none;
-                          color: royalblue;
+                          color: $light-blue;
                       }
 
                   }//label-text
+
+             .select_y {
+                  #select_year {
+                    @include field;
+                    cursor: default;
+                    position: absolute;
+                    display: inline-block;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    margin-bottom: 8px;
+                    height: 55px;
+                    width: 30px;
+                    left: 30%;
+                }
+                i {
+                    @include font-awesome;
+                    position: relative;
+                    color: $gray3;
+                    font-size: 14px;
+                    text-decoration: none;
+                    left: -15%;
+                    top: -10%;
+              }
+              span {
+                display: inline-block;
+                position: relative;
+                left: -14%;
+                top: -10%;
+              }
+            }
+
+
+
+            .select_m {
+                  #select_month {
+                    cursor: default;
+                    position: absolute;
+                    display: inline-block;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    margin-bottom: 8px;
+                    height: 55px;
+                    width: 30px;
+                    left: 30%;
+                }
+                i {
+                    @include font-awesome;
+                    position: relative;
+                    color: $gray3;
+                    font-size: 14px;
+                    text-decoration: none;
+                    left: -15%;
+                    top: -20%;
+              }
+              span {
+                position: relative;
+                display: inline-block;
+                left: -14%;
+                top: -10%;
+              }
+            }
+
+
+            .select_d {
+                  #select_day {
+                    @include field;
+                    cursor: default;
+                    position: absolute;
+                    display: inline-block;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    margin-bottom: 8px;
+                    height: 55px;
+                    width: 30px;
+                    left: 30%;
+                }
+                i {
+                    @include font-awesome;
+                    position: relative;
+                    color: $gray3;
+                    font-size: 14px;
+                    text-decoration: none;
+                    left: -15%;
+                    top: -30%;
+              }
+              span {
+                position: relative;
+                display: inline-block;
+                left: -14%;
+                top: -10%;
+              }
+            }
+
+
+
+
+
 
                   .form-group-detail {
 
@@ -126,6 +225,7 @@ body {
                           margin-bottom: 8px;
                           height: 39px;
                           width: 280px;
+                          cursor: default;
                       }
 
                       .form-group {
@@ -151,6 +251,7 @@ body {
                                   text-align: left;
                               }
                           }//form-group
+
                       }//form-group__label
 
 
@@ -182,12 +283,21 @@ body {
                                       }
                               }
 
+                              select  {
+                                @include field;
+                                cursor: default;
+                                padding: 8px;
+                                margin-bottom: 8px;
+                                height: 50px;
+                                width: 300px;
+                              }
+
                       .hidden-field  {
                           @include field;
                           cursor: default;
                           padding: 8px;
                           margin-bottom: 8px;
-                          height: 39px;
+                          height: 35px;
                           width: 280px;
                           a {
                             font-size: 12px;
@@ -199,24 +309,17 @@ body {
                             text-align: left;
                         }
 
+
                       }
                   }//form-group-delivery
               }//sign-up--hidden
-              select{
-                @include field;
-                cursor: default;
-                padding: 8px;
-                margin-bottom: 8px;
-                height: 55px;
-                width: 300px;
-              }
 
 
                   .btn-next-text{
                       a {
                          font-size: 12px;
                          text-decoration: none;
-                         color: gray;
+                         color: $gray;
                          text-align: right;
                      }
                  }
@@ -244,9 +347,9 @@ body {
           color:$light-blue;
           }
 
-      .button-next,.actions {
+      .button-next,.button-registration,.button-card,.actions {
           @include button-next;
-
+s
               a {
               text-decoration: none;
               text-align: center;
@@ -268,6 +371,7 @@ body {
               color:$light-blue;
               }
           .fas fa-angle-right {
+              @include font-awesome;
               color:$light-blue;
               font-size: 14px;
               text-decoration: none;
@@ -280,17 +384,15 @@ body {
 
 
 
-
-
   // users/newここから
   .registration {
-          position: relative; width: 100%; height: auto;
+          position: relative;
+          width: 100%; height: auto;
 
           .registration__main {
           background-color: white;
           width: 700px;
           margin: 0 auto;
-
 
         h1 {
           padding: 32px 16px;
@@ -331,12 +433,11 @@ body {
             .btn-mail i {
               position: relative;
                 color: $gray2;
+                padding: 9px;
                 font-size: 20px;
-                top: 20px;
                 right: 45%;
                 display: inline-block;
                 text-align: left;
-                top: 10px;
                 font-family: "Font Awesome 5 Free";
                 font-weight: 900;
             }
@@ -359,10 +460,7 @@ body {
                 font-size: 14px;
                 text-decoration: none;
             }
-            .btn-facebook img {
-            left: 0px;
-            text-align: left;
-            }
+
 
             .btn-facebook p {
                 color: white;

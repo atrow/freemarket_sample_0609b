@@ -6,7 +6,7 @@
   <div class='registration-select'>
       <div class='registration-select__single'>
           <div class='btn-mail'>
-              <%= link_to "メールアドレスで登録", new_user_registration_path%>
+              <%= link_to "メールアドレスで登録", users_registrations_new_path %>
               <i class="far fa-envelope  fa-2x  my-mail"></i>
           </div>
       </div>
@@ -14,7 +14,7 @@
           <div class='btn-facebook'>
               <%= link_to "facebookで登録", "https://www.facebook.com/v2.5/dialog/"%>
               <!--<i class="fab fa-facebook-square  fa-2x  my-facebook"></i>-->
-              <%= image_tag 'facebook.png', :size =>'20x20', alt: "facebook", id: 'logo',left: '15';%>
+              <%= image_tag 'facebook_white.png', :size =>'20x20', alt: "facebook", id: 'logo';%>
           </div>
       </div>
       <div class='registration-select__single'>

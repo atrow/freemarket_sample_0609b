@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', function(){
         $('.show-progress__box').show();//お届け先住所入力プログレスバー
         $('.hidden-progress__box').hide();//新規会員登録プログレスバー
         $('.done-progress__box').hide();//新規会員登録プログレスバー
-        $('.form-group').hide();//フィールド
+//        $('.form-group').hide();//フィールド# TODO An invalid form control with name='' is not focusable.エラーを解決後、非表示に戻す
         $('.recaptcha').hide();//フィールド
         $('.label-text').hide();//フィールド
         $('.form-group__label--hidden').show();//お届け先住所登録ラベル
@@ -23,5 +23,9 @@ window.addEventListener('DOMContentLoaded', function(){
         $('.sign-up-next-box').hide();
         $('.sign-up--hidden').show();
         $('.sign-up-submit-box').show();//次へ進む１
+    })
+
+    $('.button-ragistration').on('click',function(){
+      $('.form-group').show();//フィールド
     })
   });
