@@ -3,14 +3,14 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
 
   def index
-   @ladies_products = Product.where(category_id: 1, product_status_id: 1).limit(4).includes(:images)
-   @mens_products = Product.where(category_id: 2, product_status_id: 1).limit(4).includes(:images)
-   @kids_products = Product.where(category_id: 3, product_status_id: 1).limit(4).includes(:images)
-   @cosme_products = Product.where(category_id: 7, product_status_id: 1).limit(4).includes(:images)
-   @chanel_products = Product.where(brand_id: 1, product_status_id: 1).limit(4).includes(:images)
-   @Vuitton_products = Product.where(brand_id: 2, product_status_id: 1).limit(4).includes(:images)
-   @Supreme_products = Product.where(brand_id: 3, product_status_id: 1).limit(4).includes(:images)
-   @nike_products = Product.where(brand_id: 4, product_status_id: 1).limit(4).includes(:images)
+   @ladies_products = Product.where(category_id: 1, product_status_id: 1).recent
+   @mens_products = Product.where(category_id: 2, product_status_id: 1).recent
+   @kids_products = Product.where(category_id: 3, product_status_id: 1).recent
+   @cosme_products = Product.where(category_id: 7, product_status_id: 1).recent
+   @chanel_products = Product.where(brand_id: 1, product_status_id: 1).recent
+   @Vuitton_products = Product.where(brand_id: 2, product_status_id: 1).recent
+   @Supreme_products = Product.where(brand_id: 3, product_status_id: 1).recent
+   @nike_products = Product.where(brand_id: 4, product_status_id: 1).recent
   end
 
   def new
