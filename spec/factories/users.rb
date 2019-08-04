@@ -1,12 +1,14 @@
 FactoryBot.define do
+  password = Faker::Internet.password(8)
+
   factory :user do
-    nickname              {"bob"}
-    family_name           {"bob"}
+    nickname              {Faker::Games::Pokemon.name}
+    family_name           {Faker::Name.last_name}
     family_name_kana      {"bob"}
-    first_name            {"bob"}
+    first_name            {Faker::Name.first_name}
     first_name_kana       {"bob"}
-    email                 {"kkk@gmail.com"}
-    password              {"00000000"}
-    password_confirmation {"00000000"}
+    email                 {Faker::Internet.email}
+    password              {password}
+    password_confirmation {password}
   end
 end
