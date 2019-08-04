@@ -34,3 +34,8 @@ public/uploads/*
 public/images/*
 
 config/secrets.yml
+
+/app/*
+!/app/.DS_Store
+
+.DS_Store

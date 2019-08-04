@@ -42,9 +42,8 @@
       background: #FFF;
       margin: 0 0 0 20px;
       width: 213px;
-      a {
-        display: block;
-        color: #333;
+      display: block;
+      color: #333;
         .items-box-photo {
           width: 220px;
           height: 220px;
@@ -101,7 +100,6 @@
         }
       }
     }
-  }
   .view-all {
     padding: 60px 0 30px;
     width: 99.5%;

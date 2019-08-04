@@ -8,6 +8,12 @@ describe ProductsController do
     grandchildren << build(:category, category: "パーカー", parent_id: "14")
     allow(Category).to receive(:get_all_grandchildren).and_return(grandchildren)
   end
+     describe 'GET #index' do
+    it 'indexアクションで出品中のアイテムのみが表示されるか' do
+       product = FactoryBot.create(:product)
+       get :index, params: { product_status_id: product }
+       expect(assigns(:product)).to match [product.product_status_id == 1]
+     end
 
   describe 'GET #new' do
     context 'log in' do

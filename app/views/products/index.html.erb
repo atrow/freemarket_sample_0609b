@@ -51,63 +51,9 @@ prevButton: '.swiper-button-prev',
           <div class="items-box-content clearfix">
             <!--  レディース新着アイテムここから  -->
             <!-- １商品ここから -->
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（１）レディース新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <!-- １商品ここまで -->
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（２）レディース新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（３）レディース新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（４）レディース新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
+            <% @ladies_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -117,64 +63,9 @@ prevButton: '.swiper-button-prev',
         </a> </h3>
           <div class="items-box-content clearfix">
             <!--  メンズ新着アイテムここから  -->
-            <!-- １商品ここから -->
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（１）メンズ新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <!-- １商品ここまで -->
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（２）メンズ新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（３）メンズ新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（４）メンズ新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
+            <% @mens_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -184,62 +75,9 @@ prevButton: '.swiper-button-prev',
         </a> </h3>
           <div class="items-box-content clearfix">
             <!--  ベビー・キッズ 新着アイテムここから  -->
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（１）ベビー・キッズ 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（２）ベビー・キッズ 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（３）ベビー・キッズ 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（４）ベビー・キッズ 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
+            <% @kids_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -248,62 +86,10 @@ prevButton: '.swiper-button-prev',
         コスメ・香水・美容 新着アイテム
         </a> </h3>
           <div class="items-box-content clearfix">
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（１）コスメ・香水・美容 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（２）コスメ・香水・美容 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（３）コスメ・香水・美容 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
-            <section class="items-box">
-              <a href=" ">
-                <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                <div class="items-box-body">
-                  <h3 class="items-box-name font-2">（４）コスメ・香水・美容 新着アイテム</h3>
-                  <div class="items-box-num">
-                    <div class="items-box-price font-5"> ¥ 2,500 </div>
-                    <div class="items-box-likes font-2">
-                      <%= fa_icon 'heart' %> <span>16</span> </div>
-                    <p class="item-box-tax">(税込)</p>
-                  </div>
-                </div>
-              </a>
-            </section>
+            <!--  コスメ・香水・美容 新着アイテムここから -->
+            <% @cosme_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
           </div>
           <div class="view-all"> <a href=" ">すべての商品を見る</a> </div>
         </div>
@@ -312,62 +98,10 @@ prevButton: '.swiper-button-prev',
           <div class="items-box-container clearfix">
             <h3 class="text-center"> <a href=" ">シャネル新着アイテム</a> </h3>
             <div class="items-box-content clearfix">
-              <section class="items-box">
-                <a href=" ">
-                  <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                  <div class="items-box-body">
-                    <h3 class="items-box-name font-2">（１）シャネル新着アイテム</h3>
-                    <div class="items-box-num">
-                      <div class="items-box-price font-5"> ¥ 2,500 </div>
-                      <div class="items-box-likes font-2">
-                        <%= fa_icon 'heart' %> <span>16</span> </div>
-                      <p class="item-box-tax">(税込)</p>
-                    </div>
-                  </div>
-                </a>
-              </section>
-              <section class="items-box">
-                <a href=" ">
-                  <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                  <div class="items-box-body">
-                    <h3 class="items-box-name font-2">（２）シャネル新着アイテム</h3>
-                    <div class="items-box-num">
-                      <div class="items-box-price font-5"> ¥ 2,500 </div>
-                      <div class="items-box-likes font-2">
-                        <%= fa_icon 'heart' %> <span>16</span> </div>
-                      <p class="item-box-tax">(税込)</p>
-                    </div>
-                  </div>
-                </a>
-              </section>
-              <section class="items-box">
-                <a href=" ">
-                  <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                  <div class="items-box-body">
-                    <h3 class="items-box-name font-2">（３）シャネル新着アイテム</h3>
-                    <div class="items-box-num">
-                      <div class="items-box-price font-5"> ¥ 2,500 </div>
-                      <div class="items-box-likes font-2">
-                        <%= fa_icon 'heart' %> <span>16</span> </div>
-                      <p class="item-box-tax">(税込)</p>
-                    </div>
-                  </div>
-                </a>
-              </section>
-              <section class="items-box">
-                <a href=" ">
-                  <figure class="items-box-photo"> <%= image_tag('https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m11982650864_1.jpg?1528301436') %> </figure>
-                  <div class="items-box-body">
-                    <h3 class="items-box-name font-2">（４）シャネル新着アイテム</h3>
-                    <div class="items-box-num">
-                      <div class="items-box-price font-5"> ¥ 2,500 </div>
-                      <div class="items-box-likes font-2">
-                        <%= fa_icon 'heart' %> <span>16</span> </div>
-                      <p class="item-box-tax">(税込)</p>
-                    </div>
-                  </div>
-                </a>
-              </section>
+             <!-- シャネル新着アイテムここから -->
+             <% @chanel_products.each do |product| %>
+              <%= render partial: "/partial/product-box", locals: { product: product} %>
+            <% end %>
             </div>
             <div class="view-all">  <%= link_to 'すべての商品を見る', '' %> </div>
           </div>
