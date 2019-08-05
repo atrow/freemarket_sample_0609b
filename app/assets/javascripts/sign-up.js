@@ -1,6 +1,5 @@
 
 window.addEventListener('DOMContentLoaded', function(){
-  //エラーのため追記https://pisuke-code.com/jquery-is-not-defined-solution///
 
    $('.show-progress__box').hide();//お届け先住所入力プログレスバー
    $('.done-progress__box').hide();//登録完了プログレスバー
@@ -10,12 +9,10 @@ window.addEventListener('DOMContentLoaded', function(){
    $('.sign-up-submit-box').hide();//次へ進む２登録
 
  $('.button-next').on('click',function(){
-
         $('h1').text('お届け先住所入力');
         $('.show-progress__box').show();//お届け先住所入力プログレスバー
         $('.hidden-progress__box').hide();//新規会員登録プログレスバー
         $('.done-progress__box').hide();//新規会員登録プログレスバー
-//        $('.form-group').hide();//フィールド# TODO An invalid form control with name='' is not focusable.エラーを解決後、非表示に戻す
         $('.recaptcha').hide();//フィールド
         $('.label-text').hide();//フィールド
         $('.form-group__label--hidden').show();//お届け先住所登録ラベル
