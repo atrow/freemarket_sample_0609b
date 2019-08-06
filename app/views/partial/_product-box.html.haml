@@ -1,0 +1,12 @@
+%section.items-box
+  = link_to ''
+  %figure.items-box-photo
+    = image_tag "#{product.images.first.image.url}"
+  .items-box-body
+    %h3.items-box-name.font-2= product.name
+    .items-box-num
+      .items-box-price.font-5
+        ¥#{product.price}
+      .items-box-likes.font-2
+        = fa_icon 'heart'
+        %span 16

@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.9.4'
 gem 'fog-aws'
-gem 'devise'
 gem 'rails-controller-testing'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -38,6 +37,19 @@ gem 'active_hash'
 gem 'cocoon'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+
+# haml
+gem 'haml-rails'
+gem 'erb2haml'
+
+gem 'gretel'
+gem 'font-awesome-rails'
+gem 'recaptcha', require: "recaptcha/rails"
+
+# devise
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -79,10 +91,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn', '5.4.1'
 end
-
-gem "gretel"
-gem 'erb2haml'
-gem "font-awesome-rails"
-gem 'recaptcha', require: "recaptcha/rails"
-gem 'devise-i18n'
-gem 'devise-i18n-views'
