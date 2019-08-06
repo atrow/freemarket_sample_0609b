@@ -1,8 +1,12 @@
 @import "./reset";
 @import "font-awesome";
+@import "config/colors";
 @import "config/variable";
 @import "modules/index";
 @import "modules/footer";
 @import "modules/header";
+@import "modules/single_footer";
 @import "modules/swiper";
+@import "modules/progress";
+@import "users/sign-up";
 @import "products";

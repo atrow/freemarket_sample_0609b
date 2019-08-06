@@ -1,80 +1,138 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label "ニックネーム" %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "パスワード（確認）" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "お名前" %><br />
-    <%= f.text_field :family_name, autocomplete: "family_name" %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label "お名前（カナ）" %><br />
-    <%= f.text_field :family_name_kana, autocomplete: "family_name_kana" %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-  </div>
-
-  <%= f.fields_for :user_detail do |user_detail| %>
-
-    <div class="field">
-      <%= user_detail.label "郵便番号" %><br />
-      <%= user_detail.number_field :zip_code, autocomplete: "zip_code" %>
-    </div>
-
-    <div class="field">
-      <%= user_detail.label "都道府県" %><br />
-      <%= user_detail.collection_select :prefecture_id, Prefecture.all, :id, :prefecture %>
-    </div>
-    
-    <div class="field">
-      <%= user_detail.label "市区町村" %><br />
-      <%= user_detail.text_field :city, autofocus: true, autocomplete: "city" %>
-    </div>
-
-    <div class="field">
-      <%= user_detail.label "番地" %><br />
-      <%= user_detail.text_field :street, autofocus: true, autocomplete: "street" %>
-    </div>
-
-    <div class="field">
-      <%= user_detail.label "建物名" %><br />
-      <%= user_detail.text_field :building_name, autofocus: true, autocomplete: "building_name" %>
-    </div>
-
-    <div class="field">
-      <%= user_detail.label "電話" %><br />
-      <%= user_detail.text_field :phone, autofocus: true, autocomplete: "" %>
-    </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
-  <% end %>
-<% end %>
-
-<%= render "users/shared/links" %>
+<%= render 'partial/single_header' %>
+<%= render 'partial/progress' %>
+<div class='sign-up'>
+  <h1>会員情報の入力</h1>
+    <div class='sign-up__main'>
+      <div class='sign-up__single'>
+        <div class='form-group-detail'>
+          <div class="form-group">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+                <div class="form-group__label">
+                  <h6><p class='form-group-label__require'>ニックネーム<span id='require'>必須</span></p></h6><br />
+                    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: '例）メルカリ太郎', class: 'field'  %>
+                </div><br />
+                <div class="form-group__label">
+                  <h6><p class='form-group-label__require'>メールアドレス<span id='require'>必須</span></p></h6><br />
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'pc・携帯どちらでも可', class: 'field'  %>
+                </div><br />
+                <div class="form-group__label">
+                  <h6><p class='form-group-label__require'>パスワード<span id='require'>必須</span></p></h6><br />
+                    <%= f.password_field :password, autocomplete: "off" , placeholder: '６文字以上', class: "field" %>
+                </div><br />
+                <div class="form-group__label">
+                  <h6><p class='form-group-label__require'>パスワード(確認)<span id='require'>必須</span></p></h6><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "off" , placeholder: '６文字以上', class: "field" %>
+                </div><br />
+                <div class="form-group__label">
+                  <label for="birthday">
+                    <h6>生年月日</h6><span id="require" class="form-group-label__require">必須</span>
+                  </label>
+                </div>
+                <div class="select_y">
+                  <%= select_tag :year, options_for_select( (1900..2030)),  include_blank: '--', class: 'field', id: 'select_year', style: 'width:90px' %>
+                    <i class="fas fa-angle-down" ></i><span>年</span>
+                </div>
+                <div class="select_m">
+                  <%= select_tag :month, options_for_select((1..12)),  include_blank: '--', class: 'field', id: 'select_month', style: 'width:90px' %>
+                    <i class="fas fa-angle-down" ></i><span>月</span>
+                </div>
+                <div class="select_d">
+                  <%= select_tag :day, options_for_select((1..31)),  include_blank: '--', class: 'field', id: 'select_day', style: 'width:90px' %>
+                    <i class="fas fa-angle-down" ></i><span>日</span>
+                </div><br /><br /><br />
+                <div class=label-text>
+                  <h7>本人確認</h7><p>安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。</p>
+                </div>
+                <div class='recaptcha'>
+                  <div class="g-recaptcha" data-sitekey=ENV['RECAPTCHA_PUBLIC_KEY']></div>
+                    <%#= recaptcha_tags  %>
+                  </div>
+                <div class='sign-up-next-box'>
+                  <span>「次へ進む」のボタンをクリックすることにより、
+                    <%= link_to '利用規約', id: 'turms', color: '$right-blue;' %>に同意したものとみなします</span>
+                      <div class='button-next',id: 'next' >次へ進む</div></br>
+                        <div class="btn-next-text">
+                          <p><%= link_to "本人情報の登録について" ,'#', class: "next-text" %>
+                            <i class="fas fa-angle-right"></i></p>
+                        </div>
+                  </div><!--sign-up-next-box-->
+          </div><!--formgroup_detail -->
+        <!--送り先住所の登録ここから-->
+          <div class="sign-up--hidden">
+            <div class='form-group-delivery'>
+              <%= f.fields_for :user_detail do |user_detail| %>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>お名前姓<span id='require'>必須</span></p></h6><br>
+                      <%= f.text_field :family_name, autocomplete: "family_name" , placeholder: '例）山田', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>お名前名<span id='require'>必須</span></p></h6><br>
+                      <%= f.text_field :first_name, autocomplete: "first_name" , placeholder: '例）彩', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>お名前姓カナ<span id='require'>必須</span></p></h6><br>
+                      <%= f.text_field :family_name_kana, autocomplete: "family_name_kana" , placeholder: '例）ヤマダ', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>お名前名カナ<span id='require'>必須</span></p></h6><br>
+                      <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" , placeholder: '例）アヤ', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>郵便番号<span id='require'>必須</span></p></h6><br>
+                      <%= user_detail.number_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: '例）123-4567', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>都道府県<span id='require'>必須</span></p></h6><br>
+                      <%= user_detail.collection_select :prefecture_id, Prefecture.all, :id , :prefecture, placeholder: '例）北海道', class: "hidden-field" , id: "select" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>市区町村<span id='require'>任意</span></p></h6><br>
+                      <%= user_detail.text_field :city, autofocus: true, autocomplete: "city", placeholder: '例）横浜市緑区', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>番地<span id='any'>任意</span></p></h6><br>
+                      <%= user_detail.text_field :street, autofocus: true, autocomplete: "street", placeholder: '例）青山1−1−1', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>建物名<span id='any'>任意</span></p></h6><br>
+                      <%= user_detail.text_field :building_name, autofocus: true, autocomplete: "building_name", placeholder: '例）柳ビル103', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class="form-group--hidden">
+                  <div class="form-group__label--hidden">
+                    <h6><p class='form-group-label__require'>電話番号<span id='any'>任意</span></p></h6><br>
+                      <%= user_detail.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: '例）09012345678', class: "hidden-field" %>
+                    </div>
+                  </div><br><br><br>
+                <div class='sign-up-submit-box'>
+                  <%= link_to root_path, class: 'product_form__back' do %>
+                    <%= f.submit '登録する', class:'button-registration' %>
+                      <% end %>
+                      </div><!--sign-up-submit-box-->
+                    <% end %>
+                  <% end %>
+                </div>
+              </div><!--form-group-delivery-->
+            </div><!--sign-up--hidden-->
+          </div><!--sign-up__single-->
+        </div><!--sign-up__main-->
+      </div><!--sign-up-->
+<%= render 'partial/single_footer' %>
