@@ -1,0 +1,31 @@
+.top-header
+  .header-innner
+    .clearfix
+      .mercari-logo
+        = image_tag 'logo.png', alt: 'mercari', width:'134', height:'36'
+      %form.header-form{:action => ""}
+        %input.input-default{:name => "keyword", :placeholder => "キーワードから探す", :type => "search", :value => ""}/
+        = fa_icon 'search', class: "icon-search"
+    .header-nav-bar.clearfix
+      %nav.content-left
+        %ul.header-nav-list
+          %li
+            %h2
+              = fa_icon 'list', class: "fa fa-list-ul"
+              = link_to 'カテゴリーから探す', '', class: 'header-nav-categoly'
+          %li
+            %h2
+              = fa_icon 'tag', class: "fas fa-tag"
+              = link_to 'ブランドから探す', '', class: 'header-nav-brand'
+      .content-right
+        %ul.header-user-list
+          - if user_signed_in?
+            %li
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-user-root sign-in-btn"
+          - else
+            %li
+              .register-btn
+                = link_to "新規会員登録",new_user_registration_path , class: "register-btn sign-up-btn"
+            %li
+              .header-user-root
+                = link_to "ログイン" , class: "header-user-root sign-in-btn"

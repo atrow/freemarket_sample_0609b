@@ -1,0 +1,84 @@
+= form_with model: @product, local: true, multipart: true do |f|
+  .product_form
+    %p.title 商品の情報を入力
+    .product_form__image
+      %p.column_title
+        出品画像（最大10枚）
+        %span.required 必須
+      = f.fields_for :images do |image|
+        = image.file_field :image
+    .product_form__main
+      .product_form__name
+        %p.column_title
+          商品名
+          %span.required 必須
+        = f.text_field :name, placeholder: '商品名（必須 40文字まで）', maxlength: '40'
+      .product_form__description
+        %p.column_title
+          商品の説明
+          %span.required 必須
+        = f.text_area :description, placeholder: '商品の説明（必須 1,000文字以内）', maxlength: '1000'
+    .product_form__detail
+      .subtitle
+        %p 商品の詳細
+      .subform
+        .product_form__category
+          %p.column_title
+            カテゴリー
+            %span.required 必須
+          = f.collection_select :category_id, @categories, :id, :category ,include_blank: '---'
+        .product_form__condition
+          %p.column_title
+            商品の状態
+            %span.required 必須
+          = f.collection_select :condition_id, @conditions, :id, :condition ,include_blank: '---'
+    .product_form__delivery
+      .subtitle
+        %p 配送について
+      .subform
+        .product_form__delivery_fee_pay
+          %p.column_title
+            配送料の負担
+            %span.required 必須
+          = f.collection_select :delivery_fee_pay_id, @delivery_fee_pays, :id, :delivery_fee_pay ,include_blank: '---'
+        .product_form__delivery_way{:hidden => ""}
+          %p.column_title
+            配送の方法
+            %span.required 必須
+          = f.collection_select :delivery_way_id, @delivery_ways, :id, :delivery_way ,include_blank: '---'
+        .product_form__prefecture
+          %p.column_title
+            発送元の地域
+            %span.required 必須
+          = f.collection_select :delivery_off_area_id, @prefectures, :id, :prefecture ,include_blank: '---'
+        .product_form__delivery_off_day
+          %p.column_title
+            発送までの日数
+            %span.required 必須
+          = f.collection_select :delivery_off_day_id, @delivery_off_days, :id, :delivery_off_day ,include_blank: '---'
+    .product_form__money
+      .subtitle
+        %p 販売価格(300〜9,999,999)
+      .subform
+        .product_form__price
+          %p.column_title
+            価格
+            %span.required 必須
+            ¥
+          = f.number_field :price
+        .product_form__fee
+          %p.column_title 販売手数料（10%）
+          %input#product_fee{:disabled => "disabled", :placeholder => "販売手数料（10%）"}/
+        .product_form__profit
+          %p.column_title 販売利益
+          %input#product_profit{:disabled => "disabled"}/
+    .product_form__hidden{:hidden => ""}
+      .product_form__product_status{:hidden => ""}
+        = f.text_field :product_status_id, value: 1
+      .product_form__purchase{:hidden => ""}
+        = f.fields_for :purchase do |purchase|
+          = purchase.text_field :seller_id, value: current_user.id
+    .product_form__submit
+      = f.submit '出品する', class:'submit_button'
+    = link_to root_path, class: 'product_form__back' do
+      .back_button もどる
