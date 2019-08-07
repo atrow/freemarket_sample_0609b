@@ -7,9 +7,9 @@
     .swiper-wrapper
       / スライド
       .swiper-slide
-        %img{:alt => "", :height => "300", :src => "https://cdn.pixabay.com/photo/2018/02/16/10/52/beverage-3157395_960_720.jpg", :width => "100%"}/
+        = image_tag 'https://cdn.pixabay.com/photo/2018/02/16/10/52/beverage-3157395_960_720.jpg', alt: '', width: '100%', height: '300'
       .swiper-slide
-        %img{:alt => "", :height => "300", :src => "https://cdn.pixabay.com/photo/2018/05/04/10/30/team-3373638_960_720.jpg", :width => "100%"}/
+        = image_tag 'https://cdn.pixabay.com/photo/2018/05/04/10/30/team-3373638_960_720.jpg', alt: '', width: '100%', height: '300'
     / ページネーション
     .swiper-pagination
     / ナビゲーションボタン
@@ -18,14 +18,14 @@
   :javascript
     var mySwiper = new Swiper ('.swiper-container', {
     loop: true,
-    
+
     // ページネーション
     pagination: '.swiper-pagination',
-    
+
     // ナビゲーションボタン
     nextButton: '.swiper-button-next',
     prevButton: '.swiper-button-prev',
-    
+
     });
 .main-contents
   .main-contents-nav
@@ -33,49 +33,55 @@
       %h2.pickup-contents-header ピックアップカテゴリー
       .items-box-container.clearfix
         %h3.text-center
-          %a{:href => " "} レディース 新着アイテム
+          -# TODO リンク先設定
+          = link_to 'レディース 新着アイテム', ''
         .items-box-content.clearfix
           / レディース新着アイテムここから
           / １商品ここから
           - @ladies_products.each do |product|
             = render partial: "/partial/product-box", locals: { product: product}
         .view-all
-          %a{:href => " "} すべての商品を見る
+          -# TODO リンク先設定
+          = link_to 'レディース 新着アイテム', ''
       .items-box-container.clearfix
         %h3.text-center
-          %a{:href => ""}
-            メンズ 新着アイテム
+          -# TODO リンク先設定
+          = link_to 'メンズ 新着アイテム', ''
         .items-box-content.clearfix
           / メンズ新着アイテムここから
           - @mens_products.each do |product|
             = render partial: "/partial/product-box", locals: { product: product}
         .view-all
-          %a{:href => " "} すべての商品を見る
+          -# TODO リンク先設定
+          = link_to 'すべての商品を見る', ''
       .items-box-container.clearfix
         %h3.text-center
-          %a{:href => ""}
-            ベビー・キッズ 新着アイテム
+          -# TODO リンク先設定
+          = link_to 'ベビー・キッズ 新着アイテム', ''
         .items-box-content.clearfix
           / ベビー・キッズ 新着アイテムここから
           - @kids_products.each do |product|
             = render partial: "/partial/product-box", locals: { product: product}
         .view-all
-          %a{:href => " "} すべての商品を見る
+          -# TODO リンク先設定
+          = link_to 'すべての商品を見る', ''
       .items-box-container.clearfix
         %h3.text-center
-          %a{:href => ""}
-            コスメ・香水・美容 新着アイテム
+          -# TODO リンク先設定
+          = link_to 'コスメ・香水・美容 新着アイテム', ''
         .items-box-content.clearfix
           / コスメ・香水・美容 新着アイテムここから
           - @cosme_products.each do |product|
             = render partial: "/partial/product-box", locals: { product: product}
         .view-all
-          %a{:href => " "} すべての商品を見る
+          -# TODO リンク先設定
+          = link_to 'すべての商品を見る', ''
       .pickup-contents
         %h2.pickup-contents-header ピックアップブランド
         .items-box-container.clearfix
           %h3.text-center
-            %a{:href => " "} シャネル新着アイテム
+            -# TODO リンク先設定
+            = link_to 'シャネル新着アイテム', ''
           .items-box-content.clearfix
             / シャネル新着アイテムここから
             - @chanel_products.each do |product|
