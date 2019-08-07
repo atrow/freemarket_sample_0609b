@@ -1,8 +1,8 @@
 FactoryBot.define do
-  password = Faker::Internet.password(8)
+  password = Faker::Internet.password(min_length: 8)
 
   factory :user do
-    nickname              {Faker::Games::Pokemon.name}
+    nickname              {Faker::Name.initials}
     family_name           {Faker::Name.last_name}
     family_name_kana      {"bob"}
     first_name            {Faker::Name.first_name}
