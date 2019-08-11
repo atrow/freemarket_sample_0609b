@@ -52,7 +52,6 @@ class PurchasesController < ApplicationController
 
   def set_purchase
     # データ取得
-    # product = Product.find(params[:id])
     @purchase = Purchase.find(params[:id])
   end
 end
