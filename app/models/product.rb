@@ -19,6 +19,15 @@ class Product < ApplicationRecord
   validates :price, numericality: {
     only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999
   }
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :condition, presence: true
+  validates :delivery_fee_pay, presence: true
+  validates :delivery_way, presence: true
+  validates :delivery_off_area, presence: true
+  validates :delivery_off_day, presence: true
+  validates :category, presence: true
+
 
   scope :recent, -> { order(created_at: :desc).limit(4) }
 end

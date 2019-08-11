@@ -1,6 +1,12 @@
 = form_with model: @product, local: true, multipart: true do |f|
   .product_form
     %p.title 商品の情報を入力
+    - if @product.errors.any?
+      .product_form__errors
+        %h2.error_title= "#{@product.errors.full_messages.count}件のエラーがあります"
+        %ul
+          - @product.errors.full_messages.each do |message|
+            %li= message
     .product_form__image
       %p.column_title
         出品画像（最大10枚）
@@ -26,12 +32,12 @@
           %p.column_title
             カテゴリー
             %span.required 必須
-          = f.collection_select :category_id, @categories, :id, :category ,include_blank: '---'
+          = f.collection_select :category_id, Category.get_all_grandchildren, :id, :category ,include_blank: '---'
         .product_form__condition
           %p.column_title
             商品の状態
             %span.required 必須
-          = f.collection_select :condition_id, @conditions, :id, :condition ,include_blank: '---'
+          = f.collection_select :condition_id, Condition.all, :id, :condition ,include_blank: '---'
     .product_form__delivery
       .subtitle
         %p 配送について
@@ -40,22 +46,22 @@
           %p.column_title
             配送料の負担
             %span.required 必須
-          = f.collection_select :delivery_fee_pay_id, @delivery_fee_pays, :id, :delivery_fee_pay ,include_blank: '---'
+          = f.collection_select :delivery_fee_pay_id, DeliveryFeePay.all, :id, :delivery_fee_pay ,include_blank: '---'
         .product_form__delivery_way{:hidden => ""}
           %p.column_title
             配送の方法
             %span.required 必須
-          = f.collection_select :delivery_way_id, @delivery_ways, :id, :delivery_way ,include_blank: '---'
+          = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :delivery_way ,include_blank: '---'
         .product_form__prefecture
           %p.column_title
             発送元の地域
             %span.required 必須
-          = f.collection_select :delivery_off_area_id, @prefectures, :id, :prefecture ,include_blank: '---'
+          = f.collection_select :delivery_off_area_id, Prefecture.all, :id, :prefecture ,include_blank: '---'
         .product_form__delivery_off_day
           %p.column_title
             発送までの日数
             %span.required 必須
-          = f.collection_select :delivery_off_day_id, @delivery_off_days, :id, :delivery_off_day ,include_blank: '---'
+          = f.collection_select :delivery_off_day_id, DeliveryOffDay.all, :id, :delivery_off_day ,include_blank: '---'
     .product_form__money
       .subtitle
         %p 販売価格(300〜9,999,999)
