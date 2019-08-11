@@ -17,14 +17,6 @@ class ProductsController < ApplicationController
     # モデルオブジェクト生成
     @product = Product.new
     10.times {@product.images.build}
-    @conditions = Condition.all
-    @delivery_fee_pays = DeliveryFeePay.all
-    @delivery_off_days = DeliveryOffDay.all
-    @delivery_ways = DeliveryWay.all
-    @prefectures = Prefecture.all
-    @conditions = Condition.all
-    @brands = Brand.all
-    @categories = Category.get_all_grandchildren
     @product.build_purchase
   end
 
@@ -34,6 +26,8 @@ class ProductsController < ApplicationController
     # save確認
     if @product.save
       redirect_to root_path
+    else
+      render :new
     end
   end
 

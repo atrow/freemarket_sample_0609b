@@ -131,4 +131,22 @@ select {
       font-weight: bold;
     }
   }
+
+  &__errors {
+    padding: 10px 0px 10px 0px;
+    border-top: 1px solid rgb(200, 200, 200);
+    .error_title {
+      color: red;
+      font-weight: bold;
+    }
+    ul li{
+      text-align: left;
+      border-left: solid 6px red;
+      background: #f1f8ff;
+      margin-bottom: 3px;
+      line-height: 1.5;
+      padding: 0.5em;
+      list-style-type: none!important;
+    }
+  }
 }
