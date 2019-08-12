@@ -79,7 +79,7 @@
   / 送り先住所の登録ここから
   .sign-up--hidden
     .form-group-delivery
-       f.fields_for :user_detail do |user_detail|
+      = f.fields_for :user_detail do |user_detail|
         .form-group--hidden
           .form-group__label--hidden
             %h6
