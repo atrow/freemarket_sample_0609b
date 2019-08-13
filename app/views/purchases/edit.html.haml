@@ -1,0 +1,33 @@
+.logo
+  = image_tag 'logo.png', alt: 'mercari', width:'134', height:'36'
+.purchase_information
+  %p.title 購入内容の確認
+  .purchase_information__image
+    = image_tag @image.image.to_s, size: "150x150", alt: "product_image"
+  .purchase_information__name
+    %p
+      = @purchase.product.name
+  .purchase_information__price
+    %p#price
+      = '¥ ' + @purchase.product.price.to_s
+      %span.purchase_information__option 送料込み
+  .purchase_information__point
+    %p ポイントはありません
+  .purchase_information__payment
+    %p#payment_title 支払い金額
+    %p#payment
+      = @purchase.product.price
+= render 'form_edit', purchase: @purchase
+-# .user_information
+-#   .user_information__address
+-#     %p
+-#       = @derivery.zip_code
+-#     %p
+-#       = @derivery.city
+-#     %p
+-#       = @derivery.street
+-#     %p
+-#       = @derivery.building_name
+-#   .user_information__name
+-#     %p
+-#       = current_user.family_name + ' ' + current_user.first_name

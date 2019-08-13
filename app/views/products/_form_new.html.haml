@@ -47,7 +47,7 @@
             配送料の負担
             %span.required 必須
           = f.collection_select :delivery_fee_pay_id, DeliveryFeePay.all, :id, :delivery_fee_pay ,include_blank: '---'
-        .product_form__delivery_way{:hidden => ""}
+        .product_form__delivery_way{hidden: ""}
           %p.column_title
             配送の方法
             %span.required 必須
@@ -74,14 +74,14 @@
           = f.number_field :price
         .product_form__fee
           %p.column_title 販売手数料（10%）
-          %input#product_fee{:disabled => "disabled", :placeholder => "販売手数料（10%）"}/
+          %input#product_fee{disabled: "disabled", placeholder: "販売手数料（10%）"}/
         .product_form__profit
           %p.column_title 販売利益
-          %input#product_profit{:disabled => "disabled"}/
-    .product_form__hidden{:hidden => ""}
-      .product_form__product_status{:hidden => ""}
+          %input#product_profit{disabled: "disabled"}/
+    .product_form__hidden{hidden: ""}
+      .product_form__product_status{hidden: ""}
         = f.text_field :product_status_id, value: 1
-      .product_form__purchase{:hidden => ""}
+      .product_form__purchase{hidden: ""}
         = f.fields_for :purchase do |purchase|
           = purchase.text_field :seller_id, value: current_user.id
     .product_form__submit
