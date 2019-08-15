@@ -61,18 +61,5 @@
   width:300px;
   margin: 0 auto;
   text-align : center;
-
-  &__submit {
-    padding: 10px 0px 10px 0px;
-    width: 270px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(200, 200, 200);
-    .submit_button {
-      width: 270px;
-      border: none;
-      background-color: rgb(200, 200, 200);
-      cursor: pointer;
-    }
-  }
+  padding: 10px 0px 10px 0px;
 }
