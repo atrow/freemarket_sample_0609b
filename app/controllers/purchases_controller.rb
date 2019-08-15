@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :set_purchase, only: [:update]
+  before_action :set_purchase, only: [:edit, :update]
 
   require 'payjp'
 
@@ -53,5 +53,7 @@ class PurchasesController < ApplicationController
   def set_purchase
     # データ取得
     @purchase = Purchase.find(params[:id])
+    @derivery = current_user.user_deriverys.first
+    @image = @purchase.product.images.first
   end
 end

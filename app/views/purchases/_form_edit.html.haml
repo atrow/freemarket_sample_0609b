@@ -1,0 +1,9 @@
+= form_with model: @purchase, local: true, multipart: true do |f|
+  .purchase_form
+    .purchase_form__hidden{hidden: ""}
+      .purchase_form__payment
+        = f.text_field :payment
+      .purchase_form__buyer
+        = f.text_field :buyer_id, value: current_user.id
+    .purchase_form__submit
+      = f.submit '購入する', class:'submit_button'
