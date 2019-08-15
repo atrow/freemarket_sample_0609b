@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
       @purchase.product.save
 
       # Payjp
-      create_charge(create_token, @purchase.payment)
+      create_charge(@purchase.payment)
 
       # トップページへリダイレクト
       redirect_to root_path
@@ -28,24 +28,10 @@ class PurchasesController < ApplicationController
     params.require(:purchase).permit(:payment, :buyer_id)
   end
 
-  def create_token
-    # Payjpトークン作成
-    # VISAテストカードを使用
-    token = Payjp::Token.create(
-      card: {
-        number:    '4242424242424242',
-        cvc:       '123',
-        exp_year:  '2020',
-        exp_month: '2',
-      }
-    )
-    return token[:id]
-  end
-
-  def create_charge(token, amount)
+  def create_charge(amount)
     Payjp::Charge.create(
       amount:   amount,
-      card:     token,
+      card:     params['payjp-token'],
       currency: 'jpy'
     )
   end
