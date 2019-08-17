@@ -51,11 +51,10 @@ body {
               display: inline-block;
               bottom: 0px;
               margin-left: -200px;
-
               }
               h7 {
                 @include clearfix;
-                padding: 2px 1px 3px;
+                padding: 8px;
                 font-size: 12px;
                 font-weight: bold;
                 display: inline-block;
@@ -121,10 +120,10 @@ body {
                   }//label-text
 
              .select_y {
+                display: inline-block;
                   #select_year {
                     @include field;
                     cursor: default;
-                    position: absolute;
                     display: inline-block;
                     -webkit-appearance: none;
                     appearance: none;
@@ -133,15 +132,6 @@ body {
                     width: 30px;
                     left: 30%;
                 }
-                i {
-                    @include font-awesome;
-                    position: relative;
-                    color: $gray3;
-                    font-size: 14px;
-                    text-decoration: none;
-                    left: -15%;
-                    top: -10%;
-              }
               span {
                 display: inline-block;
                 position: relative;
@@ -149,13 +139,11 @@ body {
                 top: -10%;
               }
             }
-
-
 
             .select_m {
+                display: inline-block;
                   #select_month {
                     cursor: default;
-                    position: absolute;
                     display: inline-block;
                     -webkit-appearance: none;
                     appearance: none;
@@ -164,29 +152,18 @@ body {
                     width: 30px;
                     left: 30%;
                 }
-                i {
-                    @include font-awesome;
-                    position: relative;
-                    color: $gray3;
-                    font-size: 14px;
-                    text-decoration: none;
-                    left: -15%;
-                    top: -20%;
-              }
               span {
-                position: relative;
                 display: inline-block;
                 left: -14%;
                 top: -10%;
               }
             }
 
-
             .select_d {
+                display: inline-block;
                   #select_day {
                     @include field;
                     cursor: default;
-                    position: absolute;
                     display: inline-block;
                     -webkit-appearance: none;
                     appearance: none;
@@ -195,27 +172,12 @@ body {
                     width: 30px;
                     left: 30%;
                 }
-                i {
-                    @include font-awesome;
-                    position: relative;
-                    color: $gray3;
-                    font-size: 14px;
-                    text-decoration: none;
-                    left: -15%;
-                    top: -30%;
-              }
               span {
-                position: relative;
                 display: inline-block;
                 left: -14%;
                 top: -10%;
               }
             }
-
-
-
-
-
 
                   .form-group-detail {
 
@@ -251,9 +213,7 @@ body {
                                   text-align: left;
                               }
                           }//form-group
-
                       }//form-group__label
-
 
               .sign-up--hidden {
                   .form-group-delivery {
@@ -308,12 +268,9 @@ body {
                             font-weight: bold;
                             text-align: left;
                         }
-
-
                       }
                   }//form-group-delivery
               }//sign-up--hidden
-
 
                   .btn-next-text{
                       a {
@@ -334,13 +291,11 @@ body {
   }
 
   .sign-up-next-box,.sign-up-submit-box {
-
       span {
           font-size: 12px;
           text-decoration: none;
           color:$gray3;
       }
-
       a {
           font-size: 12px;
           text-decoration: none;
@@ -349,7 +304,6 @@ body {
 
       .button-next,.button-registration,.button-card,.actions {
           @include button-next;
-s
               a {
               text-decoration: none;
               text-align: center;
@@ -357,7 +311,6 @@ s
               color:$white;
               }
           }//button-next
-
 
       .btn-next-text {
           @include clearfix;
@@ -382,13 +335,10 @@ s
       }//sign-up
   }//body
 
-
-
   // users/newここから
   .registration {
           position: relative;
           width: 100%; height: auto;
-
           .registration__main {
           background-color: white;
           width: 700px;
@@ -461,7 +411,6 @@ s
                 text-decoration: none;
             }
 
-
             .btn-facebook p {
                 color: white;
                 text-decoration: none;
@@ -470,14 +419,11 @@ s
             .btn-facebook i {
                 position: absolute;
             }
-
-
       }//registration-select__single
 
-          .registration-select__single {
-              margin: 0 auto;
-
-           .btn-google {
+        .registration-select__single {
+            margin: 0 auto;
+            .btn-google {
               @include btn-google;
               @include field;
                 border: solid 0.9px $gray2;
