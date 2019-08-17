@@ -19,10 +19,32 @@ class Product < ApplicationRecord
   validates :price, numericality: {
     only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999
   }
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :condition, presence: true
+  validates :delivery_fee_pay, presence: true
+  validates :delivery_way, presence: true
+  validates :delivery_off_area, presence: true
+  validates :delivery_off_day, presence: true
+  validates :category, presence: true
+
 
   scope :recent, -> { order(created_at: :desc).limit(4) }
   scope :get_category_products, -> (category_id) { where(category_id: category_id)}
 
 
+  def self.get_ladies
+  categories = Category.where(parent_id: 14..32)
+  ladies = get_category_products(categories)
+  end
 
- end
+  def self.get_mens
+  categories = Category.where(parent_id: 33..46)
+  mens = get_category_products(categories)
+  end
+
+  def self.get_kids
+  categories = Category.where(parent_id: 47..61)
+  kids = get_category_products(categories)
+  end
+end

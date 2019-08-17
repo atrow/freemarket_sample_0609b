@@ -8,7 +8,7 @@ describe ProductsController do
     grandchildren << build(:category, category: "パーカー", parent_id: "14")
     allow(Category).to receive(:get_all_grandchildren).and_return(grandchildren)
   end
-     describe 'GET #index' do
+  describe 'GET #index' do
     it 'indexアクションで出品中のアイテムのみが表示されるか' do
        product = FactoryBot.create(:product)
        get :index, params: { product_status_id: product }
@@ -22,18 +22,18 @@ describe ProductsController do
     end
 
   describe 'GET #new' do
-    context 'log in' do
+    context 'ログイン中' do
       before do
         login_user user
       end
-      it "renders the :new template" do
+      it "new view が呼び出されるか" do
         get :new
         expect(response).to render_template :new
       end
     end
 
-    context 'not log in' do
-      it "redirects to new_user_session_path" do
+    context 'ログインしていない' do
+      it "new_user_session_path にリダイレクトするか" do
         get :new
         expect(response).to redirect_to(new_user_session_path)
       end
@@ -41,25 +41,25 @@ describe ProductsController do
   end
 
   describe 'GET #edit' do
-    context 'log in' do
+    context 'ログイン中' do
       before do
        login_user user
       end
-      it "assigns the requested product to @product" do
+      it "要求された product が割り当てられるか" do
         product = create(:product)
         get :edit, params: { id: product }
         expect(assigns(:product)).to eq product
       end
 
-      it "renders the :edit template" do
+      it "edit view が呼び出されるか" do
         product = create(:product)
         get :edit, params: { id: product }
         expect(response).to render_template :edit
       end
     end
 
-    context 'not log in' do
-      it "redirects to new_user_session_path" do
+    context 'ログインしていない' do
+      it "new_user_session_path にリダイレクトするか" do
         product = create(:product)
         get :edit, params: { id: product }
         expect(response).to redirect_to(new_user_session_path)
@@ -76,8 +76,8 @@ describe ProductsController do
     before do
       login_user user
     end
-    context 'can save' do
-      it 'count up product' do
+    context 'save される' do
+      it 'Product, Image, Purchase テーブルが1件更新されるか' do
         params[:product][:images_attributes] = [ attributes_for(:image, product: params) ]
         params[:product][:purchase_attributes] = attributes_for(:purchase, product: params, seller_id: user.id)
         expect{ subject }.to change(Product, :count).by(1).and change(Image, :count).by(1).and change(Purchase, :count).by(1)
@@ -96,32 +96,32 @@ describe ProductsController do
     before do
       login_user user
     end
-    context 'can update' do
-      it "locates the requersted @product" do
+    context 'update される' do
+      it "要求された product が割り当てられるか" do
         patch :update, params: {id: product.id, product: attributes_for(:product)}
         expect(assigns(:product)).to eq product
       end
 
-      it "changes @product's attributes" do
+      it "product の更新内容が正しいか" do
         patch :update, params: {id: product.id, product: attributes_for(:product, name: 'hoge', description: 'hogehoge')}
         product.reload
         expect(product.name).to eq("hoge")
         expect(product.description).to eq("hogehoge")
       end
 
-      it "changes @product's attributes with @image" do
+      it "image が更新されるか" do
         new_product[:images_attributes] = [ attributes_for(:image, product: product, image: 'hogehoge') ]
         expect {
           patch :update, params: {id: product.id, product: new_product}
         }.to change(Image, :count).by(1)
       end
 
-      it 'destroy images with product' do
+      it 'product, image が削除されるか' do
         product.images.create
-        expect{ product.destroy }.to change{ Image.count }.by(-1)
+        expect{ product.destroy }.to change{ Product.count }.by(-1).and change{ Image.count }.by(-1)
       end
 
-      it "redirects to products_path" do
+      it "root_path にリダイレクトするか" do
         patch :update, params: {id: product.id, product: attributes_for(:product)}
         expect(response).to redirect_to(root_path)
       end

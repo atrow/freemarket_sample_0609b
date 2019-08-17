@@ -1,0 +1,8 @@
+= form_with model: @purchase, local: true, multipart: true do |f|
+  .purchase_form
+    .purchase_form__hidden{hidden: ""}
+      .purchase_form__payment
+        = f.text_field :payment
+      .purchase_form__buyer
+        = f.text_field :buyer_id, value: current_user.id
+    %script.payjp-button{src: "https://checkout.pay.jp/", "data-key" => "pk_test_74ead5292fa5eabf7b238ed4"}
