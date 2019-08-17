@@ -13,8 +13,12 @@ describe ProductsController do
        product = FactoryBot.create(:product)
        get :index, params: { product_status_id: product }
        expect(assigns(:product)).to match [product.product_status_id == 1]
+
+     it "該当するビューが描画されているか do
+       get :index
+       expect(response).to render_template :index
+     end
     end
-  end
 
   describe 'GET #new' do
     context 'ログイン中' do
