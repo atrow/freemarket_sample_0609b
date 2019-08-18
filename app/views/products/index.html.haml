@@ -42,7 +42,7 @@
             = render partial: "/partial/product-box", locals: { product: product}
         .view-all
           -# TODO リンク先設定
-          = link_to 'レディース 新着アイテム', ''
+          = link_to 'すべての商品を見る', ''
       .items-box-container.clearfix
         %h3.text-center
           -# TODO リンク先設定
@@ -88,6 +88,34 @@
               = render partial: "/partial/product-box", locals: { product: product}
           .view-all
             = link_to 'すべての商品を見る', ''
-    / フッターここから
+        .items-box-container.clearfix
+          %h3.text-center
+            -# TODO リンク先設定
+            = link_to 'ルイ ヴィトン新着アイテム', ''
+          .items-box-content.clearfix
+            / ルイ ヴィトン新着アイテムここから
+            - @Vuitton_products.each do |product|
+              = render partial: "/partial/product-box", locals: { product: product}
+          .view-all
+            = link_to 'すべての商品を見る', ''
+        .items-box-container.clearfix
+          %h3.text-center
+            -# TODO リンク先設定
+            = link_to 'シュプリーム新着アイテム', ''
+          .items-box-content.clearfix
+            / シュプリーム新着アイテムここから
+            - @Supreme_products.each do |product|
+              = render partial: "/partial/product-box", locals: { product: product}
+          .view-all
+            = link_to 'すべての商品を見る', ''
+        .items-box-container.clearfix
+          %h3.text-center
+            -# TODO リンク先設定
+            = link_to 'ナイキ新着アイテム', ''
+          .items-box-content.clearfix
+            / ナイキ新着アイテムここから
+            - @nike_products.each do |product|
+              = render partial: "/partial/product-box", locals: { product: product}
+          .view-all
+            = link_to 'すべての商品を見る', ''
     = render partial: "/partial/footer"
-    / フッターここまで

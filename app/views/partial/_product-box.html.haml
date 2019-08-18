@@ -1,7 +1,10 @@
 %section.items-box
   = link_to ''
   %figure.items-box-photo
-    = image_tag "#{product.images.first.image.url}"
+    -if not product.images == ''
+      = image_tag product.images.first.image.url
+    -else
+      = image_tag ''
   .items-box-body
     %h3.items-box-name.font-2= product.name
     .items-box-num
