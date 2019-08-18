@@ -60,10 +60,7 @@ body {
                 display: inline-block;
                 bottom: 0px;
                 text-align: center;
-
                 }
-
-
 
               .g-top-recaptcha {
                   @include clearfix;
@@ -76,7 +73,7 @@ body {
                   margin-left: 180px;
                   margin-bottom: 30px;
               }
-              #require {
+              #require,#required {
                   background: $red;
                   font-size: 12px;
                   margin: 0 0 0 8px;
@@ -180,7 +177,6 @@ body {
             }
 
                   .form-group-detail {
-
                       .field {
                           @include field;
                           padding: 8px;
@@ -189,7 +185,6 @@ body {
                           width: 280px;
                           cursor: default;
                       }
-
                       .form-group {
                           margin-bottom: 8px;
 
