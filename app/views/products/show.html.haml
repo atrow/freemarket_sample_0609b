@@ -1,0 +1,120 @@
+.default-container
+  / ヘッダー↓
+  = render partial: "/partial/header"
+
+  /商品詳細↓
+  .product-detail
+    %h1.product-name 商品名
+    .product-info.clearfix
+      .product-info__photo
+        .product-info__photo--main
+          = image_tag 'https://bellard.org/bpg/2small.png', class: 'pengin'
+      %table.detail-table
+        %tr
+          %th.table-user-name 出品者
+          %td
+            .user_name otake
+            .evaluation
+              .good
+                .fas.fa-smile-beam
+                .good_num 1
+              .nomal
+                .fas.fa-surprise
+                .nomal_num 1
+              .bad
+                .fas.fa-sad-tear
+                .bad_num 1
+        %tr
+          %th.table-content カテゴリー
+          %td a
+        %tr
+          %th.table-content ブランド
+          %td a
+        %tr
+          %th.table-content 商品のサイズ
+          %td a
+        %tr
+          %th.table-content 商品の状態
+          %td a
+        %tr
+          %th.table-content 配送料の負担
+          %td a
+        %tr
+          %th.table-content 配送の方法
+          %td a
+        %tr
+          %th.table-content 配送元地域
+          %td a
+        %tr
+          %th.table-content 配送日の目安
+          %td a
+    .product-price
+      %span.product-price__money ¥お金
+      %span.product-price__tax (税込)
+      %span.product-price__postage 送料込み
+    .product-buy-button
+      = link_to "購入画面に進む", ""
+    .product-description 商品の説明
+    .product-button-container.clearfix
+      .product-button-container--left-buttons
+        .like-button.product-button
+          %i.far.fa-heart
+          %span いいね！
+          %span.like-num 3
+        .report-button.product-button
+          %i.fas.fa-flag
+          %span 不適切な商品の報告
+      .product-button-container--right-button
+        %i.fas.fa-lock
+        = link_to "あんしん・あんぜんへの取り組み", "https://www.mercari.com/jp/safe/description/"
+  /コメント↓
+  -#  .product-comment
+  -#    .product-comment__container
+  -#      .product-comment__container--detail
+  -#        %ul.comments
+  -#          %li.comment hahaha
+  -#          %li.comment rarara
+  -#      .product-comment__container--form
+  -#        %p.tyuuigaki 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+  -#        = form_for @comment do |f|
+  -#          = f.text_field :name
+  -#        .comentsurubutton
+
+  /前後ページ↓
+  .nav-product-link-next.clearfix
+    %ul.backnext.clearfix
+      %li.back
+        = link_to "前のやつ", "https://item.mercari.com/jp/m88594702450/"
+      %li.next
+        = link_to "次のやつ", "https://item.mercari.com/jp/m88594702450/"
+
+  /SNS関連↓
+  .social-media-box
+    %ul.social-media-links
+      %li.share-btn
+        = link_to "https://www.facebook.com/login.php?skip_api_login=1&api_key=966242223397117&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fshare.php%3Fu%3Dhttps%253A%252F%252Fitem.mercari.com%252Fjp%252Fm24765294080%252F&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Fclose_window%2F%3Fapp_id%3D966242223397117%26connect%3D0%23_%3D_&display=popup&locale=ja_JP" do
+          %i.fab.fa-facebook-square
+      %li.share-btn
+        = link_to "https://twitter.com/intent/tweet?text=SK-II%20%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E2%80%A6%20%28%C2%A5%208%2C800%29%20https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm24765294080%2F%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%80%8C%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E3%80%8D%E3%81%A7%E8%B2%A9%E5%A3%B2%E4%B8%AD%E2%99%AA%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%40mercari_jp%E3%81%95%E3%82%93%E3%81%8B%E3%82%89&url=&original_referer=" do
+          %i.fab.fa-twitter-square
+      %li.share-btn
+        = link_to "https://access.line.me/oauth2/v2.1/login?returnUri=%2Foauth2%2Fv2.1%2Fauthorize%2Fconsent%3Fscope%3Dopenid%2Bprofile%2Bfriends%2Bgroups%2Btimeline.post%2Bmessage.write%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsocial-plugins.line.me%252Flineit%252FloginCallback%253FreturnUrl%253Dhttps%25253A%25252F%25252Fsocial-plugins.line.me%25252Flineit%25252Fshare%25253Furl%25253D%252526text%25253DSK-II%25252520%252525E3%25252583%25252595%252525E3%25252582%252525A7%252525E3%25252582%252525A4%252525E3%25252582%252525B7%252525E3%25252583%252525A3%252525E3%25252583%252525AB%252525E3%25252583%25252588%252525E3%25252583%252525AA%252525E3%25252583%252525BC%252525E3%25252583%25252588%252525E3%25252583%252525A1%252525E3%25252583%252525B3%252525E3%25252583%25252588%252525E3%25252583%2525259E%252525E3%25252582%252525B9%252525E3%25252582%252525AF%252525E3%25252580%25252580sk2%2525252010%252525E6%2525259E%2525259A%25252520%2525257C%25252520%252525E3%25252583%252525A1%252525E3%25252583%252525AB%252525E3%25252582%252525AB%252525E3%25252583%252525AA%25252520%252525E3%25252582%252525B9%252525E3%25252583%2525259E%252525E3%25252583%2525259B%252525E3%25252581%252525A7%252525E3%25252581%2525258B%252525E3%25252582%25252593%252525E3%25252581%2525259F%252525E3%25252582%25252593%25252520%252525E3%25252583%25252595%252525E3%25252583%252525AA%252525E3%25252583%2525259E%252525E3%25252582%252525A2%252525E3%25252583%25252597%252525E3%25252583%252525AA%2525250D%2525250Ahttps%25253A%25252F%25252Fitem.mercari.com%25252Fjp%25252Fm24765294080%25252F%252526from%25253Dline_scheme%26state%3D6a46b4bc361c2a2666306b73e6175c%26client_id%3D1446101138&loginChannelId=1446101138&loginState=6B8K412P4K12Uar4HrvXCY#/" do
+          %i.fab.fa-line
+      %li.share-btn
+        = link_to "https://www.pinterest.jp/login/?next=/pin/create/button/%3Furl%3Dhttps%253A%252F%252Fitem.mercari.com%252Fjp%252Fm24765294080%252F%26media%3Dhttps%253A%252F%252Fstatic.mercdn.net%252Fitem%252Fdetail%252Forig%252Fphotos%252Fm24765294080_1.jpg%253F1566341567%26description%3D%25E3%2583%25A1%25E3%2583%25AB%25E3%2582%25AB%25E3%2583%25AA%25E5%2595%2586%25E5%2593%2581%253A%2520SK-II%2520%25E3%2583%2595%25E3%2582%25A7%25E3%2582%25A4%25E3%2582%25B7%25E3%2583%25A3%25E3%2583%25AB%25E3%2583%2588%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25A1%25E3%2583%25B3%25E3%2583%2588%25E3%2583%259E%25E3%2582%25B9%25E3%2582%25AF%25E3%2580%2580sk2%252010%25E6%259E%259A%2520%2523%25E3%2583%25A1%25E3%2583%25AB%25E3%2582%25AB%25E3%2583%25AA" do
+          %i.fab.fa-pinterest-square
+  .other-products
+    /その他商品↓
+    %section.user-products
+      %h2
+        = link_to 'userさんのその他の出品', ''
+      .user-products__photos.clearfix
+        .photo-box
+    /関連商品↓
+    %section.relation-products
+      %h3
+        = link_to '関連のその他の出品', ''
+      .relation-products__photos.clearfix
+
+  /フッター↓
+  = render partial: "/partial/footer"

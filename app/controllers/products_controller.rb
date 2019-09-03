@@ -3,14 +3,14 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
 
   def index
-   @ladies_products = Product.where(product_status_id: 1).get_ladies.recent
-   @mens_products = Product.where(product_status_id: 1).get_mens.recent
-   @kids_products = Product.where(product_status_id: 1).get_kids.recent
-   @cosme_products = Product.where(product_status_id: 1).recent
-   @chanel_products = Product.where(brand_id: 1, product_status_id: 1).recent
-   @Vuitton_products = Product.where(brand_id: 2, product_status_id: 1).recent
-   @Supreme_products = Product.where(brand_id: 3, product_status_id: 1).recent
-   @nike_products = Product.where(brand_id: 4, product_status_id: 1).recent
+    @ladies_products = Product.where(product_status_id: 1).get_ladies.recent
+    @mens_products = Product.where(product_status_id: 1).get_mens.recent
+    @kids_products = Product.where(product_status_id: 1).get_kids.recent
+    @cosme_products = Product.where(product_status_id: 1).recent
+    @chanel_products = Product.where(brand_id: 1, product_status_id: 1).recent
+    @Vuitton_products = Product.where(brand_id: 2, product_status_id: 1).recent
+    @Supreme_products = Product.where(brand_id: 3, product_status_id: 1).recent
+    @nike_products = Product.where(brand_id: 4, product_status_id: 1).recent
   end
 
   def new
@@ -29,6 +29,17 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    #@product = Product.find_by(id: params[:id])
+    #@category = @product.category.includes(:products)
+    #@brand = @product.brand.includes(:products)
+    #@condition = @product.condition.includes(:products)
+    #@delivery_fee_pay = @product.delivery_fee_pay.includes(:products)
+    #@delivery_way = @product.delivery_off_way.includes(:products)
+    #@delivery_off_area = @product.delivery_off_area.includes(:products)
+    #@delivery_off_day = @product.delivery_off_day.includes(:products)
   end
 
   def edit
