@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe Product do
-  describe '#create' do
-    it "price が300円以上であること " do
+  describe "#create" do
+    it "price が300円以上であること" do
       product = build(:product, price: 300)
       expect(product).to be_valid
     end
@@ -75,6 +75,16 @@ describe Product do
       product = build(:product, category: nil)
       product.valid?
       expect(product.errors[:category]).to include("を入力してください")
+    end
+  end
+
+  describe "#self.search" do
+    it "Productsモデルあいまい検索" do
+      create(:product, name: "Awesome Ruby Book")
+      create(:product, name: "How to Ruby")
+      create(:product, name: "Rails")
+      products = Product.search("Ruby")
+      expect(products.size).to eq(2)
     end
   end
 end

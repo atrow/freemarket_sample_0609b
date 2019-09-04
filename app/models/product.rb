@@ -28,10 +28,8 @@ class Product < ApplicationRecord
   validates :delivery_off_day, presence: true
   validates :category, presence: true
 
-
   scope :recent, -> { order(created_at: :desc).limit(4) }
   scope :get_category_products, -> (category_id) { where(category_id: category_id)}
-
 
   def self.get_ladies
     categories = Category.where(parent_id: 14..32)
@@ -46,5 +44,10 @@ class Product < ApplicationRecord
   def self.get_kids
     categories = Category.where(parent_id: 47..61)
     kids = get_category_products(categories)
+  end
+
+  def self.search(product_name)
+    return Product.all unless product_name
+    Product.where(['name LIKE ?', "%#{product_name}%"])
   end
 end

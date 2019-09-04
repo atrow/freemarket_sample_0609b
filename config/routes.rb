@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-#  get "users/new" => "users#new"
   get "registrations/new" => "registrations#new"
+  get "products/search" => "products#search"
 
   resources :users, only: [:show, :new, :create, :edit, :update]
   root 'products#index'

@@ -1,0 +1,8 @@
+.default-container
+  = render partial: "/partial/header"
+.search_result
+  .search_result__result 検索結果
+  .items-box-container.clearfix
+    .items-box-content.clearfix
+      - @products.each do |product|
+        = render partial: "/partial/product-box", locals: { product: product }
