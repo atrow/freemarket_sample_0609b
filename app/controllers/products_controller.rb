@@ -52,6 +52,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.search(params[:product_name])
+  end
+
   private
 
   def product_params
