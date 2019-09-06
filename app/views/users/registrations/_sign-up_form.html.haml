@@ -7,99 +7,92 @@
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             = render "devise/shared/error_messages", resource: resource
             .form-group__label
-              %h6
-                %p.form-group-label__require    ニックネーム
-                %span#require 必須
+            %h8
+              %p.form-group-label__require ニックネーム
+              %span#require 必須
               = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: '例）メルカリ太郎', class: 'field'
             .form-group__label
-              %h6
-                %p.form-group-label__require メールアドレス
-                %span#require 必須
+            %h8
+              %p.form-group-label__require メールアドレス
+              %span#require 必須
               = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'pc・携帯どちらでも可', class: 'field'
             .form-group__label
-              %h6
+              %h8
                 %p.form-group-label__require パスワード
                 %span#require 必須
-              = f.password_field :password, autocomplete: "off" , placeholder: '６文字以上',class: 'field'
-            .form-group__label
-              %h6
+                = f.password_field :password, autocomplete: "off" , placeholder: '６文字以上',class: 'field'
+              .form-group__label
+              %h8
                 %p.form-group-label__require パスワード（確認）
                 %span#require 必須
-              = f.password_field :password_confirmation, autocomplete: "off" , placeholder: '６文字以上',class: 'field'
-            .form-group__label
-              %h6
-                %p.form-group-label__require 生年月日
+                = f.password_field :password_confirmation, autocomplete: "off" , placeholder: '６文字以上',class: 'field'
+              .form-group-delivery
+              %h7
+                %p.form-group-label__require 姓    （全角）
                 %span#require 必須
-              .select_y
-                = select_tag :year, options_for_select( (1900..2030)),  include_blank: '--', class: 'field', id: 'select_year', style: 'width:80px'
-                %span
-              .select_m
-                = select_tag :month, options_for_select((1..12)),  include_blank: '--', class: 'field', id: 'select_month', style: 'width:80px'
-                %span
-              .select_d
-                = select_tag :day, options_for_select((1..31)),  include_blank: '--', class: 'field', id: 'select_day', style: 'width:80px'
-            .form-group__label
-            .next
-              %span 「次へ進む」のボタンをクリックすることにより、
-              %br 利用規約に同意したものとみなします
-            .recaptcha
+                = f.text_field :family_name, class:'form-group__input', placeholder: "例) 山田", class: 'field-name' ,id: 'field-name'
+              .form-group-delivery
+              %h7
+                %p.form-group-label__require 名     （全角）
+                %span#require 必須
+                = f.text_field :first_name, class:"form-group__input", placeholder: "例) 彩", class: 'field-name',id: 'field-name'
+              .form-group-delivery
+              %h7
+                %p.form-group-label__require 姓かな（全角）
+                %span#require 必須
+                = f.text_field :family_name_kana, class:"form-group__input", placeholder: "例) ヤマダ", class: 'field-name',id: 'field-name'
+              .form-group-delivery
+              %h7
+                %p.form-group-label__require 名かな（全角）
+                %span#require 必須
+                = f.text_field :first_name_kana, class:"form-group__input", placeholder: "例) アヤ", class: 'field-name'
+            .text
+              %h6
+              %p.form-group-label__require 本人確認
+              %span 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+              .recaptcha
               .g-recaptcha{"data-sitekey" => "{6Lf-YbEUAAAAAPmC-f1kNsuWeWSfIeTyr1e6sQTP}"}
-            .form-group__label
-              .button-next
-              = link_to '次へ進む','#', class:'button-next', id: 'button-next'
-              .form-group-delivery
-                %h6
-                  %p.form-group-label__require 姓    （全角）
-                  %span#require 必須
-                = f.text_field :family_name, class:'form-group__input', placeholder: "例) 山田", class: 'field'
-              .form-group-delivery
-                %h6
-                  %p.form-group-label__require 名     （全角）
-                  %span#require 必須
-                = f.text_field :first_name, class:"form-group__input", placeholder: "例) 彩", class: 'field'
-                .form-group-delivery
-                %h6
-                  %p.form-group-label__require 姓かな（全角）
-                  %span#require 必須
-                = f.text_field :family_name_kana, class:"form-group__input", placeholder: "例) ヤマダ", class: 'field'
-              .form-group-delivery
-                %h6
-                  %p.form-group-label__require 名かな（全角）
-                  %span#require 必須
-                = f.text_field :first_name_kana, class:"form-group__input", placeholder: "例) アヤ", class: 'field'
-              = f.fields_for :user_detail do |user_detail|
-                .form-group-hidden
-                %h7
-                  %p.form-group-label__require  郵便番号
-                  %span#required 必須
-                = user_detail.number_field :zip_code, class:'form-group__input', placeholder: "例) 1234567", class: 'field'
-                .form-group--hidden
-                %h7
-                  %p.form-group-label__require  都道府県
-                  %span#required 必須
-                = user_detail.collection_select :prefecture_id, Prefecture.all, :id , :prefecture, prompt:  "選択してください", placeholder: '例）北海道', id: 'select', class: 'field'
-                .form-group--hidden
-                %h7
-                  %p.form-group-label__require  市区町村
-                  %span#required 必須
-                = user_detail.text_field :city, class:'form-group__input', placeholder: "例) 横浜市緑区", class: 'field'
-                .form-group--hidden
-                %h7
-                  %p.form-group-label__require  番地
-                  %span#required 必須
-                = user_detail.text_field :street, class:'form-group__input', placeholder: "例) 青山1-1-1", class: 'field'
-                .form-group--hidden
-                %h7
-                  %p.form-group-label__require 建物名
-                  %span#any 任意
-                = user_detail.text_field :building_name, class:'form-group__input', placeholder: "例) 柏ビル103", class: 'field'
-                .form-group--hidden
-                %h7
-                  %p.form-group-label__require  電話番号
-                  %span#any 任意
-                = user_detail.text_field :phone, class:'form-group__input', placeholder: "例) 09012345678", class: 'field'
-                .sign-up-submit-box
-              = link_to root_path, class: 'button-registration' do
-                = f.submit '登録する', class:'button-registration', id: 'button-next'
+              .text
+                %span 「次へ進む」のボタンをクリックすることにより、
+                %a 利用規約
+                %span に同意したものとみなします
+              .btn-next
+                = link_to '次へ進む','#'
+
+            = f.fields_for :user_detail do |user_detail|
+              .form-group-hidden
+              %h7
+                %p.form-group-label__requires  郵便番号
+                %span#required 必須
+                = user_detail.number_field :zip_code, class:'form-group__input', placeholder: "例) 1234567", class: 'hidden-field'
+              .form-group--hidden
+              %h7
+                %p.form-group-label__requires  都道府県
+                %span#required 必須
+                = user_detail.collection_select :prefecture_id, Prefecture.all, :id , :prefecture, prompt:  "選択してください", placeholder: '例）北海道', id: 'select', class: 'hidden-field'
+              .form-group--hidden
+              %h7
+                %p.form-group-label__requires  市区町村
+                %span#required 必須
+                = user_detail.text_field :city, class:'form-group__input', placeholder: "例) 横浜市緑区", class: 'hidden-field'
+              .form-group--hidden
+              %h7
+                %p.form-group-label__requires  番地
+                %span#required 必須
+                = user_detail.text_field :street, class:'form-group__input', placeholder: "例) 青山1-1-1", class: 'hidden-field'
+              .form-group--hidden
+              %h7
+                %p.form-group-label__requires 建物名
+                %span#any 任意
+                = user_detail.text_field :building_name, class:'form-group__input', placeholder: "例) 柏ビル103", class: 'hidden-field'
+              .form-group--hidden
+              %h7
+                %p.form-group-label__requires  電話番号
+                %span#any 任意
+                = user_detail.text_field :phone, class:'form-group__input', placeholder: "例) 09012345678", class: 'hidden-field'
+            .sign-up-submit-box
+              = link_to root_path do
+                = f.submit '登録する', class:'button-registration'
                 = link_to new_user_registration_path, class: 'button-back' do
                   .back_button もどる
