@@ -150,3 +150,15 @@ select {
     }
   }
 }
+
+.search_result {
+  width: auto;
+  margin: 0 auto;
+  padding: 20px 0px 0px 0px;
+  &__result {
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0px 0px 10px 0px;
+  }
+}

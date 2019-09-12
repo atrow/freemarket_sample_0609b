@@ -2,10 +2,9 @@
   .header-innner
     .clearfix
       .mercari-logo
-        = image_tag 'logo.png', alt: 'mercari', width:'134', height:'36'
-      %form.header-form{:action => ""}
-        %input.input-default{:name => "keyword", :placeholder => "キーワードから探す", :type => "search", :value => ""}/
-        = fa_icon 'search', class: "icon-search"
+        = link_to root_path do
+          = image_tag 'logo.png', alt: 'mercari', width:'134', height:'36'
+      = render partial: "/partial/search"
     .header-nav-bar.clearfix
       %nav.content-left
         %ul.header-nav-list
