@@ -1,0 +1,46 @@
+= render partial: "/partial/header"
+
+.mypage
+  .mypage__main
+    .mypage__main__right
+      .mypage__main__right__top__profile
+        = link_to "#" do
+          = image_tag "https://static.mercdn.net/members/972262943.jpg?1564598982", height: '60', width: '60'
+          %h2.user-name
+            = current_user.nickname
+          .mypage__main__ritht__top__profile__number
+            .mypage__main__right__top__profile__evaluation 評価 0
+            .mypage__main__right__top__profile__exhibit 出品数 0
+
+      .mypage__main__right__middle
+        %ul.mypage__main__right__middle__tabs
+          %li.mypage__main__right__middle__tabs--active
+            %h3
+              =link_to "お知らせ", ""
+          %li
+            %h3
+              =link_to "やることリスト", ""
+        .mypage__main__right__middle__content
+          %ul.mypage__main__right__middle__content__product-list
+          .mypage__main__right__middle__contet__product-list__body__text 新しいニュースはございません。
+
+          %ul.mypage-tab-todo
+            //%li.mypage__main__right__middle__content__product-list--not-found 現在やることリストはありません
+
+      .mypage__main__right__bottom
+        %h2.mypage__main__right__bottom__tab-head 購入した商品
+        %ul.mypage__main__right__bottom__tabs
+          %li.mypage__main__right__bottom__tabs--active
+            %h3
+              =link_to "取引中", ""
+          %li
+            %h3
+              =link_to "過去の取引", ""
+        .mypage__main__right__bottom__content
+          %ul.product-trading-now
+          .mypage__main__right__bottom__content__product-list--not-found 取引中の商品がありません
+          //.mypage__main__right__bottom__content__products-list--not-found  過去に取引した商品がありません
+
+    = render 'mypage-tab-nav'
+
+= render partial: "/partial/footer"

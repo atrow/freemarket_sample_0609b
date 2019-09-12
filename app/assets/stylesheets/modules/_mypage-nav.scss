@@ -1,0 +1,45 @@
+.mypage__main__left{
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+}
+
+.side-nav__list__content{
+  color: black;
+  text-align: left;
+  font-family: sans-serif;
+  min-height: 48px;
+  margin: 0;
+  line-height: 48px;
+  padding-left: 20px;
+}
+
+.side-nav__list {
+  & > li {
+    border-top: 1px solid #eee;
+  }
+  & > li:first-child {
+    border: 0;
+  }
+  & > li > .location {
+    background-color: #eee;
+    font-weight: bold;
+  }
+  &__content {
+    display: block;
+    min-height: 48px;
+    padding: 16px;
+    background-color: $white;
+    color: #333;
+    font-size: 11px;
+  }
+  &__content:hover {
+    background-color: rgba(255,255,255,0.5);
+  }
+}
+
+.side-nav__head{
+  background-color: #eeeeee;
+  margin-top: 40px;
+  margin-left: 40px;
+}
