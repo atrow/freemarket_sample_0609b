@@ -20,7 +20,9 @@
         %ul.header-user-list
           - if user_signed_in?
             %li
-              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-user-root sign-in-btn"
+              = link_to user_path(current_user) do
+                = image_tag("user-icon.png", height: '32', width: '32')
+                %span マイページ
           - else
             %li
               .register-btn

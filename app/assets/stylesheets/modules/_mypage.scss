@@ -1,0 +1,124 @@
+// 以下全体と上段部分
+.mypage{
+  background-color: #eee;
+  &__main{
+    padding: 40px 0 150px 0;
+    margin: 40px auto;
+    width: 1020px;
+    height: 1800px;
+    &__right{
+      width: 700px;
+      float: right;
+      &__top__profile{
+        height: 200px;
+        text-align: center;
+        position: relative;
+        background: image-url("user-bg.jpg");
+        &__evaluation{
+          display: inline-block;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+.mypage__main__right__top__profile__exhibit{
+  display: inline-block;
+  padding: 5px;
+}
+
+
+// 以下中段部分
+.mypage__main__right__middle{
+  margin: 0;
+  background-color: $white;
+  &__tabs{
+    border: 0;
+    font-size: 0;
+    background: #ddd;
+    & li{
+      width: 50%;
+      text-align: center;
+      display: inline-block;
+      & h3{
+        position: relative;
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        line-height: 72px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.mypage__main__right__middle__tabs--active{
+  background-color: $white;
+}
+
+
+.mypage__main__right__middle__content__product-list__body{
+  margin: 0 40px 0 60px;
+}
+
+.mypage__main__right__middle__contet__product-list__body__text{
+  padding: 160px 0 60px;
+  background: image-url('log-gray-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: 78px 85px;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+}
+
+
+// 以下下段部分
+.mypage__main__right__bottom{
+  margin-top: 40px;
+  background-color: #fff;
+  &__tabs{
+    border: 0;
+    font-size: 0;
+    background: #ddd;
+    & li{
+      width: 50%;
+      text-align: center;
+      display: inline-block;
+    }
+  }
+}
+
+.mypage__main__right__bottom__tab-head{
+  padding: 0 16px;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 72px;
+  font-weight: bold;
+}
+
+.mypage__main__right__bottom__tabs h3{
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  line-height: 72px;
+  font-weight: 600;
+}
+
+.mypage__main__right__bottom__tabs--active{
+  background-color: #fff;
+  border-top: 1px solid #ea3252d;
+}
+
+.mypage__main__right__bottom__content__product-list--not-found{
+  padding: 160px 0 60px;
+  background: image-url('log-gray-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: 78px 85px;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+}
