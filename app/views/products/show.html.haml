@@ -4,57 +4,68 @@
 
   /商品詳細↓
   .product-detail
-    %h1.product-name 商品名
+    %h1.product-name
+      = @product.name
     .product-info.clearfix
       .product-info__photo
         .product-info__photo--main
-          = image_tag 'https://bellard.org/bpg/2small.png', class: 'pengin'
+          .main-photo
+            = image_tag @product.images.first.image.url
+        .product-info__photo--sub
+          - @product.images.each do |image|
+            .sub-photo
+              = image_tag image.image.url
       %table.detail-table
-        %tr
-          %th.table-user-name 出品者
-          %td
-            .user_name otake
-            .evaluation
-              .good
-                .fas.fa-smile-beam
-                .good_num 1
-              .nomal
-                .fas.fa-surprise
-                .nomal_num 1
-              .bad
-                .fas.fa-sad-tear
-                .bad_num 1
+        -#%tr
+        -#  %th.table-user-name 出品者
+        -#  %td
+        -#    .user_name
+        -#    .evaluation
+        -#      .good
+        -#        .fas.fa-smile-beam
+        -#        .good_num 1
+        -#      .nomal
+        -#        .fas.fa-surprise
+        -#        .nomal_num 1
+        -#      .bad
+        -#        .fas.fa-sad-tear
+        -#        .bad_num 1
         %tr
           %th.table-content カテゴリー
-          %td a
-        %tr
-          %th.table-content ブランド
-          %td a
-        %tr
-          %th.table-content 商品のサイズ
-          %td a
+          %td
+            =@product.category.category
+        -#%tr
+        -#  %th.table-content ブランド
+        -#  %td
+        -#    = @product.brand
         %tr
           %th.table-content 商品の状態
-          %td a
+          %td
+            = @product.condition.condition
         %tr
           %th.table-content 配送料の負担
-          %td a
+          %td
+            = @product.delivery_fee_pay.delivery_fee_pay
         %tr
           %th.table-content 配送の方法
-          %td a
+          %td
+            = @product.delivery_way.delivery_way
         %tr
           %th.table-content 配送元地域
-          %td a
+          %td
+            = @product.delivery_off_area.prefecture
         %tr
           %th.table-content 配送日の目安
-          %td a
+          %td
+            = @product.delivery_off_day.delivery_off_day
     .product-price
-      %span.product-price__money ¥お金
+      %span.product-price__money ¥#{@product.price}
       %span.product-price__tax (税込)
       %span.product-price__postage 送料込み
     .product-buy-button
       = link_to "購入画面に進む", ""
-    .product-description 商品の説明
+    .product-description
+      = @product.description
     .product-button-container.clearfix
       .product-button-container--left-buttons
         .like-button.product-button
@@ -84,9 +95,9 @@
   .nav-product-link-next.clearfix
     %ul.backnext.clearfix
       %li.back
-        = link_to "前のやつ", "https://item.mercari.com/jp/m88594702450/"
+        = link_to "前の商品", "https://item.mercari.com/jp/m88594702450/"
       %li.next
-        = link_to "次のやつ", "https://item.mercari.com/jp/m88594702450/"
+        = link_to "次の商品", "https://item.mercari.com/jp/m88594702450/"
 
   /SNS関連↓
   .social-media-box
@@ -105,16 +116,16 @@
           %i.fab.fa-pinterest-square
   .other-products
     /その他商品↓
-    %section.user-products
-      %h2
-        = link_to 'userさんのその他の出品', ''
-      .user-products__photos.clearfix
-        .photo-box
-    /関連商品↓
-    %section.relation-products
-      %h3
-        = link_to '関連のその他の出品', ''
-      .relation-products__photos.clearfix
+    -#%section.user-products
+    -#  %h2
+    -#    = link_to 'userさんのその他の出品', ''
+    -#  .user-products__photos.clearfix
+    -#    .photo-box
+    -#/関連商品↓
+    -#%section.relation-products
+    -#  %h3
+    -#    = link_to '関連のその他の出品', ''
+    -#  .relation-products__photos.clearfix
 
   /フッター↓
   = render partial: "/partial/footer"
