@@ -32,14 +32,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    #@product = Product.find_by(id: params[:id])
-    #@category = @product.category.includes(:products)
-    #@brand = @product.brand.includes(:products)
-    #@condition = @product.condition.includes(:products)
-    #@delivery_fee_pay = @product.delivery_fee_pay.includes(:products)
-    #@delivery_way = @product.delivery_off_way.includes(:products)
-    #@delivery_off_area = @product.delivery_off_area.includes(:products)
-    #@delivery_off_day = @product.delivery_off_day.includes(:products)
+    @product = Product.find(params[:id])
   end
 
   def edit
