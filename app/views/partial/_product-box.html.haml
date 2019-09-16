@@ -1,5 +1,5 @@
 %section.items-box
-  = link_to "/products/#{product.id}" do
+  = link_to product_path(:id) do
     %figure.items-box-photo
       -if product.images.blank?
         = image_tag ''
