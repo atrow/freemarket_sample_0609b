@@ -9,10 +9,10 @@ describe ProductsController do
     allow(Category).to receive(:get_all_grandchildren).and_return(grandchildren)
   end
   describe 'GET #index' do
-    it 'indexアクションで出品中のアイテムのみが表示されるか' do
-       product = FactoryBot.create(:product)
-       get :index, params: { product_status_id: product }
-       expect(assigns(:product)).to match [product.product_status_id == 1]
+    it "@productという変数が正しく定義されているか" do
+      product = FactoryBot.create(:product)
+      get :index
+      expect(assigns(:product)).to eq(@product)
     end
 
     it "該当するビューが描画されているか" do
