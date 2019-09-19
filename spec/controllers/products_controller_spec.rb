@@ -16,8 +16,8 @@ describe ProductsController do
     end
 
     it "該当するビューが描画されているか" do
-       get :index
-       expect(response).to render_template :index
+      get :index
+      expect(response).to render_template :index
     end
   end
 
@@ -43,7 +43,7 @@ describe ProductsController do
   describe 'GET #edit' do
     context 'ログイン中' do
       before do
-       login_user user
+      login_user user
       end
       it "要求された product が割り当てられるか" do
         product = create(:product)
@@ -87,6 +87,19 @@ describe ProductsController do
         subject
         expect(response).to redirect_to(root_path)
       end
+    end
+  end
+
+  describe 'GET #show' do
+    it "show view が呼び出されるか" do
+      product = create(:product)
+      get :show, params: { id: product }
+      expect(response).to render_template :show
+    end
+    it "要求された product が割り当てられるか" do
+      product = create(:product)
+      get :show, params: { id: product }
+      expect(assigns(:product)).to eq product
     end
   end
 
