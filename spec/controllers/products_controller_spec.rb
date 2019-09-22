@@ -140,4 +140,15 @@ describe ProductsController do
       end
     end
   end
+
+  describe 'delete #destroy' do
+    product = FactoryBot.create(:product)
+    before do
+      login_user user
+    end
+
+    it "商品が削除されるか" do
+      expect{delete :destroy, params: {id: product.id}}.to change(Product, :count).by(-1)
+    end
+  end
 end
