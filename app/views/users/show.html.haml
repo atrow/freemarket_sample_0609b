@@ -1,5 +1,7 @@
 = render partial: "/partial/header"
-
+.bread_crumbs--box
+  - breadcrumb :mypage
+  = breadcrumbs separator: " &rsaquo; "
 .mypage
   .mypage__main
     .mypage__main__right
