@@ -43,7 +43,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 
 gem 'gretel'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.11.1'
 gem 'recaptcha', require: "recaptcha/rails"
 
 # devise

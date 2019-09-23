@@ -10,11 +10,11 @@
         %ul.header-nav-list
           %li
             %h2
-              = fa_icon 'list', class: "fa fa-list-ul"
+              = icon("fas", "list", class: "fa fa-list-ul")
               = link_to 'カテゴリーから探す', '', class: 'header-nav-categoly'
           %li
             %h2
-              = fa_icon 'tag', class: "fas fa-tag"
+              = icon("fas", "tag", class: "fas fa-tag")
               = link_to 'ブランドから探す', '', class: 'header-nav-brand'
       .content-right
         %ul.header-user-list
@@ -28,5 +28,5 @@
               .register-btn
                 = link_to "新規会員登録", new_user_registration_path, class: "register-btn sign-up-btn"
             %li
-              .header-user-root
-                = link_to "ログイン", new_user_session_path, class: "header-user-root sign-in-btn"
+              .header-user
+                = link_to "ログイン", new_user_session_path, class: "header-user-root"
