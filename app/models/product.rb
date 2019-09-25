@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   belongs_to :size, optional: true
   belongs_to :brand, optional: true
   belongs_to :product_status
-  has_one :purchase, dependent: :destroy
+  has_one :purchase
   delegate :seller, to: :purchase
   delegate :buyer, to: :purchase
   accepts_nested_attributes_for :purchase
@@ -30,6 +30,8 @@ class Product < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc).limit(4) }
   scope :get_category_products, -> (category_id) { where(category_id: category_id)}
+
+  acts_as_paranoid
 
   def self.get_ladies
     categories = Category.where(parent_id: 14..32)
