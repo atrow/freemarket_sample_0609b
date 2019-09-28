@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @ladies_products = Product.where(product_status_id: 1).get_ladies.recent
@@ -47,6 +47,11 @@ class ProductsController < ApplicationController
 
   def search
     @products = Product.search(params[:product_name])
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to root_path
   end
 
   private
