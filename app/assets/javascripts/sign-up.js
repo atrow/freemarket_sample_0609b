@@ -11,7 +11,22 @@ window.addEventListener('DOMContentLoaded', function(){
 
   //「次へ」クリックすると表示非表示
   $('.btn-next').on('click',function(){
-     $('.next,.text,h8').hide();//リキャプチャ テキスト フォーム
+     $('.next,.text,h8,#requirerecaptcha').hide();//リキャプチャ テキスト フォーム
      $('.button-registration,.back_button,h7').show();//次へ」「戻る」ボタン
   })
+
+  //「登録」クリックするとエラーメッセージにするする戻る
+  $('.button-registration').on('click',function(){
+    if ( $('.recaptcha').is(':checked') )
+      $('#requirerecaptcha').hide();//リキャプチャエラーメッセージ消去# TODO: 消えない
+    else
+      $('body,html').animate({
+      scrollTop: 0}, 500);
+  })
+
+  var recaptchaCallbackFunction = function () {
+//    $('#requirerecaptcha').removeClass('disable');
+//    $('#requirerecaptcha').prop('disabled', false);
+    $('#requirerecaptcha').hide();//リキャプチャエラーメッセージが消える
+  };
 });

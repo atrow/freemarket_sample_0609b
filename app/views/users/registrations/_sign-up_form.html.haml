@@ -6,6 +6,7 @@
         .form-group
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             = render "devise/shared/error_messages", resource: resource
+            %span#requirerecaptcha 認証を必ず完了させてください
             .form-group__label
             %h8
               %p.form-group-label__require ニックネーム
@@ -28,22 +29,22 @@
                 = f.password_field :password_confirmation, autocomplete: "off" , placeholder: '６文字以上',class: 'field'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 姓    （全角）
+                %p.form-group-label__require 姓（全角）
                 %span#require 必須
                 = f.text_field :family_name, class:'form-group__input', placeholder: "例) 山田", class: 'field-name'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 名     （全角）
+                %p.form-group-label__require 名（全角）
                 %span#require 必須
                 = f.text_field :first_name, class:"form-group__input", placeholder: "例) 彩", class: 'field-name'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 姓かな（全角）
+                %p.form-group-label__require 姓（全角カナ）
                 %span#require 必須
                 = f.text_field :family_name_kana, class:"form-group__input", placeholder: "例) ヤマダ", class: 'field-name'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 名かな（全角）
+                %p.form-group-label__require 名（全角カナ）
                 %span#require 必須
                 = f.text_field :first_name_kana, class:"form-group__input", placeholder: "例) アヤ", class: 'field-name'
             .text
@@ -52,7 +53,8 @@
               %span 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 
               .recaptcha
-              .g-recaptcha{"data-sitekey" => "{6Lf-YbEUAAAAAPmC-f1kNsuWeWSfIeTyr1e6sQTP}"}
+              .g-recaptcha{callback: 'recaptchaCallbackFunction', "data-sitekey" => "6Lf-YbEUAAAAAPmC-f1kNsuWeWSfIeTyr1e6sQTP"}
+              %span#requirerecaptcha 認証にチェックをしてください
               .text
                 %span 「次へ進む」のボタンをクリックすることにより、
                 %a 利用規約

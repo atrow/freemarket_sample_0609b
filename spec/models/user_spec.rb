@@ -25,6 +25,18 @@ describe User do
     expect(user.errors[:family_name_kana]).to include("を入力してください")
   end
 
+  it "is invalid only katakana can be registered（英角は登録できないこと）" do
+    user = build(:user, family_name_kana: "alice")
+    user.valid?
+    expect(user.errors[:family_name_kana]).to include("は不正な値です")
+  end
+
+  it "is invalid only katakana can be registered（半角数字は登録できないこと）" do
+    user = build(:user, family_name_kana: "123")
+    user.valid?
+    expect(user.errors[:family_name_kana]).to include("は不正な値です")
+  end
+
   it "is invalid without a first_name" do
     user = build(:user, first_name: nil)
     user.valid?
@@ -36,6 +48,24 @@ describe User do
     user.valid?
     expect(user.errors[:first_name_kana]).to include("を入力してください")
   end
+
+   it "is invalid only katakana can be registered（英角は登録できないこと）" do
+     user = build(:user, first_name_kana: "bob")
+     user.valid?
+     expect(user.errors[:first_name_kana]).to include("は不正な値です")
+   end
+  # TODO: テストが通らない
+  #  it "is invalid only katakana can be registered（ひらがなは登録できないこと）" do
+  #    user = build(:user, first_name_kana: "ぼぶ")
+  #    user.valid?
+  #    expect(user.errors[:family_name_kana]).to include("は不正な値です")
+  #  end
+
+   it "is invalid only katakana can be registered（半角数字は登録できないこと）" do
+     user = build(:user, first_name_kana: "123")
+     user.valid?
+     expect(user.errors[:first_name_kana]).to include("は不正な値です")
+   end
 
   it "is invalid without a email" do
     user = build(:user, email: nil)

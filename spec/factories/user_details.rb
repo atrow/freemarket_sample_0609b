@@ -6,7 +6,7 @@ FactoryBot.define do
     street             {"street"}
     building_name      {"building"}
     uesr_id            {"nil"}
-    prefecture_id      {"nil"}
+    prefecture_id      {"1"}
     phone              {"00000000"}
   end
 

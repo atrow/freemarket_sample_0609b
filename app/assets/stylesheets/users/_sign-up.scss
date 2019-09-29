@@ -82,6 +82,10 @@ body {
                   color: $light-blue;
                 }
               }
+              #requirerecaptcha {
+                font-size: 16px;
+                color: $red;
+              }
               #require,#required {
                   background: $red;
                   font-size: 12px;
