@@ -105,7 +105,8 @@
         font-size: 16px;
       }
     }
-    .product-buy-button {
+    @mixin product-button {
+      width: 100%;
       display: block;
       height: 56px;
       margin: 16px 0 0;
@@ -118,6 +119,13 @@
       -webkit-transition: all ease-out .3s;
       transition: all ease-out .3s;
     }
+    .product-buy-button{
+      @include product-button;
+    }
+    .product-delete-button {
+      @include product-button;
+    }
+
     .product-description {
       padding: 24px 0 0;
       line-height: 1.5;
