@@ -16,20 +16,21 @@
             .sub-photo
               = image_tag image.image.url
       %table.detail-table
-        -#%tr
-        -#  %th.table-user-name 出品者
-        -#  %td
-        -#    .user_name
-        -#    .evaluation
-        -#      .good
-        -#        .fas.fa-smile-beam
-        -#        .good_num 1
-        -#      .nomal
-        -#        .fas.fa-surprise
-        -#        .nomal_num 1
-        -#      .bad
-        -#        .fas.fa-sad-tear
-        -#        .bad_num 1
+        %tr
+          %th.table-user-name 出品者
+          %td
+            .user_name
+              = @product.seller.nickname
+            .evaluation
+              .good
+                .fas.fa-smile-beam
+                .good_num 1
+              .nomal
+                .fas.fa-surprise
+                .nomal_num 1
+              .bad
+                .fas.fa-sad-tear
+                .bad_num 1
         %tr
           %th.table-content カテゴリー
           %td
@@ -62,8 +63,14 @@
       %span.product-price__money ¥#{@product.price}
       %span.product-price__tax (税込)
       %span.product-price__postage 送料込み
-    .product-buy-button
-      = link_to "購入画面に進む", ""
+
+    -if current_user.id == @product.seller.id
+      .button
+        = link_to "商品情報を編集する",  edit_product_path(@product)
+    -else
+      .button
+        = link_to "購入画面に進む", edit_purchase_path(@product)
+
     .product-description
       = @product.description
     .product-button-container.clearfix
