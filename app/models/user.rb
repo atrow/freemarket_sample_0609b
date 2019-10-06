@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :first_name_kana, format: { with: /\A[\p{hiragana}\p{katakana}\p{blank}ー－]+\z/ }
   validates :family_name_kana,  format: { with: /\A[\p{hiragana}\p{katakana}\p{blank}ー－]+\z/ }
 
-
   has_one :user_detail, dependent: :destroy
   accepts_nested_attributes_for :user_detail
   has_many :products

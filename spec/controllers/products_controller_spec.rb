@@ -9,10 +9,10 @@ describe ProductsController do
     allow(Category).to receive(:get_all_grandchildren).and_return(grandchildren)
   end
   describe 'GET #index' do
-    it 'indexアクションで出品中のアイテムのみが表示されるか' do
+    it "@productという変数が正しく定義されているか" do
       product = FactoryBot.create(:product)
-      get :index, params: { product_status_id: product }
-      expect(assigns(:product)).to match [product.product_status_id == 1]
+      get :index
+      expect(assigns(:product)).to eq(@product)
     end
 
     it "該当するビューが描画されているか" do
@@ -138,6 +138,17 @@ describe ProductsController do
         patch :update, params: {id: product.id, product: attributes_for(:product)}
         expect(response).to redirect_to(root_path)
       end
+    end
+  end
+
+  describe 'delete #destroy' do
+    product = FactoryBot.create(:product)
+    before do
+      login_user user
+    end
+
+    it "商品が削除されるか" do
+      expect{delete :destroy, params: {id: product.id}}.to change(Product, :count).by(-1)
     end
   end
 end
