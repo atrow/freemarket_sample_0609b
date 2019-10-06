@@ -105,7 +105,7 @@
         font-size: 16px;
       }
     }
-    .button {
+    .product-buy-button {
       display: block;
       height: 56px;
       margin: 16px 0 0;
@@ -118,6 +118,20 @@
       -webkit-transition: all ease-out .3s;
       transition: all ease-out .3s;
     }
+    .product-edit-button {
+      display: block;
+      height: 56px;
+      margin: 16px 0 0;
+      background: #ea352d;
+      color: #fff;
+      line-height: 56px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 24px;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+    }
+
     .product-description {
       padding: 24px 0 0;
       line-height: 1.5;
