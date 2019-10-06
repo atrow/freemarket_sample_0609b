@@ -124,6 +124,9 @@
     .product-buy-button{
       @include product-button;
     }
+    .product-edit-button {
+      @include product-button;
+    }
     .product-delete-button {
       @include product-button;
     }
