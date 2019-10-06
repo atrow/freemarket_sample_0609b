@@ -6,7 +6,7 @@ FactoryBot.define do
     city               {Faker::Address.city}
     street             {Faker::Address.street_address}
     building_name      {"null"}
-    prefecture_id      {Faker::Number.within(range: 1..47)}
+    prefecture_id      {Prefecture.all.sample.id}
     phone              {Faker::PhoneNumber.phone_number}
   end
 end
