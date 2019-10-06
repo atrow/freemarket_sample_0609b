@@ -118,6 +118,8 @@
       font-size: 24px;
       -webkit-transition: all ease-out .3s;
       transition: all ease-out .3s;
+      cursor: pointer;
+      cursor: hand;
     }
     .product-buy-button{
       @include product-button;
