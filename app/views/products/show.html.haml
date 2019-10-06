@@ -63,13 +63,14 @@
       %span.product-price__money ¥#{@product.price}
       %span.product-price__tax (税込)
       %span.product-price__postage 送料込み
-    .product-buy-button
-      = link_to "購入画面に進む", edit_purchase_path(@product)
     - if user_signed_in? && current_user.id == @product.purchase.seller_id
       .product-edit-button
         = link_to "商品情報を編集する",  edit_product_path(@product)
       .product-buy-button
         = link_to 'この商品を削除する', product_path(@product), method: :delete, data: { confirm: "本当に削除しますか？" }
+    - else
+      .product-buy-button
+        = link_to "購入画面に進む", edit_purchase_path(@product)
     .product-description
       = @product.description
     .product-button-container.clearfix

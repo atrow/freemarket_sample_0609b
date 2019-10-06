@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   belongs_to :size, optional: true
   belongs_to :brand, optional: true
   belongs_to :product_status
-  has_one :purchase, dependent: :destroy
+  has_one :purchase
   delegate :seller, to: :purchase
   delegate :buyer, to: :purchase
   accepts_nested_attributes_for :purchase

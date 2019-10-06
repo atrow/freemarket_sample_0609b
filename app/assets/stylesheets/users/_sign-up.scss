@@ -4,6 +4,7 @@ body {
     text-decoration: none;
     font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     input, button, textarea, select {
+        -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
       }
