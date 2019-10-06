@@ -15,18 +15,12 @@ window.addEventListener('DOMContentLoaded', function(){
      $('.button-registration,.back_button,h7').show();//次へ」「戻る」ボタン
   })
 
-  //「登録」クリックするとエラーメッセージにするする戻る
+  //「登録」クリックするとエラーメッセージまでスクロールする
   $('.button-registration').on('click',function(){
     if ( $('.recaptcha').is(':checked') )
-      $('#requirerecaptcha').hide();//リキャプチャエラーメッセージ消去# TODO: 消えない
+      $('#requirerecaptcha').hide();//リキャプチャエラーメッセージ消去
     else
       $('body,html').animate({
       scrollTop: 0}, 500);
   })
-
-  var recaptchaCallbackFunction = function () {
-//    $('#requirerecaptcha').removeClass('disable');
-//    $('#requirerecaptcha').prop('disabled', false);
-    $('#requirerecaptcha').hide();//リキャプチャエラーメッセージが消える
-  };
 });
