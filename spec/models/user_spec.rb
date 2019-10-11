@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User do
-#全カラムが入力された時登録できる
+  #全カラムが入力された時登録できる
   it "is valid with a nickname,family_name, family_name_kana, first_name, first_name_kana, email, password, password_confirmation" do
     user = build(:user)
     expect(user).to be_valid
