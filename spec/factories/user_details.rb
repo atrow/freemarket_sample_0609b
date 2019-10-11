@@ -1,5 +1,4 @@
-FactoryBot.define do
-
+FactoryBot.modify do
   factory :user_detail do
     association :user, factory: :user
     zip_code           {"1111111"}
@@ -7,7 +6,6 @@ FactoryBot.define do
     street             {Faker::Address.street_address}
     building_name      {"null"}
     prefecture_id      {Prefecture.all.sample.id}
-#    prefecture_id      {Faker::Number.within(range: 1..47)}
     phone              {Faker::PhoneNumber.phone_number}
   end
 end
