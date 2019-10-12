@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :update]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @ladies_products = Product.where(product_status_id: 1).get_ladies.recent
@@ -16,8 +16,8 @@ class ProductsController < ApplicationController
   def new
     # モデルオブジェクト生成
     @product = Product.new
-    10.times {@product.images.build}
     @product.build_purchase
+    10.times {@product.images.build}
   end
 
   def create
@@ -36,10 +36,13 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
+    count = @product.images.length
+    @product = Product.find(params[:id])
+    10.times { @product.images.build }
   end
 
   def update
+    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to root_path
     end
@@ -47,6 +50,11 @@ class ProductsController < ApplicationController
 
   def search
     @products = Product.search(params[:product_name])
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to root_path
   end
 
   private
@@ -57,7 +65,7 @@ class ProductsController < ApplicationController
       permit(:name, :description, :price, :condition_id, :brand_id,
       :delivery_fee_pay_id, :delivery_off_area_id, :delivery_off_day_id, :delivery_way_id,
       :category_id, :product_status_id,
-      images_attributes: [:image],
+      images_attributes: [:image, :_destroy, :id],
       purchase_attributes: [:seller_id]
       )
     end
@@ -68,4 +76,5 @@ class ProductsController < ApplicationController
     @images = @product.images
     @purchase = @product.purchase
   end
+
 end

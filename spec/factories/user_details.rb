@@ -1,3 +1,4 @@
+
 FactoryBot.modify do
   factory :user_detail do
     association :user, factory: :user

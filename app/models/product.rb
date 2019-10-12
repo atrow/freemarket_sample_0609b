@@ -31,6 +31,8 @@ class Product < ApplicationRecord
   scope :recent, -> { order(created_at: :desc).limit(4) }
   scope :get_category_products, -> (category_id) { where(category_id: category_id)}
 
+  acts_as_paranoid
+
   def self.get_ladies
     categories = Category.where(parent_id: 14..32)
     ladies = get_category_products(categories)
