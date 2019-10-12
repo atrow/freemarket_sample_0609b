@@ -9,4 +9,5 @@ class UsersController < ApplicationController
     def create
         super
     end
+
 end

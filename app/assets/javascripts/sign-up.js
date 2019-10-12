@@ -8,13 +8,11 @@ window.addEventListener('DOMContentLoaded', function(){
      $('.show-progress__box').show();//表示
      $('.hidden-progress__box,.done-progress__box').hide();//非表示
   })
-
   //「次へ」クリックすると表示非表示
   $('.btn-next').on('click',function(){
      $('.next,.text,h8,#requirerecaptcha').hide();//リキャプチャ テキスト フォーム
      $('.button-registration,.back_button,h7').show();//次へ」「戻る」ボタン
   })
-
   //「登録」クリックするとエラーメッセージまでスクロールする
   $('.button-registration').on('click',function(){
     if ( $('.recaptcha').is(':checked') )

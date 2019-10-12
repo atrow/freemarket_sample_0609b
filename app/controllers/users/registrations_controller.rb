@@ -5,7 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-
   def new
     @user = User.new
     @user_detail = @user.build_user_detail
@@ -13,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if verify_recaptcha(model: @user, env: Rails.env)
+    if verify_recaptcha(model: @user)
       super
     else
        redirect_to(new_user_registration_path) and return
