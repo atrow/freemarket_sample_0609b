@@ -29,22 +29,22 @@
                 = f.password_field :password_confirmation, autocomplete: "off" , placeholder: '６文字以上',class: 'field'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 姓（全角）
+                %p.form-group-label__require 姓
                 %span#require 必須
                 = f.text_field :family_name, class:'form-group__input', placeholder: "例) 山田", class: 'field-name'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 名（全角）
+                %p.form-group-label__require 名
                 %span#require 必須
                 = f.text_field :first_name, class:"form-group__input", placeholder: "例) 彩", class: 'field-name'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 姓（全角カナ）
+                %p.form-group-label__require 姓かな
                 %span#require 必須
                 = f.text_field :family_name_kana, class:"form-group__input", placeholder: "例) ヤマダ", class: 'field-name'
               .form-group-delivery
               %h7
-                %p.form-group-label__require 名（全角カナ）
+                %p.form-group-label__require 名かな
                 %span#require 必須
                 = f.text_field :first_name_kana, class:"form-group__input", placeholder: "例) アヤ", class: 'field-name'
             .text
