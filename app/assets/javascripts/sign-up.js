@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function(){
   })
   //「次へ」クリックすると表示非表示
   $('.btn-next').on('click',function(){
-     $('.next,.text,h8,#requirerecaptcha').hide();//リキャプチャ テキスト フォーム
+     $('.next,.text,h8').hide();//リキャプチャ テキスト フォーム
      $('.button-registration,.back_button,h7').show();//次へ」「戻る」ボタン
   })
   //「登録」クリックするとエラーメッセージまでスクロールする

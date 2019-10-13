@@ -43,7 +43,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 
 gem 'gretel'
-gem 'font-awesome-sass', '~> 5.11.1'
+gem 'font-awesome-rails'
 gem 'recaptcha', require: "recaptcha/rails"
 
 # devise
@@ -52,6 +52,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem 'payjp'
+
+gem 'paranoia'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

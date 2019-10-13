@@ -3,18 +3,18 @@
     .clearfix
       .mercari-logo
         = link_to root_path do
-          = image_tag 'mercari_logo_horizontal.png', alt: 'mercari', width:'134', height:'36'
+          = image_tag 'logo.png', alt: 'mercari', width:'134', height:'36'
       = render partial: "/partial/search"
     .header-nav-bar.clearfix
       %nav.content-left
         %ul.header-nav-list
           %li
             %h2
-              = icon("fas", "list", class: "fa fa-list-ul")
+              = fa_icon 'list', class: "fa fa-list-ul"
               = link_to 'カテゴリーから探す', '', class: 'header-nav-categoly'
           %li
             %h2
-              = icon("fas", "tag", class: "fas fa-tag")
+              = fa_icon 'tag', class: "fas fa-tag"
               = link_to 'ブランドから探す', '', class: 'header-nav-brand'
       .content-right
         %ul.header-user-list
@@ -29,5 +29,5 @@
               .register-btn
                 = link_to "新規会員登録", new_user_registration_path, class: "register-btn sign-up-btn"
             %li
-              .header-user
-                = link_to "ログイン", new_user_session_path, class: "header-user-root"
+              .header-user-root
+                = link_to "ログイン", new_user_session_path, class: "header-user-root sign-in-btn"
