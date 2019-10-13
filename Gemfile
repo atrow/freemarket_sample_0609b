@@ -32,7 +32,6 @@ gem 'fog-aws'
 gem 'rails-controller-testing'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
 gem 'active_hash', '~> 2.3.0'
 gem 'cocoon'
 gem 'jquery-rails'
@@ -43,7 +42,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 
 gem 'gretel'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.11.1'
 gem 'recaptcha', require: "recaptcha/rails"
 
 # devise
