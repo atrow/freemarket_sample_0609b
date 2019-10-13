@@ -33,7 +33,7 @@ gem 'rails-controller-testing'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'active_hash'
+gem 'active_hash', '~> 2.3.0'
 gem 'cocoon'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
