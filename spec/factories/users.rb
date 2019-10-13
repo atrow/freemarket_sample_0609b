@@ -11,5 +11,4 @@ FactoryBot.define do
     password              {password}
     password_confirmation {password}
   end
-  user_detail = FactoryBot.create(:user_detail)
 end

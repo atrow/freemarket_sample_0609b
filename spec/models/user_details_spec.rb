@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 describe UserDetail do
 #カラムが全て入力された時登録できる
   it "is valid with prefecture_id, zip_code, city, street, building_name" do
