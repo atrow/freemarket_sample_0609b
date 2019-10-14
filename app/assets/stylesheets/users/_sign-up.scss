@@ -138,11 +138,11 @@ body {
                       }
                   }//label-text
                   .form-group-detail {
-                      .field,.field-name {
+                      .field,.field-name,#user_user_detail_attributes_prefecture_id {
                           @include field;
                           padding: 8px;
                           margin-bottom: 8px;
-                          height: 39px;
+                          height: 50px;
                           width: 280px;
                           cursor: default;
                       }

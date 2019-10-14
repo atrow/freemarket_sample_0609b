@@ -6,6 +6,7 @@
         .form-group
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             = render "devise/shared/error_messages", resource: resource
+            %span#requirerecaptcha 認証を必ず完了させてください
             .form-group__label
             %h8
               %p.form-group-label__require ニックネーム
@@ -30,17 +31,17 @@
               %h7
                 %p.form-group-label__require 姓
                 %span#require 必須
-                = f.text_field :family_name, class:'form-group__input', placeholder: "例) 山田", class: 'field-name' ,id: 'field-name'
+                = f.text_field :family_name, class:'form-group__input', placeholder: "例) 山田", class: 'field-name'
               .form-group-delivery
               %h7
                 %p.form-group-label__require 名
                 %span#require 必須
-                = f.text_field :first_name, class:"form-group__input", placeholder: "例) 彩", class: 'field-name',id: 'field-name'
+                = f.text_field :first_name, class:"form-group__input", placeholder: "例) 彩", class: 'field-name'
               .form-group-delivery
               %h7
                 %p.form-group-label__require 姓かな
                 %span#require 必須
-                = f.text_field :family_name_kana, class:"form-group__input", placeholder: "例) ヤマダ", class: 'field-name',id: 'field-name'
+                = f.text_field :family_name_kana, class:"form-group__input", placeholder: "例) ヤマダ", class: 'field-name'
               .form-group-delivery
               %h7
                 %p.form-group-label__require 名かな
@@ -52,7 +53,8 @@
               %span 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 
               .recaptcha
-              .g-recaptcha{"data-sitekey" => "{6Lf-YbEUAAAAAPmC-f1kNsuWeWSfIeTyr1e6sQTP}"}
+              .g-recaptcha{callback: 'recaptchaCallbackFunction', "data-sitekey" => "6Lf-YbEUAAAAAPmC-f1kNsuWeWSfIeTyr1e6sQTP"}
+              %span#requirerecaptcha 認証にチェックをしてください
               .text
                 %span 「次へ進む」のボタンをクリックすることにより、
                 %a 利用規約
@@ -69,7 +71,7 @@
               %h7
                 %p.form-group-label__requires  都道府県
                 %span#required 必須
-                = user_detail.collection_select :prefecture_id, Prefecture.all, :id , :prefecture, prompt:  "選択してください", placeholder: '例）北海道', id: 'select', class: 'hidden-field'
+                = user_detail.collection_select :prefecture_id, Prefecture.all, :id , :prefecture, prompt:  "選択してください", placeholder: '例）北海道', id: 'field', class: 'hidden-field'
               .form-group--hidden
               %h7
                 %p.form-group-label__requires  市区町村
