@@ -1,13 +1,11 @@
 FactoryBot.define do
-
-  factory :user_details do
-    zip_code           {"5"}
-    city               {"city"}
-    street             {"street"}
-    building_name      {"building"}
-    uesr_id            {"nil"}
-    prefecture_id      {"nil"}
-    phone              {"00000000"}
+  factory :user_detail do
+      association :user
+      zip_code           {"2222222"}
+      city               {Faker::Address.city}
+      street             {Faker::Address.street_address}
+      building_name      { nil }
+      prefecture_id      {Prefecture.all.sample.id}
+      phone              {Faker::PhoneNumber.phone_number}
   end
-
-  end
+ end
