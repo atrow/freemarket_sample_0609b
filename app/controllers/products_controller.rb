@@ -4,13 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @ladies_products = Product.where(product_status_id: 1).get_ladies.recent
-    @mens_products = Product.where(product_status_id: 1).get_mens.recent
-    @kids_products = Product.where(product_status_id: 1).get_kids.recent
     @cosme_products = Product.where(product_status_id: 1).recent
-    @chanel_products = Product.where(brand_id: 1, product_status_id: 1).recent
-    @Vuitton_products = Product.where(brand_id: 2, product_status_id: 1).recent
-    @Supreme_products = Product.where(brand_id: 3, product_status_id: 1).recent
-    @nike_products = Product.where(brand_id: 4, product_status_id: 1).recent
   end
 
   def new
