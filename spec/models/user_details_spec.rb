@@ -1,10 +1,16 @@
 require 'rails_helper'
 describe UserDetail do
-  #都道府県・郵便番号・市区町村・番地が入力された時登録できる
-  it "is valid with prefecture_id, zip_code, city, street" do
+  #全てのカラムが入力された時登録できる
+  it "is valid with prefecture_id, zip_code, city, street, building_name, phone" do
     user_detail = build(:user_detail)
     expect(user_detail).to be_valid
   end
+  #都道府県・郵便番号・市区町村・番地が入力された時登録できる ただし電話番号と建物名は任意
+  it "is valid with prefecture_id, zip_code, city, street" do
+    user_detail = build(:user_detail, building_name: nil, phone: nil)
+    expect(user_detail).to be_valid
+  end
+
   #それぞれのカラムが入力されていない時は登録できない
   it "is invalid without a prefecture_id" do
      user_detail = build(:user_detail, prefecture_id: nil)
