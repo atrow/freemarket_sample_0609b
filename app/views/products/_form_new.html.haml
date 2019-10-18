@@ -10,7 +10,6 @@
     .product_form__image
       %p.column_title
         出品画像（最大10枚）
-        %span.required 必須
       = f.fields_for :images do |image|
         = image.file_field :image
     .product_form__main
