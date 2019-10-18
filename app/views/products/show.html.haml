@@ -8,9 +8,7 @@
       = @product.name
     .product-info.clearfix
       .product-info__photo
-        -if @product.images.blank?
-          = image_tag ''
-        -else
+        -if @product.images.present?
           .product-info__photo--main
             .main-photo
               = image_tag @product.images.first.image.url
