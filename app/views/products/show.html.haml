@@ -8,13 +8,14 @@
       = @product.name
     .product-info.clearfix
       .product-info__photo
-        .product-info__photo--main
-          .main-photo
-            = image_tag @product.images.first.image.url
-        .product-info__photo--sub
-          - @product.images.each do |image|
-            .sub-photo
-              = image_tag image.image.url
+        -if @product.images.present?
+          .product-info__photo--main
+            .main-photo
+              = image_tag @product.images.first.image.url
+          .product-info__photo--sub
+            - @product.images.each do |image|
+              .sub-photo
+                = image_tag image.image.url
       %table.detail-table
         %tr
           %th.table-user-name 出品者
