@@ -31,7 +31,7 @@
           %p.column_title
             カテゴリー
             %span.required 必須
-          = f.collection_select :category_id, Category.get_all_grandchildren, :id, :category ,include_blank: '---'
+          = f.collection_select :category_id, Category.get_all_parents, :id, :category ,include_blank: '---'
         .product_form__condition
           %p.column_title
             商品の状態
