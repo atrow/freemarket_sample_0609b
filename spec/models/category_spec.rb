@@ -1,7 +1,9 @@
 require 'rails_helper'
 describe Category do
   before do
-    category = FactoryBot.build(:category)
+    category = []
+    category << FactoryBot.build(:category)
+    category << FactoryBot.build(:category, category: "メンズ")
     categories = []
     categories << FactoryBot.build(:category, category: "トップス", parent_id: "1")
     categories << FactoryBot.build(:category, category: "ジャケット/アウター", parent_id: "1")
@@ -18,10 +20,16 @@ describe Category do
     progeny << FactoryBot.build(:category, category: "Tシャツ/カットソー", parent_id: "14")
     progeny << FactoryBot.build(:category, category: "ポロシャツ", parent_id: "14")
     progeny << FactoryBot.build(:category, category: "パーカー", parent_id: "14")
-    allow(Category).to receive(:get_all_children).and_return(category)
+    allow(Category).to receive(:get_all_parents).and_return(category)
+    allow(Category).to receive(:get_all_children).and_return(categories)
     allow(Category).to receive(:get_children).and_return(categories)
     allow(Category).to receive(:get_all_grandchildren).and_return(grandchildren)
     allow(Category).to receive(:get_progeny).and_return(progeny)
+  end
+  describe '#self.get_all_parents' do
+    it "finds all parents" do
+      category = Category.get_all_parents
+    end
   end
   describe '#self.get_all_children' do
     it "finds all children" do

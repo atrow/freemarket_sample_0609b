@@ -5,6 +5,11 @@ class Category < ApplicationRecord
   has_many :children, class_name: :Category, foreign_key: :parent_id
   belongs_to :size_type
 
+  def self.get_all_parents
+    # 全親カテゴリー（1階層目）を取得
+    @categories = Category.where(parent_id: nil)
+  end
+
   def self.get_all_children
     # 全子カテゴリー（2階層目）を取得
     category1 = Category.where(parent_id: nil)
