@@ -92,7 +92,7 @@
             = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/flag_jp.png?1279800527', alt: '', width: '22'
   = link_to image_tag('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?4194600336', alt: 'mercari' ), 'http://localhost:3000/', class:'footer-logo'
   %p.footer-copyright
-    %small © 2019 Mercari
+    %small 2019 Mercari
 = link_to(new_product_path, class: 'footer-sell-btn') do
   %div 出品
-  = fa_icon 'camera', class: "icon-camera"
+  = icon("fas", "camera", class: "icon-camera")

@@ -92,20 +92,21 @@
     li{
       float: left;
     }
-  .header-user-root{
-    text-decoration: none;
-    margin: 0;
-        display: block;
-        border: 1px solid #0099e8;
-        background: #FFF;
-        color: #0099e8;
-        padding: 0 10px;
-        line-height: 30px;
-        border-radius: 4px;
-        text-align: center;
-        font-size: 14px;
-      }
 
+    .header-user-root{
+      text-decoration: none;
+      display: block;
+      border: 1px solid #0099e8;
+      border-image: initial;
+      background: #FFF;
+      color: #0099e8;
+      padding: 0 10px;
+      line-height: 30px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+      margin: 5px;
+    }
 
     .register-btn{
       padding-left: 8px;
@@ -119,11 +120,10 @@
       padding: 0 10px;
       line-height: 30px;
       font-size: 14px;
-
-
-     }
+      margin: 5px;
     }
   }
+}
 
 
 
